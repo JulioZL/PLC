@@ -1,0 +1,17 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd ../frontend && npm run build && cp -r ../frontend/build/* ./public/",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "mysql2": "^3.11.4",
+    "ngrok": "^4.0.0",
+    "sequelize": "^6.37.5"
+  },
+  "type": "module"
+}

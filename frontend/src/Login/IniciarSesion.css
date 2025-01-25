@@ -1,0 +1,63 @@
+﻿/* Fondo y contenedor general */
+.ContInicioSesion {
+    background-color: #f4f7f9;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formInicioSesion {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgb(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenidoForm{
+    width:60%;
+}
+
+/* Estilo de los campos de formulario */
+.cajasForm {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 1rem;
+    transition: box-shadow 0.3s ease;
+}
+
+    .cajasForm:focus {
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        border-color: #007bff;
+    }
+
+/* Botones */
+/*.p-button {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.p-button-label {
+    font-size: 1rem;
+}
+
+.p-button.pi.pi-user, .p-button.pi.pi-user-plus {
+    background-color: #007bff;
+    border: none;
+}
+
+.p-button.p-button-success {
+    background-color: #28a745;
+    border: none;
+}
+
+.p-button:hover {
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}*/

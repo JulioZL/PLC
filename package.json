@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "crypto-js": "^4.2.0"
+  },
+  "name": "invrep",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start-backend": "node back/index.js",
+    "build-front": "cd front && npm run build",
+    "start-front": "cd front && npm start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
