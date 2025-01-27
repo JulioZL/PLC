@@ -2,13 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\backend",
-    "\\backend\\controllers",
-    "\\backend\\models",
-    "\\frontend",
-    "\\frontend\\src",
+    "\\backend\\database",
+    "\\backend\\routes",
     "\\frontend\\src\\Contraloria",
     "\\frontend\\src\\Contraloria\\Reportes"
   ],
-  "SelectedNode": "\\frontend\\src\\Contraloria\\Reportes\\HistoricoReportesInv.js",
   "PreviewInSolutionExplorer": false
 }

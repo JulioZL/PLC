@@ -1,50 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\",
+  "WorkspaceRootPath": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\frontend\\src\\Contraloria\\Reportes\\HistoricoReportesInv.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\src\\Contraloria\\Reportes\\HistoricoReportesInv.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\backend\\models\\ReportesPrenModel.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\models\\ReportesPrenModel.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\backend\\controllers\\ReportesPrenController.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\controllers\\ReportesPrenController.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\backend\\routes\\routes.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\backend\\routes\\routes.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\routes\\routes.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\frontend\\src\\Contraloria\\Reportes\\HistoricoReportes.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\src\\Contraloria\\Reportes\\HistoricoReportes.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\backend\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\backend\\controllers\\ReportesSemController.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\controllers\\ReportesSemController.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\backend\\database\\db.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\database\\db.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\frontend\\src\\Contraloria\\Reportes\\EditarReportesInv.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\src\\Contraloria\\Reportes\\EditarReportesInv.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\frontend\\src\\Contraloria\\Reportes\\EditarReportes.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\src\\Contraloria\\Reportes\\EditarReportes.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\backend\\models\\PrendasModel.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\models\\PrendasModel.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\frontend\\src\\Contraloria\\Reportes\\CrearReportesSEM.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\src\\Contraloria\\Reportes\\CrearReportesSEM.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\frontend\\src\\Contraloria\\Reportes\\CrearReportesInv.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\src\\Contraloria\\Reportes\\CrearReportesInv.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.env||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -59,144 +31,53 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "HistoricoReportesInv.js",
-              "DocumentMoniker": "C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\frontend\\src\\Contraloria\\Reportes\\HistoricoReportesInv.js",
-              "RelativeDocumentMoniker": "frontend\\src\\Contraloria\\Reportes\\HistoricoReportesInv.js",
-              "ToolTip": "C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\frontend\\src\\Contraloria\\Reportes\\HistoricoReportesInv.js",
-              "RelativeToolTip": "frontend\\src\\Contraloria\\Reportes\\HistoricoReportesInv.js",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "Title": "routes.js",
+              "DocumentMoniker": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\backend\\routes\\routes.js",
+              "RelativeDocumentMoniker": "backend\\routes\\routes.js",
+              "ToolTip": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\backend\\routes\\routes.js",
+              "RelativeToolTip": "backend\\routes\\routes.js",
+              "ViewState": "AQIAABwAAAAAAAAAAAAUwCUAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-01-22T04:02:31.93Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "HistoricoReportes.js",
-              "DocumentMoniker": "C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\frontend\\src\\Contraloria\\Reportes\\HistoricoReportes.js",
-              "RelativeDocumentMoniker": "frontend\\src\\Contraloria\\Reportes\\HistoricoReportes.js",
-              "ToolTip": "C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\frontend\\src\\Contraloria\\Reportes\\HistoricoReportes.js",
-              "RelativeToolTip": "frontend\\src\\Contraloria\\Reportes\\HistoricoReportes.js",
-              "ViewState": "AQIAAFcAAAAAAAAAAAAkwGgAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-01-22T04:01:28Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "CrearReportesSEM.js",
-              "DocumentMoniker": "C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\frontend\\src\\Contraloria\\Reportes\\CrearReportesSEM.js",
-              "RelativeDocumentMoniker": "frontend\\src\\Contraloria\\Reportes\\CrearReportesSEM.js",
-              "ToolTip": "C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\frontend\\src\\Contraloria\\Reportes\\CrearReportesSEM.js",
-              "RelativeToolTip": "frontend\\src\\Contraloria\\Reportes\\CrearReportesSEM.js",
-              "ViewState": "AQIAAL0AAAAAAAAAAAAAANQAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-01-22T03:01:57.523Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "CrearReportesInv.js",
-              "DocumentMoniker": "C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\frontend\\src\\Contraloria\\Reportes\\CrearReportesInv.js",
-              "RelativeDocumentMoniker": "frontend\\src\\Contraloria\\Reportes\\CrearReportesInv.js",
-              "ToolTip": "C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\frontend\\src\\Contraloria\\Reportes\\CrearReportesInv.js",
-              "RelativeToolTip": "frontend\\src\\Contraloria\\Reportes\\CrearReportesInv.js",
-              "ViewState": "AQIAAMMAAAAAAAAAAAAuwOUAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-01-22T02:42:26.015Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ReportesSemController.js",
-              "DocumentMoniker": "C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\backend\\controllers\\ReportesSemController.js",
-              "RelativeDocumentMoniker": "backend\\controllers\\ReportesSemController.js",
-              "ToolTip": "C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\backend\\controllers\\ReportesSemController.js",
-              "RelativeToolTip": "backend\\controllers\\ReportesSemController.js",
-              "ViewState": "AQIAACgAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-01-22T02:28:07.339Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ReportesPrenController.js",
-              "DocumentMoniker": "C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\backend\\controllers\\ReportesPrenController.js",
-              "RelativeDocumentMoniker": "backend\\controllers\\ReportesPrenController.js",
-              "ToolTip": "C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\backend\\controllers\\ReportesPrenController.js",
-              "RelativeToolTip": "backend\\controllers\\ReportesPrenController.js",
-              "ViewState": "AQIAAIIAAAAAAAAAAAAkwJMAAAACAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-01-22T02:20:30.626Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ReportesPrenModel.js",
-              "DocumentMoniker": "C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\backend\\models\\ReportesPrenModel.js",
-              "RelativeDocumentMoniker": "backend\\models\\ReportesPrenModel.js",
-              "ToolTip": "C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\backend\\models\\ReportesPrenModel.js",
-              "RelativeToolTip": "backend\\models\\ReportesPrenModel.js",
-              "ViewState": "AQIAADYAAAAAAAAAAAAkwEcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-01-22T02:23:37.062Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "PrendasModel.js",
-              "DocumentMoniker": "C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\backend\\models\\PrendasModel.js",
-              "RelativeDocumentMoniker": "backend\\models\\PrendasModel.js",
-              "ToolTip": "C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\backend\\models\\PrendasModel.js",
-              "RelativeToolTip": "backend\\models\\PrendasModel.js",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-01-22T02:23:25.009Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "EditarReportes.js",
-              "DocumentMoniker": "C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\frontend\\src\\Contraloria\\Reportes\\EditarReportes.js",
-              "RelativeDocumentMoniker": "frontend\\src\\Contraloria\\Reportes\\EditarReportes.js",
-              "ToolTip": "C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\frontend\\src\\Contraloria\\Reportes\\EditarReportes.js",
-              "RelativeToolTip": "frontend\\src\\Contraloria\\Reportes\\EditarReportes.js",
-              "ViewState": "AQIAANoAAAAAAAAAAAAewPcAAAA7AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-01-22T02:17:35.42Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "EditarReportesInv.js",
-              "DocumentMoniker": "C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\frontend\\src\\Contraloria\\Reportes\\EditarReportesInv.js",
-              "RelativeDocumentMoniker": "frontend\\src\\Contraloria\\Reportes\\EditarReportesInv.js",
-              "ToolTip": "C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\frontend\\src\\Contraloria\\Reportes\\EditarReportesInv.js",
-              "RelativeToolTip": "frontend\\src\\Contraloria\\Reportes\\EditarReportesInv.js",
-              "ViewState": "AQIAAMYAAAAAAAAAAAAjwC4AAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-01-22T02:15:11.181Z",
+              "WhenOpened": "2025-01-27T21:44:10.951Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "routes.js",
-              "DocumentMoniker": "C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\backend\\routes\\routes.js",
-              "RelativeDocumentMoniker": "backend\\routes\\routes.js",
-              "ToolTip": "C:\\Users\\julio\\OneDrive - Tecnol\u00F3gico Nacional de M\u00E9xico campus Sur de Guanajuato\\InvRep\\backend\\routes\\routes.js",
-              "RelativeToolTip": "backend\\routes\\routes.js",
-              "ViewState": "AQIAABQAAAAAAAAAAAAkwCUAAAAVAAAA",
+              "Title": ".env",
+              "DocumentMoniker": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\.env",
+              "RelativeDocumentMoniker": ".env",
+              "ToolTip": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\.env",
+              "RelativeToolTip": ".env",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-01-27T21:43:34.345Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "index.js",
+              "DocumentMoniker": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\backend\\index.js",
+              "RelativeDocumentMoniker": "backend\\index.js",
+              "ToolTip": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\backend\\index.js",
+              "RelativeToolTip": "backend\\index.js",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAAwDUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-01-04T08:11:51.902Z",
+              "WhenOpened": "2025-01-27T21:38:02.176Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "db.js",
+              "DocumentMoniker": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\backend\\database\\db.js",
+              "RelativeDocumentMoniker": "backend\\database\\db.js",
+              "ToolTip": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\backend\\database\\db.js",
+              "RelativeToolTip": "backend\\database\\db.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-01-27T21:38:00.863Z",
               "EditorCaption": ""
             }
           ]

@@ -4,6 +4,9 @@ import db from "./database/db.js";
 import aRoutes from './routes/routes.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
+dotenv.config();
+
 
 const app = express();
 
@@ -26,7 +29,10 @@ app.use('/api', aRoutes);
 
 // Intentar conectar con la base de datos
 try {
-    db.authenticate();
+    db.authenticate()
+        .then(() => console.log('Conexión a la base de datos exitosa'))
+        .catch((error) => console.error('Error al conectar a la base de datos:', error));
+
     console.log('Conexión exitosa');
 } catch (error) {
     console.log(`El error de conexión es: ${error}`);
