@@ -1,11 +1,12 @@
 {
   "dependencies": {
-    "crypto-js": "^4.2.0"
+    "crypto-js": "^4.2.0",
+    "pg": "^8.13.1",
+    "pg-hstore": "^2.3.4"
   },
   "name": "invrep",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "start-backend": "node back/index.js",
     "build-front": "cd front && npm run build",
