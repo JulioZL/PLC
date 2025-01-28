@@ -82,7 +82,7 @@ const ReportesSemModel = db.define('ReportesSemestrales', {
         field: 'Estado'
     }
 }, {
-    tableName: 'reportessemestrales',  
+    tableName: 'ReportesSemestrales',  
     timestamps: false,  
 });
 
