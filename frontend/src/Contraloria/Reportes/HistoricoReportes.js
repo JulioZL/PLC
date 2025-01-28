@@ -30,7 +30,7 @@ function HistoricoReportes() {
     useEffect(() => {
         const fetchReportes = async () => {
             try {
-                const response = await axios.get('/api/reportes/all'); // Ajusta la URL según sea necesario
+                const response = await axios.get('https://plc-j41x.onrender.com/api/reportes/all'); // Ajusta la URL según sea necesario
                 console.log(response)
                 setReportData(response.data.data); // Asumiendo que la respuesta tiene una propiedad 'data'
                 setLoading(false);
