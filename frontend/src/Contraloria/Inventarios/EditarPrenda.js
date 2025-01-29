@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button } from 'react-bootstrap';  
-const URI = 'http://localhost:3001/api/prendas/';
+const URI = 'https://plc-j41x.onrender.com/api/prendas/';
 
 const CompEditarPrenda = ({ id }) => {
     const [nombre, setNombre] = useState('');

@@ -32,7 +32,7 @@ function EditarReportes() {
     useEffect(() => {
         const fetchReportes = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/api/reportes');
+                const response = await axios.get('https://plc-j41x.onrender.com/api/reportes');
                 setReportData(response.data.data);
                 setLoading(false);
             } catch (err) {
@@ -54,7 +54,7 @@ function EditarReportes() {
         if (!validateForm()) return;
 
         try {
-            await axios.put(`http://localhost:3001/api/reportes/${formData.Id_ReporteSemestral}`, formData);
+            await axios.put(`https://plc-j41x.onrender.com/api/reportes/${formData.Id_ReporteSemestral}`, formData);
             setReportData((prev) =>
                 prev.map((report) =>
                     report.Id_ReporteSemestral === selectedReport ? { ...formData } : report
@@ -79,7 +79,7 @@ function EditarReportes() {
 
     const handleDelete = async () => {
         try {
-            await axios.put(`http://localhost:3001/api/reportes/eliminar/${deleteReportId}`);
+            await axios.put(`https://plc-j41x.onrender.com/api/reportes/eliminar/${deleteReportId}`);
             setReportData((prev) =>
                 prev.filter((report) => report.Id_ReporteSemestral !== deleteReportId)
             );

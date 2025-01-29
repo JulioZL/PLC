@@ -106,7 +106,7 @@ function CrearReportesInv() {
 
         if (name === 'nombreAlumno' && value.trim().length >= 3) {
             try {
-                const response = await axios.get('http://localhost:3001/api/alumnos', { params: { NombreAlumno: value } });
+                const response = await axios.get('https://plc-j41x.onrender.com/api/alumnos', { params: { NombreAlumno: value } });
                 setFilteredAlumnos(response.data);
             } catch (error) {
                 console.error('Error al buscar alumnos:', error);
