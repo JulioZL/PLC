@@ -29,7 +29,7 @@ function RegistrarUsuario() {
         const encryptedPassword = contrasenia;
 
         try {
-            const response = await axios.post('http://localhost:3001/api/register', {
+            const response = await axios.post('https://plc-j41x.onrender.com/api/register', {
                 Nombre: nombre,
                 Usuario: usuario,
                 Contrasenia: encryptedPassword,
