@@ -354,7 +354,6 @@ function CrearReportesSEM() {
                                 </Form.Control>
                             </Col>
 
-<<<<<<< HEAD
                             <Col xs={12} md={6}>
                                 <Form.Label>Mes de Pago</Form.Label>
                                 <Form.Control
@@ -373,7 +372,6 @@ function CrearReportesSEM() {
                                 </Form.Control>
                             </Col>
                         </Row>
-=======
                 <Form.Group as={Row} className="mb-3">
                     <Form.Label column sm={2}>Grupo</Form.Label>
                     <Col sm={3}>
@@ -403,7 +401,6 @@ function CrearReportesSEM() {
                         </Form.Control>
                     </Col>
                 </Form.Group>
->>>>>>> 723b4a623f26293aa3d384ba2508cb7be39e4b32
 
                         <Row className="mb-3">
                             <Col xs={6} md={3}>

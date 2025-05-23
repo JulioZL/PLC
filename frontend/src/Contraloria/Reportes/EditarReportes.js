@@ -34,15 +34,9 @@ function EditarReportes() {
     useEffect(() => {
         const fetchReportes = async () => {
             try {
-<<<<<<< HEAD
-<<<<<<< HEAD
+
                 const response = await axios.get(URI);
-=======
-                const response = await axios.get('https://plc-j41x.onrender.com/api/reportes');
->>>>>>> 888cc4361008ae88dba76e8ed42b74d68c43fdf5
-=======
-                const response = await axios.get('http://localhost:3001/api/reportes');
->>>>>>> 723b4a623f26293aa3d384ba2508cb7be39e4b32
+
                 setReportData(response.data.data);
                 setLoading(false);
             } catch (err) {

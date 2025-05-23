@@ -109,17 +109,7 @@ function CrearReportesInv() {
 
         if (name === 'nombreAlumno' && value.trim().length >= 3) {
             try {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                const response = await axios.get('http://localhost:3001/api/alumnos', {
-                    params: { NombreAlumno: value },
-                });
-=======
-                const response = await axios.get('https://plc-j41x.onrender.com/api/alumnos', { params: { NombreAlumno: value } });
->>>>>>> 888cc4361008ae88dba76e8ed42b74d68c43fdf5
-=======
                 const response = await axios.get('http://localhost:3001/api/alumnos', { params: { NombreAlumno: value } });
->>>>>>> 723b4a623f26293aa3d384ba2508cb7be39e4b32
                 setFilteredAlumnos(response.data);
             } catch (error) {
                 console.error('Error al buscar alumnos:', error);
@@ -288,7 +278,7 @@ function CrearReportesInv() {
 
                                 )}
                             </Col>
-<<<<<<< HEAD
+
                             <Col xs={12} md={6}>
                                 <Form.Label>Semestre</Form.Label>
                                 <Form.Control
@@ -298,17 +288,12 @@ function CrearReportesInv() {
                                     onChange={handleChange}
                                     placeholder="Ej. 4to"
                                 />
-=======
-                            <Col sm={6}>
-                                <Form.Label>Grupo</Form.Label>
-                                <Form.Control type="text" name="grupoAlumno" value={formData.grupoAlumno}/>
->>>>>>> 723b4a623f26293aa3d384ba2508cb7be39e4b32
                             </Col>
                         </Row>
 
                         <h5 className="my-3">Agregar Artículos</h5>
                         <Row className="mb-3">
-<<<<<<< HEAD
+
                             <Col xs={12} md={6} lg={4}>
                                 <Form.Label>Nombre del Artículo</Form.Label>
 
@@ -328,7 +313,7 @@ function CrearReportesInv() {
                                         </option>
                                     ))}
                                 </Form.Control>
-=======
+                            </Col>
                             <Col sm={6}>
                                 <Form.Label>Articulo</Form.Label>
                                 <Form.Select aria-label="Default select example">
@@ -337,7 +322,6 @@ function CrearReportesInv() {
                                     <option value="2">Two</option>
                                     <option value="3">Three</option>
                                 </Form.Select>
->>>>>>> 723b4a623f26293aa3d384ba2508cb7be39e4b32
                             </Col>
                             <Col xs={6} md={3} lg={2}>
                                 <Form.Label>Talla</Form.Label>
@@ -346,16 +330,13 @@ function CrearReportesInv() {
                                     name="talla"
                                     value={formData.talla}
                                     onChange={handleChange}
-<<<<<<< HEAD
+
                                     placeholder="M, L, XL"
                                 />
-=======
-                                    placeholder="Selecciona la talla"
-                                >
+
                                     <option value="">Selecciona la talla</option>
                                     {[14, 16, 18, 28, 30, 32, 34, 36, 38, 40, 42, 44, 'CH','M', 'G', 'XL','UT'].map(tall => <option key={tall} value={tall}>{tall}</option>)}
-                                </Form.Control>
->>>>>>> 723b4a623f26293aa3d384ba2508cb7be39e4b32
+
                             </Col>
                             <Col xs={6} md={3} lg={2}>
                                 <Form.Label>Precio</Form.Label>

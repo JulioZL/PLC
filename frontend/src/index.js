@@ -25,8 +25,8 @@ import CrearReportesSEM from './Contraloria/Reportes/CrearReportesSEM';
 import CrearReportesInv from './Contraloria/Reportes/CrearReportesInv';
 import EditarReportes from './Contraloria/Reportes/EditarReportes';
 import EditarReportesInv from './Contraloria/Reportes/EditarReportesInv';
-import HistoricoReportes from './Contraloria/Historico/HistoricoReportes';
-import HistoricoReportesInv from './Contraloria/Historico/HistoricoReportesInv';
+import HistoricoReportes from './Contraloria/Reportes/HistoricoReportes
+//import HistoricoReportesInv from './Contraloria/Reportes/HistoricoReportes';
 import AgregarAlumnos from './Contraloria/Alumnos/AgregarAlumnos';
 import InformacionUsuarios from './Contraloria/Usuarios/InformacionUsuarios';
 import ExportPDFReportes from './Contraloria/Reportes/ExportPDFReportes';
