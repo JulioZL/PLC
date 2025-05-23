@@ -1,12 +1,9 @@
-import express from "express";
+ï»¿import express from "express";
 import cors from 'cors';
 import db from "./database/db.js";
 import aRoutes from './routes/routes.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import dotenv from 'dotenv';
-dotenv.config();
-
 
 const app = express();
 
@@ -16,8 +13,8 @@ const __dirname = path.dirname(__filename);
 
 // Habilitar CORS
 app.use(cors({
-    origin: '*',  // Permitir todos los orígenes (ajústalo según tus necesidades)
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Especificar los métodos permitidos
+    origin: '*',  // Permitir todos los orï¿½genes (ajï¿½stalo segï¿½n tus necesidades)
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Especificar los mï¿½todos permitidos
     allowedHeaders: ['Content-Type', 'Authorization'],  // Especificar los encabezados permitidos
 }));
 
@@ -29,16 +26,13 @@ app.use('/api', aRoutes);
 
 // Intentar conectar con la base de datos
 try {
-    db.authenticate()
-        .then(() => console.log('Conexión a la base de datos exitosa'))
-        .catch((error) => console.error('Error al conectar a la base de datos:', error));
-
-    console.log('Conexión exitosa');
+    db.authenticate();
+    console.log('Conexiï¿½n exitosa');
 } catch (error) {
-    console.log(`El error de conexión es: ${error}`);
+    console.log(`El error de conexiï¿½n es: ${error}`);
 }
 
-// Servir los archivos estáticos de React desde la carpeta build
+// Servir los archivos estï¿½ticos de React desde la carpeta build
 const buildPath = path.join(__dirname, '..', 'frontend', 'build');
 app.use(express.static(buildPath));
 
@@ -49,5 +43,5 @@ app.get('*', (req, res) => {
 
 // Iniciar servidor en el puerto 3001
 app.listen(3001, () => {
-    console.log('API corriendo en el puerto https://plc-j41x.onrender.com/');
+    console.log('API corriendo en el puerto http://localhost:3001/');
 });

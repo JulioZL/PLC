@@ -106,7 +106,7 @@ function CrearReportesInv() {
 
         if (name === 'nombreAlumno' && value.trim().length >= 3) {
             try {
-                const response = await axios.get('https://plc-j41x.onrender.com/api/alumnos', { params: { NombreAlumno: value } });
+                const response = await axios.get('http://localhost:3001/api/alumnos', { params: { NombreAlumno: value } });
                 setFilteredAlumnos(response.data);
             } catch (error) {
                 console.error('Error al buscar alumnos:', error);
@@ -178,36 +178,40 @@ function CrearReportesInv() {
                             </Col>
                             <Col sm={6}>
                                 <Form.Label>Grupo</Form.Label>
-                                <Form.Control type="text" name="grupoAlumno" value={formData.grupoAlumno} readOnly />
+                                <Form.Control type="text" name="grupoAlumno" value={formData.grupoAlumno}/>
                             </Col>
                         </Row>
 
                         <h5 className="mb-3">Agregar Artículos</h5>
                         <Row className="mb-3">
                             <Col sm={6}>
-                                <Form.Label>Nombre del Artículo</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    name="nombreArticulo"
-                                    value={formData.nombreArticulo}
-                                    onChange={handleChange}
-                                    placeholder="Nombre del artículo"
-                                />
+                                <Form.Label>Articulo</Form.Label>
+                                <Form.Select aria-label="Default select example">
+                                    <option>Open this select menu</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </Form.Select>
                             </Col>
                             <Col sm={3}>
                                 <Form.Label>Talla</Form.Label>
                                 <Form.Control
-                                    type="text"
+                                    as="select"
                                     name="talla"
                                     value={formData.talla}
                                     onChange={handleChange}
-                                    placeholder="Talla"
-                                />
+                                    placeholder="Selecciona la talla"
+                                >
+                                    <option value="">Selecciona la talla</option>
+                                    {[14, 16, 18, 28, 30, 32, 34, 36, 38, 40, 42, 44, 'CH','M', 'G', 'XL','UT'].map(tall => <option key={tall} value={tall}>{tall}</option>)}
+                                </Form.Control>
                             </Col>
                             <Col sm={3}>
                                 <Form.Label>Precio</Form.Label>
                                 <Form.Control
                                     type="number"
+                                    min="0"
+                                    step="0.1"
                                     name="precio"
                                     value={formData.precio}
                                     onChange={handleChange}
@@ -220,6 +224,8 @@ function CrearReportesInv() {
                                 <Form.Label>Cantidad</Form.Label>
                                 <Form.Control
                                     type="number"
+                                    min="0"
+                                    step="1"
                                     name="cantidad"
                                     value={formData.cantidad}
                                     onChange={handleChange}

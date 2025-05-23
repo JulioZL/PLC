@@ -14,6 +14,7 @@ import 'primereact/resources/primereact.min.css'; // Estilos de PrimeReact
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 // Importacion para creacion de rutas y navegacion
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
@@ -24,9 +25,10 @@ import CrearReportesSEM from './Contraloria/Reportes/CrearReportesSEM';
 import CrearReportesInv from './Contraloria/Reportes/CrearReportesInv';
 import EditarReportes from './Contraloria/Reportes/EditarReportes';
 import EditarReportesInv from './Contraloria/Reportes/EditarReportesInv';
-import HistoricoReportes from './Contraloria/Reportes/HistoricoReportes';
-import HistoricoReportesInv from './Contraloria/Reportes/HistoricoReportesInv';
-
+import HistoricoReportes from './Contraloria/Historico/HistoricoReportes';
+import HistoricoReportesInv from './Contraloria/Historico/HistoricoReportesInv';
+import AgregarAlumnos from './Contraloria/Alumnos/AgregarAlumnos';
+import InformacionUsuarios from './Contraloria/Usuarios/InformacionUsuarios';
 import ExportPDFReportes from './Contraloria/Reportes/ExportPDFReportes';
 
 
@@ -92,6 +94,15 @@ const router = createBrowserRouter([
                 path: "exportPDFReportes",
                 element: <ExportPDFReportes />
             },
+            {
+                path: "agregarAlumnos",
+                element: <AgregarAlumnos />
+            },
+            {
+                path: "informacionUsuarios",
+                element: <InformacionUsuarios />
+            },
+           
         ],
     },
 ]);

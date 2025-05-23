@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button } from 'react-bootstrap';  
-const URI = 'https://plc-j41x.onrender.com/api/prendas/';
+const URI = 'http://localhost:3001/api/prendas/';
 
 const CompEditarPrenda = ({ id }) => {
     const [nombre, setNombre] = useState('');
@@ -19,8 +19,8 @@ const CompEditarPrenda = ({ id }) => {
             talla: talla,
             unidades: unidades,
             precio: precio
-        })
-        navigate('/Menu/InvPrendas');
+        });
+        window.location.reload();
     };
 
     useEffect(() => {
@@ -73,6 +73,8 @@ const CompEditarPrenda = ({ id }) => {
                     <Form.Label>Unidades</Form.Label>
                     <Form.Control
                         type="number"
+                        min="0"
+                        step="1"
                         value={unidades}
                         onChange={(e) => setUnidades(e.target.value)}
                         placeholder="Unidades disponibles"
@@ -86,13 +88,14 @@ const CompEditarPrenda = ({ id }) => {
                     <Form.Label>Precio</Form.Label>
                     <Form.Control
                         type="number"
+                        min="0"
+                        step="0.1"
                         value={precio}
                         onChange={(e) => setPrecio(e.target.value)}
                         placeholder="Precio de la prenda"
                         className="form-control-lg"
                         required
-                        min="0"
-                        step="0.01"
+                        
                     />
                 </Form.Group>
 

@@ -48,7 +48,7 @@ export const updatePrenda = async (req, res) => {
         })
     }
     catch (error) {
-        req.json({message: error.message})
+        res.json({message: error.message})
     }
 }
 

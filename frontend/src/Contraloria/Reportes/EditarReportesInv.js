@@ -20,7 +20,7 @@ function EditarReportesInv() {
     useEffect(() => {
         const fetchReportes = async () => {
             try {
-                const response = await axios.get('https://plc-j41x.onrender.com/api/reportesPrenda');
+                const response = await axios.get('http://localhost:3001/api/reportesPrenda');
                 setReportData(response.data.data);
             } catch (err) {
                 console.error('Error al cargar reportes:', err);
@@ -42,7 +42,7 @@ function EditarReportesInv() {
             return;
         }
         try {
-            await axios.put(`https://plc-j41x.onrender.com/api/reportesPrenda/${formData.Id_ReportePrenda}`, formData);
+            await axios.put(`http://localhost:3001/api/reportesPrenda/${formData.Id_ReportePrenda}`, formData);
             setReportData((prev) =>
                 prev.map((report) =>
                     report.Id_ReportePrenda === selectedReport ? { ...formData } : report
@@ -62,7 +62,7 @@ function EditarReportesInv() {
             icon: 'pi pi-exclamation-triangle',
             accept: async () => {
                 try {
-                    await axios.put(`https://plc-j41x.onrender.com/api/reportesPrenda/eliminar/${id}`);
+                    await axios.put(`http://localhost:3001/api/reportesPrenda/eliminar/${id}`);
                     setReportData((prev) => prev.filter((report) => report.Id_ReportePrenda !== id));
                 } catch (err) {
                     console.error('Error al eliminar el reporte:', err);

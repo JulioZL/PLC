@@ -50,6 +50,13 @@ function NavBar() {
                                 <LinkContainer to="/menu/editarReportesInv">
                                     <Dropdown.Item>Editar Reportes Prendas</Dropdown.Item>
                                 </LinkContainer>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                        <Dropdown>
+                            <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                Historico
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu>
                                 <LinkContainer to="/menu/historicoReportes">
                                     <Dropdown.Item>Histórico Semestral</Dropdown.Item>
                                 </LinkContainer>
@@ -58,6 +65,12 @@ function NavBar() {
                                 </LinkContainer>
                             </Dropdown.Menu>
                         </Dropdown>
+                        <LinkContainer to="agregarAlumnos">
+                            <Nav.Link>Alumnos</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to="informacionUsuarios">
+                            <Nav.Link>Usuarios</Nav.Link>
+                        </LinkContainer>
                     </Nav>
                     <Navbar.Collapse className="justify-content-end">
                         <Navbar.Text>

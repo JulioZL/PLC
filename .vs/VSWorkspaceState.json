@@ -3,9 +3,14 @@
     "",
     "\\backend",
     "\\backend\\database",
-    "\\backend\\routes",
+    "\\backend\\models",
+    "\\frontend",
+    "\\frontend\\src",
     "\\frontend\\src\\Contraloria",
-    "\\frontend\\src\\Contraloria\\Reportes"
+    "\\frontend\\src\\Contraloria\\Inventarios",
+    "\\frontend\\src\\Contraloria\\Reportes",
+    "\\frontend\\src\\Login"
   ],
+  "SelectedNode": "\\frontend\\src\\Login\\RegistrarUsuario.js",
   "PreviewInSolutionExplorer": false
 }
