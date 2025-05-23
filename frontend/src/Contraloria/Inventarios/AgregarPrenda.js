@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CompAgregarPrenda.css';
 
-const URI = 'http://localhost:3001/api/prendas/';
+const URI = 'https://plc-j41x.onrender.com/api/prendas/';
 
 const CompAgregarPrenda = () => {
     const [nombre, setNombre] = useState('');

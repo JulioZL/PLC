@@ -84,3 +84,4 @@ const ReportesSemModel = db.define('ReportesSemestrales', {
 
 
 export default ReportesSemModel;
+

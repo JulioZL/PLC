@@ -70,7 +70,7 @@ function CrearReportesSEM() {
 
         const fetchConceptos = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/api/conceptos');
+                const response = await axios.get('https://plc-j41x.onrender.com/api/conceptos');
                 setConceptos(response.data);
             } catch (error) {
                 toast.error('Error al obtener los conceptos.');
@@ -108,7 +108,7 @@ function CrearReportesSEM() {
         }
         const reportToSave = reportData[0];
         try {
-            const response = await axios.post('http://localhost:3001/api/reportes', reportToSave);
+            const response = await axios.post('https://plc-j41x.onrender.com/api/reportes', reportToSave);
             if (response.status === 200) {
                 setReportData([]);
                 resetForm();
@@ -124,7 +124,7 @@ function CrearReportesSEM() {
 
         if (name === 'Nombre_Alumno' && value.length >= 3) {
             try {
-                const response = await axios.get(`http://localhost:3001/api/alumnos`, {
+                const response = await axios.get(`https://plc-j41x.onrender.com/api/alumnos`, {
                     params: { NombreAlumno: value }
                 });
                 setFilteredAlumnos(response.data);

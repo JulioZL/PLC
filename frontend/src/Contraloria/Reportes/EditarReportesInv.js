@@ -31,7 +31,11 @@ function EditarReportesInv() {
     useEffect(() => {
         const fetchReportes = async () => {
             try {
+<<<<<<< HEAD
                 const response = await axios.get(URI);
+=======
+                const response = await axios.get('https://plc-j41x.onrender.com/api/reportesPrenda');
+>>>>>>> 888cc4361008ae88dba76e8ed42b74d68c43fdf5
                 setReportData(response.data.data);
             } catch (err) {
                 setError('Hubo un error al cargar los reportes');
@@ -55,7 +59,11 @@ function EditarReportesInv() {
             return;
         }
         try {
+<<<<<<< HEAD
             await axios.put(`${URI}/${formData.Id_ReportePrenda}`, formData);
+=======
+            await axios.put(`https://plc-j41x.onrender.com/api/reportesPrenda/${formData.Id_ReportePrenda}`, formData);
+>>>>>>> 888cc4361008ae88dba76e8ed42b74d68c43fdf5
             setReportData((prev) =>
                 prev.map((report) =>
                     report.Id_ReportePrenda === selectedReport ? { ...formData } : report
@@ -68,6 +76,7 @@ function EditarReportesInv() {
         }
     };
 
+<<<<<<< HEAD
     const confirmDelete = (id) => {
         setDeleteId(id);
         setShowConfirm(true);
@@ -81,6 +90,22 @@ function EditarReportesInv() {
         } catch (err) {
             console.error('Error al eliminar el reporte:', err);
         }
+=======
+    const handleDelete = (id) => {
+        confirmDialog({
+            message: '¿Estás seguro de que deseas eliminar este reporte?',
+            header: 'Confirmar Eliminación',
+            icon: 'pi pi-exclamation-triangle',
+            accept: async () => {
+                try {
+                    await axios.put(`https://plc-j41x.onrender.com/api/reportesPrenda/eliminar/${id}`);
+                    setReportData((prev) => prev.filter((report) => report.Id_ReportePrenda !== id));
+                } catch (err) {
+                    console.error('Error al eliminar el reporte:', err);
+                }
+            },
+        });
+>>>>>>> 888cc4361008ae88dba76e8ed42b74d68c43fdf5
     };
 
     const handleChange = (e) => {

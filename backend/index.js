@@ -49,5 +49,5 @@ app.get('*', (req, res) => {
 
 // Iniciar servidor en el puerto 3001
 app.listen(3001, () => {
-    console.log('API corriendo en el puerto http://localhost:3001/');
+    console.log('API corriendo en el puerto https://plc-j41x.onrender.com/');
 });

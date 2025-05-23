@@ -11,7 +11,7 @@ function HistoricoReportesInv() {
     useEffect(() => {
         const fetchReportesPrenda = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/api/reportesPrenda/all');
+                const response = await axios.get('https://plc-j41x.onrender.com/api/reportesPrenda/all');
                 console.log(response);
                 setReportData(response.data.data); 
                 setLoading(false);

@@ -54,5 +54,5 @@
     "@babel/preset-react": "^7.25.9",
     "babel-loader": "^9.2.1"
   },
-  "proxy": "http://localhost:3001"
+  "proxy": "https://plc-j41x.onrender.com"
 }
