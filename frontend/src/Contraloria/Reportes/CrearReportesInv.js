@@ -1,16 +1,18 @@
-﻿import React, { useState } from 'react';
+﻿import React, { useState, useRef, useEffect } from 'react';
 import { Container, Row, Col, Form, Button, Table, Card, InputGroup } from 'react-bootstrap';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import './crearReportesSem.css';
+import { OverlayTrigger, Tooltip, Modal } from 'react-bootstrap';
+import { PlusCircle, Save } from 'react-bootstrap-icons';
+
 
 function CrearReportesInv() {
     const [reportData, setReportData] = useState([]);
     const [formData, setFormData] = useState({
         IDreporte: Date.now().toString(),
         nombreAlumno: '',
-        grupoAlumno: '',
+        Semestre: '',
         nombreArticulo: '',
         talla: '',
         precio: '',
@@ -19,41 +21,44 @@ function CrearReportesInv() {
         fecha: new Date().toLocaleDateString(),
     });
     const [filteredAlumnos, setFilteredAlumnos] = useState([]);
-
+    const [showConfirmModal, setShowConfirmModal] = useState(false);
+    const [activeIndex, setActiveIndex] = React.useState(-1);
+    const [showAutocomplete, setShowAutocomplete] = React.useState(false);
+    const listItemRefs = useRef([]);
     const validateArticleFields = () => {
         const { nombreArticulo, talla, precio, cantidad } = formData;
-        if (!nombreArticulo.trim()) {
-            toast.error('El nombre del artículo es obligatorio.');
-            return false;
-        }
-        if (!talla.trim()) {
-            toast.error('La talla es obligatoria.');
-            return false;
-        }
-        if (!precio || isNaN(precio) || precio <= 0) {
-            toast.error('El precio debe ser un número mayor a 0.');
-            return false;
-        }
-        if (!cantidad || isNaN(cantidad) || cantidad <= 0) {
-            toast.error('La cantidad debe ser un número mayor a 0.');
-            return false;
-        }
+        if (!nombreArticulo.trim()) return toast.error('El nombre del artículo es obligatorio.');
+        if (!talla.trim()) return toast.error('La talla es obligatoria.');
+        if (!precio || isNaN(precio) || precio <= 0) return toast.error('El precio debe ser un número mayor a 0.');
+        if (!cantidad || isNaN(cantidad) || cantidad <= 0) return toast.error('La cantidad debe ser un número mayor a 0.');
         return true;
     };
 
+    const [conceptos, setConceptos] = useState([]);
+
+    useEffect(() => {
+        const fetchConceptos = async () => {
+            try {
+                const response = await axios.get('http://localhost:3001/api/conceptosP');
+                setConceptos(response.data);
+            } catch (error) {
+                toast.error('Error al obtener los conceptos.');
+            }
+        };
+        fetchConceptos();
+
+        if (activeIndex >= 0 && listItemRefs.current[activeIndex]) {
+            listItemRefs.current[activeIndex].scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+            });
+        }
+    }, [activeIndex]);
+
     const validateReportFields = () => {
-        if (!formData.nombreAlumno.trim()) {
-            toast.error('El nombre del alumno es obligatorio.');
-            return false;
-        }
-        if (!formData.grupoAlumno.trim()) {
-            toast.error('El grupo del alumno es obligatorio.');
-            return false;
-        }
-        if (reportData.length === 0) {
-            toast.error('Debes agregar al menos un artículo al reporte.');
-            return false;
-        }
+        if (!formData.nombreAlumno.trim()) return toast.error('El nombre del alumno es obligatorio.');
+        if (!formData.Semestre.trim()) return toast.error('El Semestre es obligatorio.');
+        if (reportData.length === 0) return toast.error('Debes agregar al menos un artículo al reporte.');
         return true;
     };
 
@@ -61,11 +66,11 @@ function CrearReportesInv() {
         setFormData({
             IDreporte: Date.now().toString(),
             nombreAlumno: '',
-            grupoAlumno: '',
             nombreArticulo: '',
             talla: '',
             precio: '',
             cantidad: '',
+            Semestre: '',
             lugar: 'Yuriria, GTO.',
             fecha: new Date().toLocaleDateString(),
         });
@@ -77,21 +82,20 @@ function CrearReportesInv() {
 
         const payload = reportData.map(item => ({
             Nombre_Alumno: formData.nombreAlumno,
-            Grupo: formData.grupoAlumno,
             Nombre_Articulo: item.nombreArticulo,
             Talla: item.talla,
             Precio: item.precio,
             Cantidad: item.cantidad,
+            Semestre: formData.Semestre,
         }));
 
         try {
-            const response = await axios.post('/api/reportesprenda', payload);
-
+            const response = await axios.post('http://localhost:3001/api/reportesPrenda', payload);
             if (response.status === 200) {
                 toast.success('Reporte guardado correctamente.');
-                resetForm();   
+                resetForm();
             } else {
-                toast.error('Error al guardar el reporte. Inténtalo nuevamente.');
+                toast.error('Error al guardar el reporte.');
             }
         } catch (error) {
             console.error('Error al guardar el reporte:', error);
@@ -99,27 +103,51 @@ function CrearReportesInv() {
         }
     };
 
-
     const handleChange = async (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
 
         if (name === 'nombreAlumno' && value.trim().length >= 3) {
             try {
-                const response = await axios.get('http://localhost:3001/api/alumnos', { params: { NombreAlumno: value } });
+                const response = await axios.get('http://localhost:3001/api/alumnos', {
+                    params: { NombreAlumno: value },
+                });
                 setFilteredAlumnos(response.data);
             } catch (error) {
                 console.error('Error al buscar alumnos:', error);
-                setFilteredAlumnos([]);
                 toast.error('Error al buscar alumnos.');
+                setFilteredAlumnos([]);
             }
         } else if (name === 'nombreAlumno') {
             setFilteredAlumnos([]);
         }
+
+        if (name === 'nombreArticulo') {
+            const selectedConcepto = conceptos.find(concepto => concepto.nombre_prenda === value);
+            if (selectedConcepto) {
+                setFormData({
+                    ...formData,
+                    nombreArticulo: value,
+                    precio: selectedConcepto.precio, // <- esta es la clave correcta
+                });
+            } else {
+                setFormData({
+                    ...formData,
+                    nombreArticulo: value,
+                    precio: '', // borra precio si el artículo no se encuentra
+                });
+            }
+        }
+
+
     };
 
+
     const handleSelectAlumno = (alumno) => {
-        setFormData({ ...formData, nombreAlumno: alumno.NombreAlumno, grupoAlumno: alumno.Grupo });
+        setFormData({
+            ...formData,
+            nombreAlumno: alumno.NombreAlumno
+        });
         setFilteredAlumnos([]);
     };
 
@@ -145,133 +173,260 @@ function CrearReportesInv() {
         toast.success('Artículo agregado correctamente.');
     };
 
-    const calculateTotal = () => reportData.reduce((acc, item) => acc + item.subtotal, 0).toFixed(2);
+    const handleKeyDown = (e) => {
+        if (!filteredAlumnos.length) return;
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            setActiveIndex(prev => (prev + 1) % filteredAlumnos.length);
+            setShowAutocomplete(true);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            setActiveIndex(prev => (prev - 1 + filteredAlumnos.length) % filteredAlumnos.length);
+            setShowAutocomplete(true);
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (activeIndex >= 0 && activeIndex < filteredAlumnos.length) {
+                handleSelectAlumno(filteredAlumnos[activeIndex]);
+                setShowAutocomplete(false);
+                setActiveIndex(-1);
+            }
+        } else if (e.key === 'Escape') {
+            setShowAutocomplete(false);
+            setActiveIndex(-1);
+        }
+    };
+
+    const calculateTotal = () =>
+        reportData.reduce((acc, item) => acc + item.subtotal, 0).toFixed(2);
 
     return (
-        <Container className="p-4" style={{ maxWidth: '900px' }}>
+        <Container className="py-4">
             <ToastContainer />
-            <Card className="mb-4 shadow">
+            <Card className="shadow mb-4">
                 <Card.Body>
-                    <Card.Title className="text-center mb-4">
-                        <h4>Generador de Reportes - Inventario</h4>
-                    </Card.Title>
+                    <h4 className="text-center mb-4">Generador de Reportes - Inventario</h4>
                     <Form>
                         <Row className="mb-3">
-                            <Col sm={6}>
+                            
+                            <Col xs={12} md={6} className="position-relative">
                                 <Form.Label>Nombre del Alumno</Form.Label>
-                                <InputGroup>
-                                    <Form.Control
-                                        type="text"
-                                        name="nombreAlumno"
-                                        value={formData.nombreAlumno}
-                                        onChange={handleChange}
-                                        placeholder="Ingresa el nombre del alumno"
-                                    />
-                                    <ul className="autocomplete-list autcpl">
-                                        {filteredAlumnos.map(alumno => (
-                                            <li key={alumno.id_alumno} onClick={() => handleSelectAlumno(alumno)}>
-                                                {alumno.NombreAlumno} ({alumno.Grupo})
+                                <Form.Control
+                                    type="text"
+                                    name="nombreAlumno"
+                                    value={formData.nombreAlumno}
+                                    onChange={(e) => {
+                                        handleChange(e);
+                                        setShowAutocomplete(true);
+                                        setActiveIndex(-1);
+                                    }}
+                                    onKeyDown={handleKeyDown}
+                                    placeholder="Ingresa el nombre del alumno"
+                                    autoComplete="off"
+                                />
+
+                                {showAutocomplete && (
+                                    <ul
+                                        style={{
+                                            position: 'absolute',
+                                            zIndex: 1000,
+                                            top: '100%',
+                                            left: 0,
+                                            right: 0,
+                                            maxHeight: '220px',
+                                            overflowY: 'auto',
+                                            margin: 0,
+                                            padding: 0,
+                                            backgroundColor: '#fff',
+                                            border: '1px solid #ccc',
+                                            borderRadius: '0.5rem',
+                                            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                                            listStyle: 'none',
+                                        }}
+                                    >
+                                        {filteredAlumnos.length > 0 ? (
+                                            filteredAlumnos.map((alumno, index) => (
+                                                <li
+                                                    ref={(el) => (listItemRefs.current[index] = el)}
+                                                    key={alumno.id_alumno}
+                                                    onClick={() => {
+                                                        handleSelectAlumno(alumno);
+                                                        setShowAutocomplete(false);
+                                                        setActiveIndex(-1);
+                                                    }}
+                                                    style={{
+                                                        padding: '10px 15px',
+                                                        cursor: 'pointer',
+                                                        backgroundColor: index === activeIndex ? '#007bff' : 'transparent',
+                                                        color: index === activeIndex ? '#fff' : '#000',
+                                                        fontWeight: index === activeIndex ? 'bold' : 'normal',
+                                                        transition: 'background-color 0.2s ease',
+                                                    }}
+                                                >
+                                                    {alumno.NombreAlumno}
+                                                </li>
+                                            ))
+                                        ) : (
+                                            <li
+                                                style={{
+                                                    padding: '10px 15px',
+                                                    color: '#888',
+                                                }}
+                                            >
+                                                No se encontraron coincidencias
                                             </li>
-                                        ))}
+                                        )}
                                     </ul>
-                                </InputGroup>
+
+                                )}
                             </Col>
-                            <Col sm={6}>
-                                <Form.Label>Grupo</Form.Label>
-                                <Form.Control type="text" name="grupoAlumno" value={formData.grupoAlumno} readOnly />
+                            <Col xs={12} md={6}>
+                                <Form.Label>Semestre</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="Semestre"
+                                    value={formData.Semestre}
+                                    onChange={handleChange}
+                                    placeholder="Ej. 4to"
+                                />
                             </Col>
                         </Row>
 
-                        <h5 className="mb-3">Agregar Artículos</h5>
+                        <h5 className="my-3">Agregar Artículos</h5>
                         <Row className="mb-3">
-                            <Col sm={6}>
+                            <Col xs={12} md={6} lg={4}>
                                 <Form.Label>Nombre del Artículo</Form.Label>
+
                                 <Form.Control
-                                    type="text"
+                                    as="select"
                                     name="nombreArticulo"
                                     value={formData.nombreArticulo}
                                     onChange={handleChange}
-                                    placeholder="Nombre del artículo"
-                                />
+                                >
+                                    <option value="">Selecciona una Prenda</option>
+                                    {conceptos.map((concepto) => (
+                                        <option
+                                            key={concepto.id_prenda}
+                                            value={concepto.nombre_prenda}
+                                        >
+                                            {concepto.nombre_prenda}
+                                        </option>
+                                    ))}
+                                </Form.Control>
                             </Col>
-                            <Col sm={3}>
+                            <Col xs={6} md={3} lg={2}>
                                 <Form.Label>Talla</Form.Label>
                                 <Form.Control
                                     type="text"
                                     name="talla"
                                     value={formData.talla}
                                     onChange={handleChange}
-                                    placeholder="Talla"
+                                    placeholder="M, L, XL"
                                 />
                             </Col>
-                            <Col sm={3}>
+                            <Col xs={6} md={3} lg={2}>
                                 <Form.Label>Precio</Form.Label>
                                 <Form.Control
                                     type="number"
                                     name="precio"
                                     value={formData.precio}
                                     onChange={handleChange}
-                                    placeholder="Precio"
+                                    placeholder="0.00"
                                 />
                             </Col>
-                        </Row>
-                        <Row>
-                            <Col sm={3}>
+                            <Col xs={6} md={3} lg={2}>
                                 <Form.Label>Cantidad</Form.Label>
                                 <Form.Control
                                     type="number"
                                     name="cantidad"
                                     value={formData.cantidad}
                                     onChange={handleChange}
-                                    placeholder="Cantidad"
+                                    placeholder="0"
                                 />
                             </Col>
-                            <Col sm={3} className="d-flex align-items-end">
-                                <Button variant="primary" onClick={handleAddArticle}>
-                                    Agregar
-                                </Button>
+                            <Col xs={6} md={3} lg={2} className="d-flex align-items-end">
+                                <OverlayTrigger
+                                    placement="top"
+                                    overlay={<Tooltip id="tooltip-agregar">Agregar artículo al reporte</Tooltip>}
+                                >
+                                    <Button variant="primary" onClick={handleAddArticle}>
+                                        <PlusCircle className="me-1" />
+                                        Agregar
+                                    </Button>
+                                </OverlayTrigger>
                             </Col>
                         </Row>
                     </Form>
                 </Card.Body>
             </Card>
 
-            <Card className="mb-4 shadow">
-                <Card.Body>
-                    <Card.Title>Artículos en el Reporte</Card.Title>
-                    <Table striped bordered hover>
-                        <thead>
+            <Card.Body>
+                <Card.Title>Artículos en el Reporte</Card.Title>
+                <Table striped bordered hover responsive>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Talla</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>
+                                <OverlayTrigger
+                                    placement="top"
+                                    overlay={<Tooltip id="tooltip-subtotal">Precio × Cantidad</Tooltip>}
+                                >
+                                    <span>Subtotal</span>
+                                </OverlayTrigger>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {reportData.length === 0 ? (
                             <tr>
-                                <th>Nombre</th>
-                                <th>Talla</th>
-                                <th>Precio</th>
-                                <th>Cantidad</th>
-                                <th>Subtotal</th>
+                                <td colSpan="5" className="text-center text-muted">
+                                    No hay artículos agregados al reporte.
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            {reportData.map((item, index) => (
-                                <tr key={index}>
-                                    <td>{item.nombreArticulo}</td>
-                                    <td>{item.talla}</td>
-                                    <td>${item.precio.toFixed(2)}</td>
-                                    <td>{item.cantidad}</td>
-                                    <td>${item.subtotal.toFixed(2)}</td>
+                        ) : (
+                            <>
+                                {reportData.map((item, index) => (
+                                    <tr key={index}>
+                                        <td>{item.nombreArticulo}</td>
+                                        <td>{item.talla}</td>
+                                        <td>${item.precio.toFixed(2)}</td>
+                                        <td>{item.cantidad}</td>
+                                        <td>${item.subtotal.toFixed(2)}</td>
+                                    </tr>
+                                ))}
+                                <tr>
+                                    <td colSpan="4" className="text-end"><strong>Total</strong></td>
+                                    <td><strong>${calculateTotal()}</strong></td>
                                 </tr>
-                            ))}
-                            <tr>
-                                <td colSpan="4" className="text-end"><strong>Total</strong></td>
-                                <td><strong>${calculateTotal()}</strong></td>
-                            </tr>
-                        </tbody>
-                    </Table>
-                </Card.Body>
-            </Card>
+                            </>
+                        )}
+                    </tbody>
+                </Table>
+            </Card.Body>
 
-            <Button variant="success" className="w-100" onClick={handleSaveReport}>
+
+            <Button variant="success" className="w-100" onClick={() => setShowConfirmModal(true)}>
+                <Save className="me-2" />
                 Guardar y Exportar Reporte
             </Button>
+            <Modal show={showConfirmModal} onHide={() => setShowConfirmModal(false)} centered>
+                <Modal.Header closeButton style={{ backgroundColor: '#003366', color: 'white' }}>
+                    <Modal.Title>Confirmar Guardado</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>¿Estás seguro de que deseas guardar este reporte de inventario?</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="danger" onClick={() => setShowConfirmModal(false)}>Cancelar</Button>
+                    <Button variant="success" onClick={() => { handleSaveReport(); setShowConfirmModal(false); }}>
+                        Confirmar
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+
         </Container>
+
     );
 }
 

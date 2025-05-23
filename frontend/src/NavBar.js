@@ -22,9 +22,10 @@ function NavBar() {
 
     return (
         <Container fluid className="px-0">
-            <Navbar bg="dark" data-bs-theme="dark">
+            <Navbar expand="lg" className="fixed-top bg-success" bg="dark" data-bs-theme="dark">
                 <Container>
                     <Navbar.Brand href="#home">Gral Lazaro Cárdenas</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Nav className="me-auto">
                         <LinkContainer to="/Menu">
                             <Nav.Link>Inicio</Nav.Link>

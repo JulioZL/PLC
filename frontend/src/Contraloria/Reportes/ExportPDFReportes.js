@@ -91,7 +91,6 @@ const ExportarReportePDF = (reportData) => {
 
     // Guardar PDF
     doc.save(`Reporte_Pago${reportData.Nombre_Alumno}_${new Date().toLocaleDateString()}.pdf`);
-    alert('El reporte se ha generado exitosamente.');
 };
 
 export default ExportarReportePDF;

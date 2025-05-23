@@ -2,10 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\backend",
-    "\\backend\\database",
     "\\backend\\routes",
+    "\\frontend",
+    "\\frontend\\src",
     "\\frontend\\src\\Contraloria",
-    "\\frontend\\src\\Contraloria\\Reportes"
+    "\\frontend\\src\\Contraloria\\Inventarios"
   ],
+  "SelectedNode": "\\backend\\routes\\routes.js",
   "PreviewInSolutionExplorer": false
 }

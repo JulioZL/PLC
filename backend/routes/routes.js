@@ -34,5 +34,6 @@ router.put('/reportesPrenda/:Id_ReportePrenda', actualizarReportePrenda);
 router.put('/reportesPrenda/eliminar/:Id_ReportePrenda', eliminarReportePrenda);
 
 router.get('/conceptos', getAllConceptos);
+router.get('/conceptosP', getAllPrendas);
 
 export default router
