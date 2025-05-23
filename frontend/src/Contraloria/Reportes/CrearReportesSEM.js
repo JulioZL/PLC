@@ -70,7 +70,7 @@ function CrearReportesSEM() {
 
         const fetchConceptos = async () => {
             try {
-                const response = await axios.get('https://plc-j41x.onrender.com/api/conceptos');
+                const response = await axios.get('http://localhost:3001/api/conceptos');
                 setConceptos(response.data);
             } catch (error) {
                 toast.error('Error al obtener los conceptos.');
@@ -108,7 +108,7 @@ function CrearReportesSEM() {
         }
         const reportToSave = reportData[0];
         try {
-            const response = await axios.post('https://plc-j41x.onrender.com/api/reportes', reportToSave);
+            const response = await axios.post('http://localhost:3001/api/reportes', reportToSave);
             if (response.status === 200) {
                 setReportData([]);
                 resetForm();
@@ -124,7 +124,7 @@ function CrearReportesSEM() {
 
         if (name === 'Nombre_Alumno' && value.length >= 3) {
             try {
-                const response = await axios.get(`https://plc-j41x.onrender.com/api/alumnos`, {
+                const response = await axios.get(`http://localhost:3001/api/alumnos`, {
                     params: { NombreAlumno: value }
                 });
                 setFilteredAlumnos(response.data);
@@ -354,6 +354,7 @@ function CrearReportesSEM() {
                                 </Form.Control>
                             </Col>
 
+<<<<<<< HEAD
                             <Col xs={12} md={6}>
                                 <Form.Label>Mes de Pago</Form.Label>
                                 <Form.Control
@@ -372,6 +373,37 @@ function CrearReportesSEM() {
                                 </Form.Control>
                             </Col>
                         </Row>
+=======
+                <Form.Group as={Row} className="mb-3">
+                    <Form.Label column sm={2}>Grupo</Form.Label>
+                    <Col sm={3}>
+                        <Form.Control
+                            type="text"
+                            name="Grupo"
+                            value={formData.Grupo}
+                            onChange={handleChange}
+                            placeholder="Ingresa el grupo del alumno"
+
+                        />
+                    </Col>
+                    <Form.Label column sm={1}>Concepto</Form.Label>
+                    <Col sm={6}>
+                        <Form.Control
+                            as="select"
+                            name="Concepto"
+                            value={formData.Concepto}
+                            onChange={handleChange}
+                        >
+                            <option value="">Selecciona un concepto</option>
+                            {conceptos.map((concepto) => (
+                                <option key={concepto.idConcepto} value={concepto.nombreConcepto}>
+                                    {concepto.nombreConcepto}
+                                </option>
+                            ))}
+                        </Form.Control>
+                    </Col>
+                </Form.Group>
+>>>>>>> 723b4a623f26293aa3d384ba2508cb7be39e4b32
 
                         <Row className="mb-3">
                             <Col xs={6} md={3}>

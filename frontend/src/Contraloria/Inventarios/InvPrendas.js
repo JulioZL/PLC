@@ -9,7 +9,7 @@ import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import EditarPrenda from './EditarPrenda';
 import './InvPrendas.css';
 
-const URI = 'https://plc-j41x.onrender.com/api/prendas/';
+const URI = 'http://localhost:3001/api/prendas/';
 
 const CompMostrarPrendas = () => {
     const [prendas, setPrenda] = useState([]);

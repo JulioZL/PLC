@@ -2,6 +2,7 @@
   "ExpandedNodes": [
     "",
     "\\backend",
+<<<<<<< HEAD
     "\\backend\\routes",
     "\\frontend",
     "\\frontend\\src",
@@ -9,5 +10,17 @@
     "\\frontend\\src\\Contraloria\\Inventarios"
   ],
   "SelectedNode": "\\backend\\routes\\routes.js",
+=======
+    "\\backend\\database",
+    "\\backend\\models",
+    "\\frontend",
+    "\\frontend\\src",
+    "\\frontend\\src\\Contraloria",
+    "\\frontend\\src\\Contraloria\\Inventarios",
+    "\\frontend\\src\\Contraloria\\Reportes",
+    "\\frontend\\src\\Login"
+  ],
+  "SelectedNode": "\\frontend\\src\\Login\\RegistrarUsuario.js",
+>>>>>>> 723b4a623f26293aa3d384ba2508cb7be39e4b32
   "PreviewInSolutionExplorer": false
 }

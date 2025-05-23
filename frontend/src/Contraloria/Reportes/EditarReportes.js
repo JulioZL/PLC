@@ -35,10 +35,14 @@ function EditarReportes() {
         const fetchReportes = async () => {
             try {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 const response = await axios.get(URI);
 =======
                 const response = await axios.get('https://plc-j41x.onrender.com/api/reportes');
 >>>>>>> 888cc4361008ae88dba76e8ed42b74d68c43fdf5
+=======
+                const response = await axios.get('http://localhost:3001/api/reportes');
+>>>>>>> 723b4a623f26293aa3d384ba2508cb7be39e4b32
                 setReportData(response.data.data);
                 setLoading(false);
             } catch (err) {
@@ -64,7 +68,7 @@ function EditarReportes() {
         if (!validateForm()) return;
 
         try {
-            await axios.put(`https://plc-j41x.onrender.com/api/reportes/${formData.Id_ReporteSemestral}`, formData);
+            await axios.put(`http://localhost:3001/api/reportes/${formData.Id_ReporteSemestral}`, formData);
             setReportData((prev) =>
                 prev.map((report) =>
                     report.Id_ReporteSemestral === selectedReport ? { ...formData } : report
@@ -89,7 +93,7 @@ function EditarReportes() {
 
     const handleDelete = async () => {
         try {
-            await axios.put(`https://plc-j41x.onrender.com/api/reportes/eliminar/${deleteReportId}`);
+            await axios.put(`http://localhost:3001/api/reportes/eliminar/${deleteReportId}`);
             setReportData((prev) =>
                 prev.filter((report) => report.Id_ReporteSemestral !== deleteReportId)
             );

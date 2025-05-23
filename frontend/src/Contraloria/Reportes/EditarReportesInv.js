@@ -32,10 +32,14 @@ function EditarReportesInv() {
         const fetchReportes = async () => {
             try {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 const response = await axios.get(URI);
 =======
                 const response = await axios.get('https://plc-j41x.onrender.com/api/reportesPrenda');
 >>>>>>> 888cc4361008ae88dba76e8ed42b74d68c43fdf5
+=======
+                const response = await axios.get('http://localhost:3001/api/reportesPrenda');
+>>>>>>> 723b4a623f26293aa3d384ba2508cb7be39e4b32
                 setReportData(response.data.data);
             } catch (err) {
                 setError('Hubo un error al cargar los reportes');
@@ -60,10 +64,14 @@ function EditarReportesInv() {
         }
         try {
 <<<<<<< HEAD
+<<<<<<< HEAD
             await axios.put(`${URI}/${formData.Id_ReportePrenda}`, formData);
 =======
             await axios.put(`https://plc-j41x.onrender.com/api/reportesPrenda/${formData.Id_ReportePrenda}`, formData);
 >>>>>>> 888cc4361008ae88dba76e8ed42b74d68c43fdf5
+=======
+            await axios.put(`http://localhost:3001/api/reportesPrenda/${formData.Id_ReportePrenda}`, formData);
+>>>>>>> 723b4a623f26293aa3d384ba2508cb7be39e4b32
             setReportData((prev) =>
                 prev.map((report) =>
                     report.Id_ReportePrenda === selectedReport ? { ...formData } : report
@@ -98,7 +106,7 @@ function EditarReportesInv() {
             icon: 'pi pi-exclamation-triangle',
             accept: async () => {
                 try {
-                    await axios.put(`https://plc-j41x.onrender.com/api/reportesPrenda/eliminar/${id}`);
+                    await axios.put(`http://localhost:3001/api/reportesPrenda/eliminar/${id}`);
                     setReportData((prev) => prev.filter((report) => report.Id_ReportePrenda !== id));
                 } catch (err) {
                     console.error('Error al eliminar el reporte:', err);
