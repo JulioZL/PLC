@@ -2,7 +2,6 @@
 import { Table, Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 
-import './HistoricoReportes.css'; // Puedes agregar estilos personalizados en este archivo
 
 function HistoricoReportes() {
 

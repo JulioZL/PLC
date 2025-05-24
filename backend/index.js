@@ -4,6 +4,7 @@ import db from "./database/db.js";
 import aRoutes from './routes/routes.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import './models/associations.js';
 
 const app = express();
 

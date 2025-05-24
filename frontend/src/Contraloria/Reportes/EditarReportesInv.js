@@ -5,18 +5,24 @@ import {
 import axios from 'axios';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 
-const URI = 'http://localhost:3001/api/reportesPrenda';
+const URI = 'http://localhost:3001/api/reportesPrenda';  
 
 function EditarReportesInv() {
+    //Expandir Columnas
+    const [expandedRows, setExpandedRows] = useState([]);
+    //Alternar Columnas
+    const toggleDetails = (id) => {
+        setExpandedRows((prev) =>
+            prev.includes(id) ? prev.filter(rowId => rowId !== id) : [...prev, id]
+        );
+    };
+
     const [reportData, setReportData] = useState([]);
     const [formData, setFormData] = useState({
-        Id_ReportePrenda: '',
+        id_reporteprenda: '',
         Nombre_Alumno: '',
-        Semestre: '',
-        Nombre_Articulo: '',
-        Talla: '',
-        Precio: '',
-        Cantidad: '',
+        semestre: '',
+        articulos: [],
     });
     const [selectedReport, setSelectedReport] = useState(null);
     const [showModal, setShowModal] = useState(false);
@@ -31,46 +37,83 @@ function EditarReportesInv() {
     useEffect(() => {
         const fetchReportes = async () => {
             try {
-
                 const response = await axios.get(URI);
-                setReportData(response.data.data);
+                console.log('Respuesta del servidor:', response.data);
+
+                // Aseguramos que reportData sea un array, si no, ponemos un array vacío
+                const dataArray = Array.isArray(response.data)
+                    ? response.data
+                    : Array.isArray(response.data.data)
+                        ? response.data.data
+                        : [];
+
+                setReportData(dataArray);
             } catch (err) {
                 setError('Hubo un error al cargar los reportes');
             } finally {
                 setLoading(false);
             }
         };
+
         fetchReportes();
     }, []);
 
+
     const handleEdit = (report) => {
-        setSelectedReport(report.Id_ReportePrenda);
-        setFormData(report);
+        setSelectedReport(report.id_reporteprenda);
+        setFormData({
+            id_reporteprenda: report.id_reporteprenda,
+            Nombre_Alumno: report.alumno?.NombreAlumno || `Alumno ${report.id_alumno || ''}`,
+            semestre: report.semestre || '',
+            articulos: report.detalles?.map((art) => ({
+                ...art,
+                nombre_prenda: art.prenda?.nombre_prenda || ''
+            })) || [],
+        });
         setShowModal(true);
     };
 
+
+
     const handleSave = async () => {
-        const { Precio, Cantidad, Nombre_Alumno, Nombre_Articulo, Talla, Semestre } = formData;
-        if (!Nombre_Alumno || !Nombre_Articulo || !Talla || !Semestre || Precio <= 0 || Cantidad <= 0) {
-            alert('Por favor, completa todos los campos y asegúrate de que Precio y Cantidad sean mayores a 0.');
+        const { id_reporteprenda, semestre, articulos } = formData;
+
+        const payload = {
+            id_reporteprenda,
+            semestre,
+            articulos: articulos.map((art) => ({
+                id_detalleprenda: art.id_detalleprenda,
+                nombreArticulo: art.nombre_prenda, // <-- ajustamos el nombre
+                talla: art.talla,
+                precio: Number(art.precio),
+                cantidad: Number(art.cantidad),
+            })),
+        };
+
+        const hasInvalidArticulo = payload.articulos.some(
+            (art) =>
+                !art.nombreArticulo ||
+                !art.talla ||
+                Number(art.precio) <= 0 ||
+                Number(art.cantidad) <= 0
+        );
+
+        if (hasInvalidArticulo) {
+            alert("Revisa que todos los artículos tengan nombre, talla, precio y cantidad válidos.");
             return;
         }
+
         try {
-
-            await axios.put(`${URI}/${formData.Id_ReportePrenda}`, formData);
-
-            setReportData((prev) =>
-                prev.map((report) =>
-                    report.Id_ReportePrenda === selectedReport ? { ...formData } : report
-                )
-            );
+            await axios.put(`${URI}/${formData.id_reporteprenda}`, payload);
             setShowModal(false);
             setSelectedReport(null);
+            const response = await axios.get(URI);
+            setReportData(response.data.data || response.data || []);
         } catch (err) {
             console.error('Error al guardar el reporte:', err);
+            alert("Hubo un error al actualizar el reporte. Revisa la consola.");
         }
     };
-
 
     const confirmDelete = (id) => {
         setDeleteId(id);
@@ -80,40 +123,35 @@ function EditarReportesInv() {
     const handleDeleteConfirmed = async () => {
         try {
             await axios.put(`${URI}/eliminar/${deleteId}`);
-            setReportData((prev) => prev.filter((report) => report.Id_ReportePrenda !== deleteId));
+            setReportData((prev) => prev.filter((report) => report.id_reporteprenda !== deleteId));
             setShowConfirm(false);
         } catch (err) {
             console.error('Error al eliminar el reporte:', err);
         }
-    }
-    const handleDelete = (id) => {
-        confirmDialog({
-            message: '¿Estás seguro de que deseas eliminar este reporte?',
-            header: 'Confirmar Eliminación',
-            icon: 'pi pi-exclamation-triangle',
-            accept: async () => {
-                try {
-                    await axios.put(`http://localhost:3001/api/reportesPrenda/eliminar/${id}`);
-                    setReportData((prev) => prev.filter((report) => report.Id_ReportePrenda !== id));
-                } catch (err) {
-                    console.error('Error al eliminar el reporte:', err);
-                }
-            },
-        });
     };
 
-    const handleChange = (e) => {
+    const handleArticuloChange = (e, idx) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        const nuevosArticulos = [...formData.articulos];
+        nuevosArticulos[idx][name] = value;
+        setFormData({ ...formData, articulos: nuevosArticulos });
     };
+
 
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
         setCurrentPage(1);
     };
 
-    const filteredData = reportData.filter((report) =>
-        report.Nombre_Alumno.toLowerCase().includes(searchTerm.toLowerCase())
+    const handleRemoveArticulo = (idx) => {
+        const nuevosArticulos = [...formData.articulos];
+        nuevosArticulos.splice(idx, 1);
+        setFormData({ ...formData, articulos: nuevosArticulos });
+    };
+
+
+    const filteredData = (reportData || []).filter((report) =>
+        (report.alumno?.NombreAlumno || '').toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     const totalPages = Math.ceil(filteredData.length / itemsPerPage);
@@ -164,152 +202,164 @@ function EditarReportesInv() {
                         <p className="text-danger text-center">{error}</p>
                     ) : (
                         <>
-                            <Table striped bordered hover responsive>
+                                    <Table striped bordered hover responsive>
                                         <thead>
                                             <tr>
-                                                <th style={{ backgroundColor: '#0d6efd', color: 'white', fontWeight: 'bold', textAlign: 'center' }}>
-                                                    Nombre del Alumno
-                                                </th>
-                                                <th style={{ backgroundColor: '#0d6efd', color: 'white', fontWeight: 'bold', textAlign: 'center' }}>
-                                                    Semestre
-                                                </th>
-                                                <th style={{ backgroundColor: '#0d6efd', color: 'white', fontWeight: 'bold', textAlign: 'center' }}>
-                                                    Artículo
-                                                </th>
-                                                <th style={{ backgroundColor: '#0d6efd', color: 'white', fontWeight: 'bold', textAlign: 'center' }}>
-                                                    Talla
-                                                </th>
-                                                <th style={{ backgroundColor: '#0d6efd', color: 'white', fontWeight: 'bold', textAlign: 'center' }}>
-                                                    Precio
-                                                </th>
-                                                <th style={{ backgroundColor: '#0d6efd', color: 'white', fontWeight: 'bold', textAlign: 'center' }}>
-                                                    Cantidad
-                                                </th>
-                                                <th style={{ backgroundColor: '#0d6efd', color: 'white', fontWeight: 'bold', textAlign: 'center' }}>
-                                                    Acciones
-                                                </th>
+                                                <th style={{ backgroundColor: '#0d6efd', color: 'white', fontWeight: 'bold', textAlign: 'center' }}>Detalles</th>
+                                                <th style={{ backgroundColor: '#0d6efd', color: 'white', fontWeight: 'bold', textAlign: 'center' }}>Nombre del Alumno</th>
+                                                <th style={{ backgroundColor: '#0d6efd', color: 'white', fontWeight: 'bold', textAlign: 'center' }}>Semestre</th>
+                                                <th style={{ backgroundColor: '#0d6efd', color: 'white', fontWeight: 'bold', textAlign: 'center' }}>Acciones</th>
                                             </tr>
                                         </thead>
+                                        <tbody>
+                                            {paginatedData.map((report) => (
+                                                <React.Fragment key={report.id_reporteprenda}>
+                                                    <tr>
+                                                        <td className="text-center">
+                                                            <Button
+                                                                variant="info"
+                                                                size="sm"
+                                                                onClick={() => toggleDetails(report.id_reporteprenda)}
+                                                            >
+                                                                {expandedRows.includes(report.id_reporteprenda) ? "Ocultar" : "Ver"}
+                                                            </Button>
+                                                        </td>
+                                                        <td>{report.alumno?.NombreAlumno || '—'}</td>
+                                                        <td>{report.semestre || '—'}</td>
+                                                        <td className="text-center">
+                                                            <Button
+                                                                variant="outline-primary"
+                                                                size="sm"
+                                                                onClick={() => handleEdit(report)}
+                                                                className="me-2"
+                                                            >
+                                                                <FaEdit className="me-1" /> Editar
+                                                            </Button>
+                                                            <Button
+                                                                variant="outline-danger"
+                                                                size="sm"
+                                                                onClick={() => confirmDelete(report.id_reporteprenda)}
+                                                            >
+                                                                <FaTrashAlt className="me-1" /> Eliminar
+                                                            </Button>
+                                                        </td>
+                                                    </tr>
 
-                                <tbody>
-                                    {paginatedData.map((report) => (
-                                        <tr key={report.Id_ReportePrenda}>
-                                            <td>{report.Nombre_Alumno}</td>
-                                            <td>{report.Semestre}</td>
-                                            <td>{report.Nombre_Articulo}</td>
-                                            <td>{report.Talla}</td>
-                                            <td>${Number(report.Precio).toFixed(2)}</td>
-                                            <td>{report.Cantidad}</td>
-                                            <td className="text-center">
-                                                <Button variant="outline-primary" size="sm" onClick={() => handleEdit(report)} className="me-2">
-                                                    <FaEdit className="me-1" /> Editar
-                                                </Button>
-                                                <Button variant="outline-danger" size="sm" onClick={() => confirmDelete(report.Id_ReportePrenda)}>
-                                                    <FaTrashAlt className="me-1" /> Eliminar
-                                                </Button>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </Table>
+                                                    {expandedRows.includes(report.id_reporteprenda) && (
+                                                        <tr>
+                                                            <td colSpan="4">
+                                                                <Table size="sm" bordered>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Artículo</th>
+                                                                            <th>Talla</th>
+                                                                            <th>Precio</th>
+                                                                            <th>Cantidad</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        {report.detalles?.map((item, idx) => (
+                                                                            <tr key={idx}>
+                                                                                <td>{item.prenda.nombre_prenda || '—'}</td>
+                                                                                <td>{item.talla || '—'}</td>
+                                                                                <td>${Number(item.precio).toFixed(2)}</td>
+                                                                                <td>{item.cantidad}</td>
+                                                                            </tr>
+                                                                        ))}
+                                                                    </tbody>
+                                                                </Table>
+                                                            </td>
+                                                        </tr>
+                                                    )}
+                                                </React.Fragment>
+                                            ))}
+                                        </tbody>
+                                    </Table>
+
                             {renderPagination()}
                         </>
                     )}
                 </Card.Body>
             </Card>
 
-            {/* Modal de Edición */}
-            <Modal show={showModal} onHide={() => setShowModal(false)} centered>
+            <Modal show={showModal} onHide={() => setShowModal(false)} size="lg" centered>
                 <Modal.Header closeButton style={{ backgroundColor: '#003366', color: 'white' }}>
                     <Modal.Title>Editar Reporte</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
-                        <Row className="mb-3">
-                            <Col sm={8}>
-                                <Form.Group>
-                                    <Form.Label>Nombre del Alumno</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        name="Nombre_Alumno"
-                                        value={formData.Nombre_Alumno}
-                                        readOnly
-                                    />
-                                </Form.Group>
-                            </Col>
-                            <Col sm={4}>
-                                <Form.Group>
-                                    <Form.Label>Semestre</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        name="Semestre"
-                                        value={formData.Semestre}
-                                        onChange={handleChange}
-                                    />
-                                </Form.Group>
-                            </Col>
-                        </Row>
-                        <Row className="mb-3">
-                            <Col sm={8}>
+                    {formData.articulos?.map((articulo, idx) => (
+                        <Row key={idx} className="mb-3">
+                            <Col sm={6}>
                                 <Form.Group>
                                     <Form.Label>Artículo</Form.Label>
                                     <Form.Control
                                         type="text"
-                                        name="Nombre_Articulo"
-                                        value={formData.Nombre_Articulo}
-                                        onChange={handleChange}
+                                        name="nombre_prenda"
+                                        value={articulo.nombre_prenda || ''}
+                                        onChange={(e) => handleArticuloChange(e, idx)}
                                     />
+
                                 </Form.Group>
                             </Col>
-                            <Col sm={4}>
+                            <Col sm={2}>
                                 <Form.Group>
                                     <Form.Label>Talla</Form.Label>
                                     <Form.Control
                                         type="text"
-                                        name="Talla"
-                                        value={formData.Talla}
-                                        onChange={handleChange}
+                                        name="talla"
+                                        value={articulo.talla || ''}
+                                        onChange={(e) => handleArticuloChange(e, idx)}
                                     />
                                 </Form.Group>
                             </Col>
-                        </Row>
-                        <Row>
-                            <Col sm={6}>
+                            <Col sm={2}>
                                 <Form.Group>
                                     <Form.Label>Precio</Form.Label>
                                     <Form.Control
                                         type="number"
-                                        name="Precio"
-                                        value={formData.Precio}
-                                        onChange={handleChange}
+                                        name="precio"
+                                        min="0"
+                                        step="1"
+                                        value={articulo.precio || ''}
+                                        onChange={(e) => handleArticuloChange(e, idx)}
                                     />
                                 </Form.Group>
                             </Col>
-                            <Col sm={6}>
+                            <Col sm={2}>
                                 <Form.Group>
                                     <Form.Label>Cantidad</Form.Label>
                                     <Form.Control
                                         type="number"
-                                        name="Cantidad"
-                                        value={formData.Cantidad}
-                                        onChange={handleChange}
+                                        name="cantidad"
+                                        min="0"
+                                        value={articulo.cantidad || ''}
+                                        onChange={(e) => handleArticuloChange(e, idx)}
                                     />
                                 </Form.Group>
                             </Col>
+                            <Col sm={12} className="text-end">
+                                <Button
+                                    variant="outline-danger"
+                                    size="sm"
+                                    onClick={() => handleRemoveArticulo(idx)}
+                                >
+                                    <FaTrashAlt className="me-1" /> Eliminar artículo
+                                </Button>
+                            </Col>
+
                         </Row>
-                    </Form>
+                    ))}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="danger" onClick={() => setShowModal(false)}>
                         Cancelar
                     </Button>
-                    <Button variant="success" onClick={handleSave}>
-                        Guardar Cambios
+                    <Button variant="primary" onClick={handleSave}>
+                        Guardar
                     </Button>
                 </Modal.Footer>
             </Modal>
 
-            {/* Modal de Confirmación */}
             <Modal show={showConfirm} onHide={() => setShowConfirm(false)} centered>
                 <Modal.Header closeButton style={{ backgroundColor: '#003366', color: 'white' }}>
                     <Modal.Title>Confirmar Eliminación</Modal.Title>
@@ -318,7 +368,7 @@ function EditarReportesInv() {
                     ¿Estás seguro de que deseas eliminar este reporte?
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="warning" onClick={() => setShowConfirm(false)}>
+                    <Button variant="secondary" onClick={() => setShowConfirm(false)}>
                         Cancelar
                     </Button>
                     <Button variant="danger" onClick={handleDeleteConfirmed}>

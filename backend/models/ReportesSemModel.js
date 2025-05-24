@@ -1,87 +1,50 @@
 import db from "../database/db.js";
 import { DataTypes } from "sequelize";
+import AlumnosModel from "./AlumnosModel.js";
 
 const ReportesSemModel = db.define('ReportesSemestrales', {
-    Id_ReporteSemestral: {
+    id_reportesemestral: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        field: 'Id_ReporteSemestral'  
     },
-    Nombre_Alumno: {
-        type: DataTypes.STRING(255),
-        allowNull: false,
-        field: 'Nombre_Alumno'  
-    },
-    Semestre: {
-        type: DataTypes.STRING(50),
-        allowNull: false,
-        field: 'Semestre'
-    },
-    Concepto: {
-        type: DataTypes.STRING(255),
-        allowNull: false,
-        field: 'Concepto'
-    },
-    Precio: {
-        type: DataTypes.DECIMAL(10, 2),
-        allowNull: false,
-        field: 'Precio'
-    },
-    Cantidad: {
+    id_alumno: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        field: 'Cantidad'
+        references: {
+            model: 'AlumnosModel',
+            key: 'id_alumno',
+        },
     },
-    Total: {
-        type: DataTypes.DECIMAL(10, 2),
+    semestre: {
+        type: DataTypes.STRING(50),
         allowNull: false,
-        field: 'Total',
-        get() {
-            const precio = this.getDataValue('Precio');
-            const cantidad = this.getDataValue('Cantidad');
-            return precio * cantidad;
-        }
     },
-    Mes_de_Pago: {
-        type: DataTypes.ENUM('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'),
+    ciclo_escolar: {
+        type: DataTypes.STRING(50),
         allowNull: false,
-        field: 'Mes_de_Pago'
     },
-    Ciclo_Escolar: {
-        type: DataTypes.ENUM('Enero - Junio', 'Agosto - Diciembre'),
-        allowNull: false,
-        field: 'Ciclo_Escolar'
-    },
-    Fecha_Creacion: {
+    fecha_creacion: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,
-        allowNull: false,
-        field: 'Fecha_Creacion'
     },
-    Fecha_Modificacion: {
+    fecha_modificacion: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,
-        onUpdate: DataTypes.NOW,
-        allowNull: false,
-        field: 'Fecha_Modificacion'
     },
-    Fecha_Eliminacion: {
+    fecha_eliminacion: {
         type: DataTypes.DATE,
         allowNull: true,
-        field: 'Fecha_Eliminacion'
     },
-    Estado: {
+    estado: {
         type: DataTypes.ENUM('Activo', 'Eliminado'),
         defaultValue: 'Activo',
-        field: 'Estado'
     }
 }, {
-    tableName: 'ReportesSemestrales',  
-    timestamps: false,  
+    tableName: 'ReportesSemestrales',
+    timestamps: false,
 });
 
-
+ReportesSemModel.belongsTo(AlumnosModel, { foreignKey: 'id_alumno' });
 
 export default ReportesSemModel;
-
