@@ -9,14 +9,14 @@ import { Button } from 'primereact/button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { useNavigate } from 'react-router-dom';
-import RegistrarUsuario from './RegistrarUsuario';
+
 
 import { Dialog } from 'primereact/dialog';
 
 function CompInicio() {
 
     const [visibleLogin, setVisibleLogin] = useState(false); // Cambié esto a `false` por defecto.
-    const [visibleRegister, setVisibleRegister] = useState(false);
+    
 
     const navigate = useNavigate();
 
@@ -78,21 +78,7 @@ function CompInicio() {
                                 <IniciarSesion />
                             </Dialog>
 
-                            <Button
-                                label="Registrarse"
-                                onClick={() => setVisibleRegister(true)} // Igualmente aquí se pasa `setVisibleRegister`.
-                                icon="pi pi-user-plus"
-                                severity="success"
-                                className="LR-button"
-                            />
-                            <Dialog
-                                visible={visibleRegister}
-                                onHide={() => setVisibleRegister(false)}
-                                style={{ width: '50vw' }}
-                                breakpoints={{ '960px': '75vw', '641px': '100vw' }}
-                            >
-                                <RegistrarUsuario />
-                            </Dialog>
+                            
                         </div>
                     </Container>
                 </Col>

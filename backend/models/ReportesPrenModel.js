@@ -13,11 +13,6 @@ const ReportesPrenModel = db.define('ReportePrenda', {
         allowNull: false,
         field: 'Nombre_Alumno'  
     },
-    Grupo: {
-        type: DataTypes.STRING(50),
-        allowNull: false,
-        field: 'Grupo'
-    },
     Nombre_Articulo: {
         type: DataTypes.STRING(255),
         allowNull: false,
@@ -43,6 +38,11 @@ const ReportesPrenModel = db.define('ReportePrenda', {
         defaultValue: 'Activo',
         field: 'Estado'
     },
+    Fecha_Eliminacion: {
+        type: DataTypes.DATE,
+        allowNull: true,
+        field: 'Fecha_Eliminacion'
+    },
     Fecha_Creacion: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,
@@ -56,13 +56,13 @@ const ReportesPrenModel = db.define('ReportePrenda', {
         allowNull: false,
         field: 'Fecha_Modificacion'
     },
-    Fecha_Eliminacion: {
-        type: DataTypes.DATE,
-        allowNull: true,
-        field: 'Fecha_Eliminacion'
+    Semestre: {
+        type: DataTypes.STRING(2),
+        allowNull: false,
+        field: 'Semestre'
     }
 }, {
-    tableName: 'reporteprenda',  
+    tableName: 'ReportePrenda',  
     timestamps: false,  
 });
 

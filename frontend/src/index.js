@@ -43,10 +43,6 @@ const router = createBrowserRouter([
                 path: "iniciarSesion",
                 element: <IniciarSesion />,
             },
-            {
-                path: "registrarUsuario",
-                element: <RegistrarUsuario />,
-            },
         ],
     },
     {
@@ -102,7 +98,10 @@ const router = createBrowserRouter([
                 path: "informacionUsuarios",
                 element: <InformacionUsuarios />
             },
-           
+            {
+                path: "registrarUsuario",
+                element: <RegistrarUsuario />,
+            }, 
         ],
     },
 ]);

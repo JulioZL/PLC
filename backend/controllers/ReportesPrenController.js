@@ -11,23 +11,23 @@ export const createReportePrenda = async (req, res) => {
         for (const reporte of reportes) {
             const {
                 Nombre_Alumno,
-                Grupo,
                 Nombre_Articulo,
                 Talla,
                 Precio,
                 Cantidad,
+                Semestre,
             } = reporte;
 
             await db.query(
-                'CALL InsertarReportePrenda(:Nombre_Alumno, :Grupo, :Nombre_Articulo, :Talla, :Precio, :Cantidad)',
+                'CALL InsertarReportePrenda(:Nombre_Alumno, :Nombre_Articulo, :Talla, :Precio, :Cantidad, :Semestre)',
                 {
                     replacements: {
                         Nombre_Alumno,
-                        Grupo,
                         Nombre_Articulo,
                         Talla,
                         Precio,
                         Cantidad,
+                        Semestre,
                     },
                     type: QueryTypes.RAW,
                 }
@@ -47,27 +47,25 @@ export const actualizarReportePrenda = async (req, res) => {
     const { Id_ReportePrenda } = req.params; 
     const {
         Nombre_Alumno,
-        Grupo,
+        Semestre,
         Nombre_Articulo,
         Talla,
         Precio,
-        Cantidad,
-        Estado
+        Cantidad
     } = req.body;
 
     try {
         await ReportesPrenModel.sequelize.query(
-            'CALL ActualizarReportePrenda(:Id_ReportePrenda, :Nombre_Alumno, :Grupo, :Nombre_Articulo, :Talla, :Precio, :Cantidad, :Estado)',
+            'CALL ActualizarReportePrenda(:Id_ReportePrenda, :Nombre_Alumno, :Semestre, :Nombre_Articulo, :Talla, :Precio, :Cantidad)',
             {
                 replacements: {
                     Id_ReportePrenda,
                     Nombre_Alumno,
-                    Grupo,
+                    Semestre,
                     Nombre_Articulo,
                     Talla,
                     Precio,
-                    Cantidad,
-                    Estado 
+                    Cantidad
                 },
                 type: ReportesPrenModel.sequelize.QueryTypes.RAW
             }

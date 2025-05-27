@@ -4,7 +4,7 @@ import ConceptosPSModel from "../models/ConceptosPSModel.js";
 
 export const getAllConceptos = async (req, res) => {
     try {
-        const conceptos = await ConceptosPSModel.findAll(); // Obtiene todos los conceptos
+        const conceptos = await ConceptosPSModel.findAll(); 
         res.json(conceptos);
     } catch (error) {
         res.json({ message: error.message });

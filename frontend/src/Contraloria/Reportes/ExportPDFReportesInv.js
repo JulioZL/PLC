@@ -33,7 +33,6 @@ const ExportReportePDFInv = (reportData, formData) => {
     // Detalles del alumno y del reporte
     const detalles = [
         `Nombre alumno: ${formData.nombreAlumno}`,
-        `Grupo: ${formData.grupoAlumno}`,
         `Lugar: ${formData.lugar}`,
         `Fecha: ${formData.fecha}`
     ];

@@ -27,3 +27,43 @@ export const searchAlumnoByName = async (req, res) => {
         return res.status(500).json({ error: error.message || 'Ocurrió un error al realizar la búsqueda' });
     }
 };
+
+export const createAlumno = async (req, res) => {
+    try {
+        await AlumnosModel.create(req.body)
+        res.json({
+            "message": "Alumno guardado correctamente"
+        })
+    }
+    catch (error) {
+        res.json({ message: error.message })
+    }
+}
+
+export const updateAlumno = async (req, res) => {
+    try {
+        await PrendasModel.update(req.body, {
+            where: {id_alumno: req.params.id_alumno }
+        })
+        res.json({
+            "message": "Alumno actualizado correctamente"
+        })
+    }
+    catch (error) {
+        res.json({ message: error.message })
+    }
+}
+
+export const deleteAlumno = async (req, res) => {
+    try {
+        await AlumnosModel.destroy({
+            where: { id_alumno: req.params.id_alumno }
+        })
+        res.json({
+            "Message": "Alumno eliminado correctamente."
+        })
+    }
+    catch (error) {
+        res.json({ message: error.message })
+    }
+}

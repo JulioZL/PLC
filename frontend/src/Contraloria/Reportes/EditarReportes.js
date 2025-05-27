@@ -3,7 +3,7 @@ import { Container, Row, Col, Form, Button, Modal, Table } from 'react-bootstrap
 import { Dialog } from 'primereact/dialog';
 import axios from 'axios';
 import './EditarReportes.css';
-
+const URI = 'http://localhost:3001/api/reportes/';
 function EditarReportes() {
     const [reportData, setReportData] = useState([]);
     const [selectedReport, setSelectedReport] = useState(null);
@@ -29,10 +29,14 @@ function EditarReportes() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+
+
     useEffect(() => {
         const fetchReportes = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/api/reportes');
+
+                const response = await axios.get(URI);
+
                 setReportData(response.data.data);
                 setLoading(false);
             } catch (err) {
@@ -43,6 +47,10 @@ function EditarReportes() {
 
         fetchReportes();
     }, []);
+
+    const getReportes = async () => {
+        const res = await axios.get(URI);
+    }
 
     const handleEdit = (report) => {
         setSelectedReport(report.Id_ReporteSemestral);

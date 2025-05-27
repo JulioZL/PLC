@@ -18,11 +18,6 @@ const ReportesSemModel = db.define('ReportesSemestrales', {
         allowNull: false,
         field: 'Semestre'
     },
-    Grupo: {
-        type: DataTypes.STRING(50),
-        allowNull: false,
-        field: 'Grupo'
-    },
     Concepto: {
         type: DataTypes.STRING(255),
         allowNull: false,
