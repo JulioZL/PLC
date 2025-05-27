@@ -6,9 +6,7 @@ import PrendasModel from "../models/PrendasModel.js";
 
 // --- FUNCIONES AUXILIARES ---
 
-/**
- * Obtener alumno por nombre
- */
+//Obtener alumno por nombre.
 async function getAlumnoPorNombre(nombre, transaction) {
     return AlumnosModel.findOne({
         where: { NombreAlumno: nombre.trim() },
@@ -16,9 +14,7 @@ async function getAlumnoPorNombre(nombre, transaction) {
     });
 }
 
-/**
- * Obtener prenda por nombre
- */
+//Obtener prenda por nombre
 async function getPrendaPorNombre(nombre, transaction) {
     return PrendasModel.findOne({
         where: { nombre_prenda: nombre.trim() },
@@ -26,9 +22,7 @@ async function getPrendaPorNombre(nombre, transaction) {
     });
 }
 
-/**
- * Validar que hay inventario suficiente y descontar la cantidad
- */
+//Validacion y ajuste de existencia de inventario
 async function validarYDescontarInventario(prenda, cantidad, transaction) {
     if (!prenda) throw new Error("Prenda no encontrada");
 
@@ -42,9 +36,7 @@ async function validarYDescontarInventario(prenda, cantidad, transaction) {
     await prenda.save({ transaction });
 }
 
-/**
- * Devolver inventario de prendas (cuando se elimina un detalle)
- */
+//Retornar inventario cuando se elimina un detalle de venta
 async function devolverInventario(detalles, idsAEliminar, transaction) {
     const detallesParaDevolver = detalles.filter(d => idsAEliminar.includes(d.id_detalleprenda));
 
@@ -59,9 +51,7 @@ async function devolverInventario(detalles, idsAEliminar, transaction) {
 
 // --- CONTROLADORES ---
 
-/**
- * Crear reporte prenda con detalles y control de inventario
- */
+//Crear reporte con detalles de venta inventario
 export const createReportePrenda = async (req, res) => {
     const data = req.body;
 
@@ -110,22 +100,34 @@ export const createReportePrenda = async (req, res) => {
     }
 };
 
-/**
- * Consultar todos los reportes (sin detalles)
- */
+//Obtener todos los reportes (Activos y Eliminados) sin detalles de venta
 export const consultarAllReportesPrenda = async (req, res) => {
     try {
-        const reportes = await ReportesPrenModel.findAll();
-        return res.status(200).json({ message: "Reportes obtenidos correctamente.", data: reportes });
+        const reportes = await ReportesPrenModel.findAll({
+            include: [
+                {
+                    model: DetalleReportePrendaModel,
+                    as: "detalles",
+                    include: [
+                        { model: PrendasModel, as: "prenda", attributes: ["nombre_prenda"] },
+                    ],
+                },
+                {
+                    model: AlumnosModel,
+                    as: "alumno",
+                    attributes: ["NombreAlumno"],
+                },
+            ],
+        });
+
+        return res.status(200).json({ success: true, data: reportes });
     } catch (error) {
-        console.error("Error al consultar los reportes:", error);
-        return res.status(500).json({ message: "Error al consultar los reportes." });
+        console.error("Error al obtener los reportes:", error);
+        return res.status(500).json({ success: false, message: "Error al obtener los reportes" });
     }
 };
 
-/**
- * Consultar reportes activos con detalles y relaciones
- */
+//Consultar reportes y detalles de reportes (Activos)
 export const getReportesPrenda = async (req, res) => {
     try {
         const reportes = await ReportesPrenModel.findAll({
@@ -153,9 +155,7 @@ export const getReportesPrenda = async (req, res) => {
     }
 };
 
-/**
- * Actualizar reporte prenda y sus detalles
- */
+//Actualizar reporte y detalles inventario
 export const actualizarReportePrenda = async (req, res) => {
     const { id_reporteprenda, semestre, articulos } = req.body;
     const transaction = await db.transaction();
@@ -252,9 +252,7 @@ export const actualizarReportePrenda = async (req, res) => {
     }
 };
 
-/**
- * Eliminar reporte (solo cambia estado)
- */
+//Eliminar reporte (Cambiar estado)
 export const eliminarReportePrenda = async (req, res) => {
     const { id_reporteprenda } = req.params;
 

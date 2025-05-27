@@ -1,23 +1,23 @@
-import { StrictMode } from 'react';
+import React from 'react';
 import { createRoot } from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import './index.css';
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
+
 import App from './App';
 import ErrorPage from './ErrorPage';
-//login
+import { ToastContainer } from 'react-toastify';
+
+// Login
 import CompInicio from './Login/CompInicio';
 import IniciarSesion from './Login/IniciarSesion';
 import RegistrarUsuario from './Login/RegistrarUsuario';
 import NavBar from './NavBar';
-//contraloria
-import './index.css'
-import 'primereact/resources/themes/saga-blue/theme.css';  // Tema de PrimeReact
-import 'primereact/resources/primereact.min.css'; // Estilos de PrimeReact
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-
-// Importacion para creacion de rutas y navegacion
-import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider, } from "react-router-dom";
+// Contraloría
 import InvPrendas from './Contraloria/Inventarios/InvPrendas';
 import AgregarPrenda from './Contraloria/Inventarios/AgregarPrenda';
 import EditarPrenda from './Contraloria/Inventarios/EditarPrenda';
@@ -25,31 +25,36 @@ import CrearReportesSEM from './Contraloria/Reportes/CrearReportesSEM';
 import CrearReportesInv from './Contraloria/Reportes/CrearReportesInv';
 import EditarReportes from './Contraloria/Reportes/EditarReportes';
 import EditarReportesInv from './Contraloria/Reportes/EditarReportesInv';
-import HistoricoReportes from './Contraloria/Reportes/HistoricoReportes';
-import HistoricoReportesInv from './Contraloria/Reportes/HistoricoReportes';
+import HistoricoReportes from './Contraloria/Historico/HistoricoReportes';
+import HistoricoReportesInv from './Contraloria/Historico/HistoricoReportesInv';
 import AgregarAlumnos from './Contraloria/Alumnos/AgregarAlumnos';
 import InformacionUsuarios from './Contraloria/Usuarios/InformacionUsuarios';
 import ExportPDFReportes from './Contraloria/Reportes/ExportPDFReportes';
 
-
-// Variable que controla las rutas
+// Rutas
 const router = createBrowserRouter([
     {
-        path: "/",
+        path: '/',
         element: <CompInicio />,
         errorElement: <ErrorPage />,
         children: [
+<<<<<<< HEAD
             {
                 path: "iniciarSesion",
                 element: <IniciarSesion />,
             },
+=======
+            { path: 'iniciarSesion', element: <IniciarSesion /> },
+            { path: 'registrarUsuario', element: <RegistrarUsuario /> },
+>>>>>>> 45bbdf92368d5d506825e3d6e7db47a2875fa8ac
         ],
     },
     {
-        path: "/Menu",
+        path: '/Menu',
         element: <NavBar />,
         errorElement: <ErrorPage />,
         children: [
+<<<<<<< HEAD
             {
                 path: "invPrendas",
                 element: <InvPrendas />,
@@ -102,22 +107,30 @@ const router = createBrowserRouter([
                 path: "registrarUsuario",
                 element: <RegistrarUsuario />,
             }, 
+=======
+            { path: 'invPrendas', element: <InvPrendas /> },
+            { path: 'agregarPrenda', element: <AgregarPrenda /> },
+            { path: 'editarPrenda/:id', element: <EditarPrenda /> },
+            { path: 'reportes', element: <CrearReportesSEM /> },
+            { path: 'reportesInv', element: <CrearReportesInv /> },
+            { path: 'editarReportes', element: <EditarReportes /> },
+            { path: 'editarReportesInv', element: <EditarReportesInv /> },
+            { path: 'historicoReportes', element: <HistoricoReportes /> },
+            { path: 'historicoReportesInv', element: <HistoricoReportesInv /> },
+            { path: 'exportPDFReportes', element: <ExportPDFReportes /> },
+            { path: 'agregarAlumnos', element: <AgregarAlumnos /> },
+            { path: 'informacionUsuarios', element: <InformacionUsuarios /> },
+>>>>>>> 45bbdf92368d5d506825e3d6e7db47a2875fa8ac
         ],
     },
 ]);
 
-// Crea la rua y la renderiza en base a root, root es tu raiz principal, esta es tu raiz principal
-ReactDOM.createRoot(document.getElementById('root')).render(
-    // Modo estricto unicamente para desarrollo
-    //<StrictMode>
-    < RouterProvider router={router} />
-    //</StrictMode>,
+// Renderizar aplicación
+createRoot(document.getElementById('root')).render(
+    <React.StrictMode>
+        <>
+            <RouterProvider router={router} />
+            <ToastContainer position="top-right" autoClose={3000} />
+        </>
+    </React.StrictMode>
 );
-
-
-//Se crea la funcion para retornar la lista de rutas creadas
-function index() {
-    return <RouterProvider router={router} />
-}
-
-export default index;

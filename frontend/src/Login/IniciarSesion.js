@@ -15,8 +15,13 @@ function IniciarSesion() {
 
         try {
 
+<<<<<<< HEAD
             const response = await axios.post('http://localhost:3001/api/login', {
                     Usuario: usuario,
+=======
+            const response = await axios.post('https://plc-j41x.onrender.com/api/login', {
+                Usuario: usuario.trim(),
+>>>>>>> 45bbdf92368d5d506825e3d6e7db47a2875fa8ac
                     Contrasenia: contrasenia,
                     Rol: parseInt(rol)
                 });
