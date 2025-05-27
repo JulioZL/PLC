@@ -56,7 +56,7 @@ function CrearReportesInv() {
             try {
                 const response = await axios.get('http://localhost:3001/api/conceptosP');
                 setConceptos(response.data);
-        console.log(response.data);
+                console.log(response.data);
             } catch (error) {
                 toast.error('Error al obtener los conceptos.');
             }
@@ -76,8 +76,8 @@ function CrearReportesInv() {
     const validateArticleFields = () => {
         const { nombreArticulo, talla, precio, cantidad } = formData;
         if (!nombreArticulo.trim()) { toast.error('El nombre del artículo es obligatorio.'); return false }
-        if (!talla.trim()) { toast.error('La talla es obligatoria.'); return false}
-    if (!precio || isNaN(precio) || precio <= 0) { toast.error('El precio debe ser un número mayor a 0.'); return false }
+        if (!talla.trim()) { toast.error('La talla es obligatoria.'); return false }
+        if (!precio || isNaN(precio) || precio <= 0) { toast.error('El precio debe ser un número mayor a 0.'); return false }
         if (!cantidad || isNaN(cantidad) || cantidad <= 0) { toast.error('La cantidad debe ser un número mayor a 0.'); return false }
 
         return true;
@@ -149,8 +149,8 @@ function CrearReportesInv() {
             if (response.status === 200) {
                 toast.success('Reporte guardado correctamente.');
                 setTimeout(() => {
-                    resetForm(); 
-                window.location.reload();
+                    resetForm();
+                    window.location.reload();
                 }, 2000);
             } else {
                 toast.error('Error al guardar el reporte.');
@@ -169,10 +169,6 @@ function CrearReportesInv() {
         if (name === 'nombreAlumno' && value.trim().length >= 3) {
             try {
                 const response = await axios.get('http://localhost:3001/api/alumnos', { params: { NombreAlumno: value } });
-<<<<<<< HEAD
-
-=======
->>>>>>> f10bb6aac0f8545f058c2946bfba8801466a64e6
                 setFilteredAlumnos(response.data);
             } catch (error) {
                 console.error('Error al buscar alumnos:', error);
@@ -336,29 +332,6 @@ function CrearReportesInv() {
 
                                 )}
                             </Col>
-<<<<<<< HEAD
-
-<<<<<<< HEAD
-                            <Col sm={6}>
-                                <Form.Label>Grupo</Form.Label>
-                                <Form.Control type="text" name="grupoAlumno" value={formData.grupoAlumno}/>
-
-=======
->>>>>>> f10bb6aac0f8545f058c2946bfba8801466a64e6
-                            <Col xs={12} md={6}>
-                                <Form.Label>Semestre</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    name="Semestre"
-                                    value={formData.Semestre}
-                                    onChange={handleChange}
-                                    placeholder="Ej. 4to"
-                                />
-<<<<<<< HEAD
-                                
-                        </Col>
-=======
-=======
                             <Col xs={12} md={6}>
                                 <Form.Label>Semestre</Form.Label>
                                 <Form.Control as="select" name="Semestre" value={formData.Semestre} onChange={handleChange}>
@@ -367,30 +340,12 @@ function CrearReportesInv() {
                                         <option key={Sem} value={Sem}>{Sem}</option>
                                     ))}
                                 </Form.Control>
->>>>>>> 45bbdf92368d5d506825e3d6e7db47a2875fa8ac
                             </Col>
                         </Row>
->>>>>>> f10bb6aac0f8545f058c2946bfba8801466a64e6
 
                         {/* Agregar articulos a la tabla */}
                         <h5 className="my-3">Agregar Artículos</h5>
                         <Row className="mb-3">
-<<<<<<< HEAD
-
-<<<<<<< HEAD
-                            <Col sm={6}>
-                                <Form.Label>Articulo</Form.Label>
-                                <Form.Select aria-label="Default select example">
-                                    <option>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </Form.Select>
-
-=======
->>>>>>> f10bb6aac0f8545f058c2946bfba8801466a64e6
-=======
->>>>>>> 45bbdf92368d5d506825e3d6e7db47a2875fa8ac
                             <Col xs={12} md={6} lg={4}>
                                 <Form.Label>Nombre del Artículo</Form.Label>
                                 {/* Obtiene y muestra las prendas disponibles en la BD */}
@@ -404,21 +359,8 @@ function CrearReportesInv() {
                             </Col>
                             <Col xs={6} md={3} lg={2}>
                                 <Form.Label>Talla</Form.Label>
-<<<<<<< HEAD
-                                <Form.Control
-                                    as="select"
-                                    name="talla"
-                                    value={formData.talla}
-                                    onChange={handleChange}
-<<<<<<< HEAD
-                                    placeholder="Selecciona la talla"
-=======
->>>>>>> f10bb6aac0f8545f058c2946bfba8801466a64e6
-                                >
-=======
                                 {/* Obtiene las tallas preestablecidas por nosotros */}
                                 <Form.Control as="select" name="talla" value={formData.talla} onChange={handleChange}>
->>>>>>> 45bbdf92368d5d506825e3d6e7db47a2875fa8ac
                                     <option value="">Selecciona la talla</option>
                                     {tallasDisponibles.map((c, i) => (
                                         <option key={i} value={c.talla}>
@@ -426,16 +368,6 @@ function CrearReportesInv() {
                                         </option>
                                     ))}
                                 </Form.Control>
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-                                    placeholder="M, L, XL"
-                                </Col>
-=======
->>>>>>> f10bb6aac0f8545f058c2946bfba8801466a64e6
-                            </Col>
-=======
->>>>>>> 45bbdf92368d5d506825e3d6e7db47a2875fa8ac
 
                             </Col>
                             <Col xs={6} md={3} lg={2}>
@@ -473,8 +405,6 @@ function CrearReportesInv() {
                                     </Button>
                                 </OverlayTrigger>
                             </Col>
-                                </Row>
-                            </Col>
                         </Row>
                     </Form>
                 </Card.Body>
@@ -497,7 +427,7 @@ function CrearReportesInv() {
                         </tr>
                     </thead>
                     <tbody>
-                    {/* Validacion y Mapeo de los articulos agregados en el reporte */}
+                        {/* Validacion y Mapeo de los articulos agregados en el reporte */}
                         {reportData.length === 0 ? (
                             <tr>
                                 <td colSpan="5" className="text-center text-muted">
@@ -542,10 +472,6 @@ function CrearReportesInv() {
                     </Button>
                 </Modal.Footer>
             </Modal>
-<<<<<<< HEAD
-          
-=======
->>>>>>> 45bbdf92368d5d506825e3d6e7db47a2875fa8ac
         </Container>
     );
 }

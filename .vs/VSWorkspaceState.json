@@ -2,37 +2,14 @@
   "ExpandedNodes": [
     "",
     "\\backend",
-<<<<<<< HEAD
-    "\\backend\\controllers",
-<<<<<<< HEAD
     "\\backend\\database",
-=======
->>>>>>> f10bb6aac0f8545f058c2946bfba8801466a64e6
-=======
->>>>>>> 45bbdf92368d5d506825e3d6e7db47a2875fa8ac
-    "\\backend\\models",
-    "\\backend\\routes",
     "\\frontend",
     "\\frontend\\src",
     "\\frontend\\src\\Contraloria",
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "\\frontend\\src\\Contraloria\\Usuarios",
-    "\\frontend\\src\\Login"
-  ],
-  "SelectedNode": "\\backend\\controllers\\LoginController.js",
-=======
-    "\\frontend\\src\\Contraloria\\Alumnos",
-    "\\frontend\\src\\Contraloria\\Usuarios"
-  ],
-  "SelectedNode": "\\frontend",
->>>>>>> f10bb6aac0f8545f058c2946bfba8801466a64e6
-=======
-    "\\frontend\\src\\Contraloria\\Inventarios",
+    "\\frontend\\src\\Contraloria\\Historico",
     "\\frontend\\src\\Contraloria\\Reportes",
     "\\frontend\\src\\Login"
   ],
-  "SelectedNode": "\\frontend\\src\\index.js",
->>>>>>> 45bbdf92368d5d506825e3d6e7db47a2875fa8ac
+  "SelectedNode": "\\frontend\\src\\Contraloria\\Historico\\HistoricoReportesInv.js",
   "PreviewInSolutionExplorer": false
 }

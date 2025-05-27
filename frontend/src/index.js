@@ -38,15 +38,12 @@ const router = createBrowserRouter([
         element: <CompInicio />,
         errorElement: <ErrorPage />,
         children: [
-<<<<<<< HEAD
             {
                 path: "iniciarSesion",
                 element: <IniciarSesion />,
             },
-=======
             { path: 'iniciarSesion', element: <IniciarSesion /> },
             { path: 'registrarUsuario', element: <RegistrarUsuario /> },
->>>>>>> 45bbdf92368d5d506825e3d6e7db47a2875fa8ac
         ],
     },
     {
@@ -54,7 +51,6 @@ const router = createBrowserRouter([
         element: <NavBar />,
         errorElement: <ErrorPage />,
         children: [
-<<<<<<< HEAD
             {
                 path: "invPrendas",
                 element: <InvPrendas />,
@@ -107,7 +103,6 @@ const router = createBrowserRouter([
                 path: "registrarUsuario",
                 element: <RegistrarUsuario />,
             }, 
-=======
             { path: 'invPrendas', element: <InvPrendas /> },
             { path: 'agregarPrenda', element: <AgregarPrenda /> },
             { path: 'editarPrenda/:id', element: <EditarPrenda /> },
@@ -120,7 +115,6 @@ const router = createBrowserRouter([
             { path: 'exportPDFReportes', element: <ExportPDFReportes /> },
             { path: 'agregarAlumnos', element: <AgregarAlumnos /> },
             { path: 'informacionUsuarios', element: <InformacionUsuarios /> },
->>>>>>> 45bbdf92368d5d506825e3d6e7db47a2875fa8ac
         ],
     },
 ]);

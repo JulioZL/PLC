@@ -201,7 +201,7 @@ function HistoricoReportesInv() {
                     )}
                 </Card.Body>
             </Card>
-            
+
         </Container>
     );
 }

@@ -353,9 +353,6 @@ function CrearReportesSEM() {
                                 </Form.Control>
                             </Col>
 
-<<<<<<< HEAD
-
-=======
                             <Col xs={12} md={6}>
                                 <Form.Label>Mes de Pago</Form.Label>
                                 <Form.Control
@@ -374,58 +371,35 @@ function CrearReportesSEM() {
                                 </Form.Control>
                             </Col>
                         </Row>
->>>>>>> f10bb6aac0f8545f058c2946bfba8801466a64e6
-                <Form.Group as={Row} className="mb-3">
-                    <Form.Label column sm={2}>Grupo</Form.Label>
-                    <Col sm={3}>
-                        <Form.Control
-                            type="text"
-                            name="Grupo"
-                            value={formData.Grupo}
-                            onChange={handleChange}
-                            placeholder="Ingresa el grupo del alumno"
+                        <Form.Group as={Row} className="mb-3">
+                            <Form.Label column sm={2}>Grupo</Form.Label>
+                            <Col sm={3}>
+                                <Form.Control
+                                    type="text"
+                                    name="Grupo"
+                                    value={formData.Grupo}
+                                    onChange={handleChange}
+                                    placeholder="Ingresa el grupo del alumno"
 
-                        />
-                    </Col>
-                    <Form.Label column sm={1}>Concepto</Form.Label>
-                    <Col sm={6}>
-                        <Form.Control
-                            as="select"
-                            name="Concepto"
-                            value={formData.Concepto}
-                            onChange={handleChange}
-                        >
-                            <option value="">Selecciona un concepto</option>
-                            {conceptos.map((concepto) => (
-                                <option key={concepto.idConcepto} value={concepto.nombreConcepto}>
-                                    {concepto.nombreConcepto}
-                                </option>
-                            ))}
-                        </Form.Control>
-                    </Col>
-                </Form.Group>
-<<<<<<< HEAD
-
-                            <Col xs={12} md={6}>
-                                <Form.Label>Mes de Pago</Form.Label>
+                                />
+                            </Col>
+                            <Form.Label column sm={1}>Concepto</Form.Label>
+                            <Col sm={6}>
                                 <Form.Control
                                     as="select"
-                                    name="Mes_de_Pago"
-                                    value={formData.Mes_de_Pago}
+                                    name="Concepto"
+                                    value={formData.Concepto}
                                     onChange={handleChange}
-                                    disabled={formData.Concepto !== "Colegiatura mensual"}
                                 >
-                                    <option value="">Selecciona el mes</option>
-                                    {months.map((month, index) => (
-                                        <option key={index} value={month}>
-                                            {month}
+                                    <option value="">Selecciona un concepto</option>
+                                    {conceptos.map((concepto) => (
+                                        <option key={concepto.idConcepto} value={concepto.nombreConcepto}>
+                                            {concepto.nombreConcepto}
                                         </option>
                                     ))}
                                 </Form.Control>
                             </Col>
-                        </Row>
-=======
->>>>>>> f10bb6aac0f8545f058c2946bfba8801466a64e6
+                        </Form.Group>
 
                         <Row className="mb-3">
                             <Col xs={6} md={3}>
@@ -491,63 +465,63 @@ function CrearReportesSEM() {
                 </Card.Body>
             </Card>
 
-                <Card.Body>
-                    <Card.Title>Conceptos en el Reporte</Card.Title>
-                    <Table striped bordered hover responsive>
-                        <thead style={{ backgroundColor: "#0d6efd", color: "white" }}>
+            <Card.Body>
+                <Card.Title>Conceptos en el Reporte</Card.Title>
+                <Table striped bordered hover responsive>
+                    <thead style={{ backgroundColor: "#0d6efd", color: "white" }}>
+                        <tr>
+                            <th>Concepto</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Total</th>
+                            <th>Mes de Pago</th>
+                            <th>Ciclo Escolar</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {reportData.length === 0 ? (
                             <tr>
-                                <th>Concepto</th>
-                                <th>Precio</th>
-                                <th>Cantidad</th>
-                                <th>Total</th>
-                                <th>Mes de Pago</th>
-                                <th>Ciclo Escolar</th>
-                                <th>Fecha</th>
+                                <td colSpan="9" className="text-center text-muted">
+                                    No hay conceptos agregados al reporte.
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            {reportData.length === 0 ? (
-                                <tr>
-                                    <td colSpan="9" className="text-center text-muted">
-                                        No hay conceptos agregados al reporte.
-                                    </td>
+                        ) : (
+                            reportData.map((report, index) => (
+                                <tr key={index}>
+                                    <td>{report.Concepto}</td>
+                                    <td>${report.Precio.toFixed(2)}</td>
+                                    <td>{report.Cantidad}</td>
+                                    <td>${report.Total.toFixed(2)}</td>
+                                    <td>{report.Mes_de_Pago}</td>
+                                    <td>{report.Ciclo_Escolar}</td>
+                                    <td>{report.Fecha}</td>
                                 </tr>
-                            ) : (
-                                reportData.map((report, index) => (
-                                    <tr key={index}>
-                                        <td>{report.Concepto}</td>
-                                        <td>${report.Precio.toFixed(2)}</td>
-                                        <td>{report.Cantidad}</td>
-                                        <td>${report.Total.toFixed(2)}</td>
-                                        <td>{report.Mes_de_Pago}</td>
-                                        <td>{report.Ciclo_Escolar}</td>
-                                        <td>{report.Fecha}</td>
-                                    </tr>
-                                ))
-                            )}
-                        </tbody>
-                        {reportData.length > 0 && (
-                            <tfoot>
-                                <tr>
-                                    <td colSpan="5" className="text-end fw-bold">
-                                        Gran Total
-                                    </td>
-                                    <td colSpan="4" className="fw-bold">
-                                        ${calculateGrandTotal()}
-                                    </td>
-                                </tr>
-                            </tfoot>
+                            ))
                         )}
-                    </Table>
+                    </tbody>
+                    {reportData.length > 0 && (
+                        <tfoot>
+                            <tr>
+                                <td colSpan="5" className="text-end fw-bold">
+                                    Gran Total
+                                </td>
+                                <td colSpan="4" className="fw-bold">
+                                    ${calculateGrandTotal()}
+                                </td>
+                            </tr>
+                        </tfoot>
+                    )}
+                </Table>
 
-                </Card.Body>
-                    <Button
-                        variant="success"
-                        className="w-100"
+            </Card.Body>
+            <Button
+                variant="success"
+                className="w-100"
                 onClick={() => setShowConfirmModal(true)}
-                    >
-                        <Save className="me-2" />
-                        Guardar y Exportar a PDF
+            >
+                <Save className="me-2" />
+                Guardar y Exportar a PDF
             </Button>
             <Modal show={showConfirmModal} onHide={() => setShowConfirmModal(false)} centered>
                 <Modal.Header closeButton style={{ backgroundColor: '#003366', color: 'white' }}>

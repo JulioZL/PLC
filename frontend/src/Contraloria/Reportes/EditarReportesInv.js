@@ -1,39 +1,11 @@
-<<<<<<< HEAD
-﻿import { useEffect, useState } from 'react';
-import {
-    Container, Row, Col, Table, Button, Modal, Card
-} from 'react-bootstrap';
-import axios from 'axios';
-import { FaUserPlus } from 'react-icons/fa';
-import RegistrarUsuario from '../../Login/RegistrarUsuario';
-
-<<<<<<< HEAD
-const URI = 'http://localhost:3001/api/usuarios';
-
-function InfoUsuarios() {
-    const [usuarios, setUsuarios] = useState([]);
-    const [showRegisterModal, setShowRegisterModal] = useState(false);
-
-    useEffect(() => {
-        getUsuarios();
-    }, []);
-
-    const getUsuarios = async () => {
-        const res = await axios.get(URI);
-        setUsuarios(res.data);
-    };
-
-=======
-=======
-﻿import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { FaEdit, FaTrashAlt, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { Container, Button, Table, Form, Row, Col, Modal, Card, Spinner, Pagination, InputGroup } from 'react-bootstrap';
 import { toast, ToastContainer } from 'react-toastify';
 
 //URI Local
->>>>>>> 45bbdf92368d5d506825e3d6e7db47a2875fa8ac
-const URI = 'http://localhost:3001/api/reportesPrenda';  
+const URI = 'http://localhost:3001/api/reportesPrenda';
 
 function EditarReportesInv() {
     //Expandir Columnas
@@ -309,76 +281,13 @@ function EditarReportesInv() {
         </Pagination>
     );
 
->>>>>>> f10bb6aac0f8545f058c2946bfba8801466a64e6
     return (
         <Container className="py-4">
             <Card className="shadow">
                 <Card.Body>
-<<<<<<< HEAD
-                    <Row className="mb-3">
-                        <Col className="d-flex justify-content-between align-items-center">
-                            <h4 className="text-primary mb-0">Gestión de Usuarios</h4>
-                            <Button variant="success" onClick={() => setShowRegisterModal(true)}>
-                                <FaUserPlus className="me-2" />
-                                Registrar Usuario
-                            </Button>
-                        </Col>
-                    </Row>
-
-<<<<<<< HEAD
-                    <Table responsive bordered hover striped className="text-center">
-                        <thead className="table-primary">
-                            <tr>
-                                <th>#</th>
-                                <th>Nombre Completo</th>
-                                <th>Usuario</th>
-                                <th>Contraseña</th>
-                                <th>Departamento</th>
-                                <th>Rol</th>
-                                <th>Domicilio</th>
-                                <th>Teléfono</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {usuarios.map((us) => (
-                                <tr key={us.id_usuario}>
-                                    <td>{us.id_usuario}</td>
-                                    <td>{us.Nombre}</td>
-                                    <td>{us.Usuario}</td>
-                                    <td>{us.Contrasenia}</td>
-                                    <td>{us.Departamento}</td>
-                                    <td>{us.Rol}</td>
-                                    <td>{us.domicilio}</td>
-                                    <td>{us.no_telefono}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </Table>
-                </Card.Body>
-            </Card>
-
-            {/* Modal para registrar nuevo usuario */}
-            <Modal
-                show={showRegisterModal}
-                onHide={() => setShowRegisterModal(false)}
-                size="lg"
-                centered
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title>Registrar Nuevo Usuario</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <RegistrarUsuario />
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={() => setShowRegisterModal(false)}>
-                        Cerrar
-=======
-=======
                     <Card.Title className="text-center mb-4 text-uppercase border-bottom pb-2">
                         <FaEdit className="me-2" /> Editar Reportes de Inventario
                     </Card.Title>
->>>>>>> 45bbdf92368d5d506825e3d6e7db47a2875fa8ac
                     <InputGroup className="mb-3">
                         <Form.Control
                             placeholder="Buscar por nombre del alumno"
@@ -394,94 +303,94 @@ function EditarReportesInv() {
                         <p className="text-danger text-center">{error}</p>
                     ) : (
                         <>
-                                    <Table striped bordered hover responsive>
-                                        <thead>
-                                            <tr>
-                                                <th style={{ backgroundColor: '#0d6efd', color: 'white', fontWeight: 'bold', textAlign: 'center' }}>Detalles</th>
-                                                <th style={{ backgroundColor: '#0d6efd', color: 'white', fontWeight: 'bold', textAlign: 'center' }}>No. Folio</th>
-                                                <th style={{ backgroundColor: '#0d6efd', color: 'white', fontWeight: 'bold', textAlign: 'center' }}>Nombre del Alumno</th>
-                                                <th style={{ backgroundColor: '#0d6efd', color: 'white', fontWeight: 'bold', textAlign: 'center' }}>Semestre</th>
-                                                <th style={{ backgroundColor: '#0d6efd', color: 'white', fontWeight: 'bold', textAlign: 'center' }}>Acciones</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {paginatedData.map((report) => {
-                                                const isExpanded = expandedRows === report.id_reporteprenda;
-                                                return (
-                                                    <React.Fragment key={report.id_reporteprenda}>
-                                                        <tr>
-                                                            <td className="text-center">
-                                                                <Button
-                                                                    variant="info"
-                                                                    size="sm"
-                                                                    onClick={() => toggleDetails(report.id_reporteprenda)}
-                                                                >
-                                                                    {expandedRows === report.id_reporteprenda ? (
-                                                                        <>
-                                                                            <FaChevronUp /> Ocultar
-                                                                        </>
-                                                                    ) : (
-                                                                        <>
-                                                                            <FaChevronDown /> Ver
-                                                                        </>
-                                                                    )}
-                                                                </Button>
+                            <Table striped bordered hover responsive>
+                                <thead>
+                                    <tr>
+                                        <th style={{ backgroundColor: '#0d6efd', color: 'white', fontWeight: 'bold', textAlign: 'center' }}>Detalles</th>
+                                        <th style={{ backgroundColor: '#0d6efd', color: 'white', fontWeight: 'bold', textAlign: 'center' }}>No. Folio</th>
+                                        <th style={{ backgroundColor: '#0d6efd', color: 'white', fontWeight: 'bold', textAlign: 'center' }}>Nombre del Alumno</th>
+                                        <th style={{ backgroundColor: '#0d6efd', color: 'white', fontWeight: 'bold', textAlign: 'center' }}>Semestre</th>
+                                        <th style={{ backgroundColor: '#0d6efd', color: 'white', fontWeight: 'bold', textAlign: 'center' }}>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {paginatedData.map((report) => {
+                                        const isExpanded = expandedRows === report.id_reporteprenda;
+                                        return (
+                                            <React.Fragment key={report.id_reporteprenda}>
+                                                <tr>
+                                                    <td className="text-center">
+                                                        <Button
+                                                            variant="info"
+                                                            size="sm"
+                                                            onClick={() => toggleDetails(report.id_reporteprenda)}
+                                                        >
+                                                            {expandedRows === report.id_reporteprenda ? (
+                                                                <>
+                                                                    <FaChevronUp /> Ocultar
+                                                                </>
+                                                            ) : (
+                                                                <>
+                                                                    <FaChevronDown /> Ver
+                                                                </>
+                                                            )}
+                                                        </Button>
 
-                                                            </td>
-                                                            <td>00{report.id_reporteprenda}</td>
-                                                            <td>{report.alumno?.NombreAlumno || '—'}</td>
-                                                            <td>{report.semestre || '—'}</td>
-                                                            <td className="text-center">
-                                                                <Button
-                                                                    variant="outline-primary"
-                                                                    size="sm"
-                                                                    onClick={() => handleEdit(report)}
-                                                                    className="me-2"
-                                                                >
-                                                                    <FaEdit className="me-1" /> Editar
-                                                                </Button>
-                                                                <Button
-                                                                    variant="outline-danger"
-                                                                    size="sm"
-                                                                    onClick={() => confirmDelete(report.id_reporteprenda)}
-                                                                >
-                                                                    <FaTrashAlt className="me-1" /> Eliminar
-                                                                </Button>
-                                                            </td>
-                                                        </tr>
-                                                        {/* Renglones expandiles con detalle de reportes */}
-                                                        {expandedRows === report.id_reporteprenda && (
-                                                            <tr>
-                                                                <td colSpan="5">
-                                                                    <Table size="sm" bordered>
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th>Artículo</th>
-                                                                                <th>Talla</th>
-                                                                                <th>Precio</th>
-                                                                                <th>Cantidad</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            {/* Mapeo de los detalles de reporte por ID */}
-                                                                            {report.detalles?.map((item, idx) => (
-                                                                                <tr key={idx}>
-                                                                                    <td>{item.prenda.nombre_prenda || '—'}</td>
-                                                                                    <td>{item.talla || '—'}</td>
-                                                                                    <td>${Number(item.precio).toFixed(2)}</td>
-                                                                                    <td>{item.cantidad}</td>
-                                                                                </tr>
-                                                                            ))}
-                                                                        </tbody>
-                                                                    </Table>
-                                                                </td>
-                                                            </tr>
-                                                        )}
-                                                    </React.Fragment>
-                                                );
-                                            })}
-                                        </tbody>
-                                    </Table>
+                                                    </td>
+                                                    <td>00{report.id_reporteprenda}</td>
+                                                    <td>{report.alumno?.NombreAlumno || '—'}</td>
+                                                    <td>{report.semestre || '—'}</td>
+                                                    <td className="text-center">
+                                                        <Button
+                                                            variant="outline-primary"
+                                                            size="sm"
+                                                            onClick={() => handleEdit(report)}
+                                                            className="me-2"
+                                                        >
+                                                            <FaEdit className="me-1" /> Editar
+                                                        </Button>
+                                                        <Button
+                                                            variant="outline-danger"
+                                                            size="sm"
+                                                            onClick={() => confirmDelete(report.id_reporteprenda)}
+                                                        >
+                                                            <FaTrashAlt className="me-1" /> Eliminar
+                                                        </Button>
+                                                    </td>
+                                                </tr>
+                                                {/* Renglones expandiles con detalle de reportes */}
+                                                {expandedRows === report.id_reporteprenda && (
+                                                    <tr>
+                                                        <td colSpan="5">
+                                                            <Table size="sm" bordered>
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Artículo</th>
+                                                                        <th>Talla</th>
+                                                                        <th>Precio</th>
+                                                                        <th>Cantidad</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    {/* Mapeo de los detalles de reporte por ID */}
+                                                                    {report.detalles?.map((item, idx) => (
+                                                                        <tr key={idx}>
+                                                                            <td>{item.prenda.nombre_prenda || '—'}</td>
+                                                                            <td>{item.talla || '—'}</td>
+                                                                            <td>${Number(item.precio).toFixed(2)}</td>
+                                                                            <td>{item.cantidad}</td>
+                                                                        </tr>
+                                                                    ))}
+                                                                </tbody>
+                                                            </Table>
+                                                        </td>
+                                                    </tr>
+                                                )}
+                                            </React.Fragment>
+                                        );
+                                    })}
+                                </tbody>
+                            </Table>
                             {renderPagination()}
                         </>
                     )}
@@ -599,7 +508,6 @@ function EditarReportesInv() {
                     </Button>
                     <Button variant="danger" onClick={handleDeleteConfirmed}>
                         Eliminar
->>>>>>> f10bb6aac0f8545f058c2946bfba8801466a64e6
                     </Button>
                 </Modal.Footer>
             </Modal>
@@ -625,8 +533,4 @@ function EditarReportesInv() {
     );
 }
 
-<<<<<<< HEAD
-export default InfoUsuarios;
-=======
 export default EditarReportesInv;
->>>>>>> 45bbdf92368d5d506825e3d6e7db47a2875fa8ac
