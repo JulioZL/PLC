@@ -240,7 +240,6 @@ function CrearReportesSEM() {
 
     return (
         <Container className="py-4">
-            <ToastContainer />
             <Card className="shadow mb-4">
                 <Card.Body>
                     <h4 className="text-center mb-4">Generación de Reportes Semestrales</h4>

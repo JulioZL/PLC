@@ -5,9 +5,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { OverlayTrigger, Tooltip, Modal } from 'react-bootstrap';
 import { PlusCircle, Save } from 'react-bootstrap-icons';
+import { FaPlus } from 'react-icons/fa';
 
 
 function CrearReportesInv() {
+
     const [reportData, setReportData] = useState([]);
     const [formData, setFormData] = useState({
         IDreporte: Date.now().toString(),
@@ -20,48 +22,7 @@ function CrearReportesInv() {
         lugar: 'Yuriria, GTO.',
         fecha: new Date().toLocaleDateString(),
     });
-    const [filteredAlumnos, setFilteredAlumnos] = useState([]);
-    const [showConfirmModal, setShowConfirmModal] = useState(false);
-    const [activeIndex, setActiveIndex] = React.useState(-1);
-    const [showAutocomplete, setShowAutocomplete] = React.useState(false);
-    const listItemRefs = useRef([]);
-    const validateArticleFields = () => {
-        const { nombreArticulo, talla, precio, cantidad } = formData;
-        if (!nombreArticulo.trim()) return toast.error('El nombre del artículo es obligatorio.');
-        if (!talla.trim()) return toast.error('La talla es obligatoria.');
-        if (!precio || isNaN(precio) || precio <= 0) return toast.error('El precio debe ser un número mayor a 0.');
-        if (!cantidad || isNaN(cantidad) || cantidad <= 0) return toast.error('La cantidad debe ser un número mayor a 0.');
-        return true;
-    };
-
-    const [conceptos, setConceptos] = useState([]);
-
-    useEffect(() => {
-        const fetchConceptos = async () => {
-            try {
-                const response = await axios.get('http://localhost:3001/api/conceptosP');
-                setConceptos(response.data);
-            } catch (error) {
-                toast.error('Error al obtener los conceptos.');
-            }
-        };
-        fetchConceptos();
-
-        if (activeIndex >= 0 && listItemRefs.current[activeIndex]) {
-            listItemRefs.current[activeIndex].scrollIntoView({
-                behavior: 'smooth',
-                block: 'nearest',
-            });
-        }
-    }, [activeIndex]);
-
-    const validateReportFields = () => {
-        if (!formData.nombreAlumno.trim()) return toast.error('El nombre del alumno es obligatorio.');
-        if (!formData.Semestre.trim()) return toast.error('El Semestre es obligatorio.');
-        if (reportData.length === 0) return toast.error('Debes agregar al menos un artículo al reporte.');
-        return true;
-    };
-
+    //Limpiar el formulario
     const resetForm = () => {
         setFormData({
             IDreporte: Date.now().toString(),
@@ -76,13 +37,98 @@ function CrearReportesInv() {
         });
         setReportData([]);
     };
+    //Filtro busqueda por alumno
+    const [filteredAlumnos, setFilteredAlumnos] = useState([]);
+    //Guardar coonceptos de prenda de ropa
+    const [conceptos, setConceptos] = useState([]);
+    const [showConfirmModal, setShowConfirmModal] = useState(false);
+    const [activeIndex, setActiveIndex] = React.useState(-1);
+    //Auxiliar autocompletado nombre alumno
+    const [showAutocomplete, setShowAutocomplete] = React.useState(false);
+    const listItemRefs = useRef([]);
+    //Vincular cantidad y tallas por articulo
+    const [tallasDisponibles, setTallasDisponibles] = useState([]);
 
+    //Conexion con API
+    useEffect(() => {
+        //Obetener y guardar prendas de ropa disponibles
+        const fetchConceptos = async () => {
+            try {
+                const response = await axios.get('http://localhost:3001/api/conceptosP');
+                setConceptos(response.data);
+        console.log(response.data);
+            } catch (error) {
+                toast.error('Error al obtener los conceptos.');
+            }
+        };
+        fetchConceptos();
+
+
+        if (activeIndex >= 0 && listItemRefs.current[activeIndex]) {
+            listItemRefs.current[activeIndex].scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+            });
+        }
+    }, [activeIndex]);
+
+    //Validar campos articulos (Llenos y con datos correctos)
+    const validateArticleFields = () => {
+        const { nombreArticulo, talla, precio, cantidad } = formData;
+        if (!nombreArticulo.trim()) { toast.error('El nombre del artículo es obligatorio.'); return false }
+        if (!talla.trim()) { toast.error('La talla es obligatoria.'); return false}
+    if (!precio || isNaN(precio) || precio <= 0) { toast.error('El precio debe ser un número mayor a 0.'); return false }
+        if (!cantidad || isNaN(cantidad) || cantidad <= 0) { toast.error('La cantidad debe ser un número mayor a 0.'); return false }
+
+        return true;
+    };
+
+    //Validar campos alumno (Llenos y con datos correctos)
+    const validateReportFields = () => {
+        if (!formData.nombreAlumno.trim()) return toast.error('El nombre del alumno es obligatorio.');
+        if (!formData.Semestre.trim()) return toast.error('El Semestre es obligatorio.');
+        if (reportData.length === 0) return toast.error('Debes agregar al menos un artículo al reporte.');
+
+        return true;
+    };
+
+    //Agrega un articulo a la tabla de detalles del reporte
+    const handleAddArticle = () => {
+        //Valida que todos los campos del articulo sean llenados antes de agregarlo a la tabla
+        if (!validateArticleFields()) {
+            return;
+        }
+
+        //Guarda los  datos del nuevo articulo a agregar
+        const newArticle = {
+            nombreArticulo: formData.nombreArticulo,
+            talla: formData.talla,
+            precio: parseFloat(formData.precio),
+            cantidad: parseInt(formData.cantidad),
+            subtotal: parseFloat(formData.precio) * parseInt(formData.cantidad),
+        };
+
+        setReportData([...reportData, newArticle]);
+        setFormData({
+            ...formData,
+            nombreArticulo: '',
+            talla: '',
+            precio: '',
+            cantidad: '',
+
+        });
+        toast.success('Artículo agregado correctamente.');
+    };
+
+    //Guardado de reporte
     const handleSaveReport = async () => {
+        //Valida que los datos del alumno sigan disponibles
         if (!validateReportFields() || reportData.length === 0) {
             toast.error("Debes completar todos los campos y agregar al menos un artículo.");
             return;
         }
 
+        //Datos a enviar para su guardado
         const payload = reportData.map(item => ({
             IDreporte: formData.IDreporte,
             Lugar: formData.lugar,
@@ -95,13 +141,17 @@ function CrearReportesInv() {
             Semestre: formData.Semestre,
         }));
 
-        console.log('Payload a enviar:', payload);
+        //console.log('Payload a enviar:', payload);
 
+        //Conexion con API
         try {
             const response = await axios.post('http://localhost:3001/api/reportesPrenda', payload);
             if (response.status === 200) {
                 toast.success('Reporte guardado correctamente.');
-                resetForm();
+                setTimeout(() => {
+                    resetForm(); 
+                window.location.reload();
+                }, 2000);
             } else {
                 toast.error('Error al guardar el reporte.');
             }
@@ -111,8 +161,7 @@ function CrearReportesInv() {
         }
     };
 
-
-
+    //Guarda el cambio del nombre del alumno al seleccionar alguno
     const handleChange = async (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
@@ -131,26 +180,46 @@ function CrearReportesInv() {
         }
 
         if (name === 'nombreArticulo') {
-            const selectedConcepto = conceptos.find(concepto => concepto.nombre_prenda === value);
-            if (selectedConcepto) {
+            const articuloSeleccionado = value.trim();
+            const tallas = conceptos.filter(c => c.nombre_prenda.trim() === articuloSeleccionado && c.unidades > 0);
+
+            setTallasDisponibles(tallas);
+            setFormData({
+                ...formData,
+                nombreArticulo: value,
+                talla: '',
+                precio: '',
+                cantidad: '',
+                cantidadMaxima: null
+            });
+        }
+
+        if (name === "talla") {
+            const conceptoSeleccionado = tallasDisponibles.find(c => c.talla === value);
+            if (conceptoSeleccionado) {
                 setFormData({
                     ...formData,
-                    nombreArticulo: value,
-                    precio: selectedConcepto.precio, // <- esta es la clave correcta
-                });
-            } else {
-                setFormData({
-                    ...formData,
-                    nombreArticulo: value,
-                    precio: '', // borra precio si el artículo no se encuentra
-                });
+                    talla: value,
+                    precio: conceptoSeleccionado.precio,
+                    cantidadMaxima: conceptoSeleccionado.unidades,
+                })
             }
         }
 
+        if (name === 'cantidad') {
+            const cantidadIngresada = parseInt(value, 10);
+            if (formData.cantidadMaxima && cantidadIngresada > formData.cantidadMaxima) {
+                toast.warning(`Solo hay ${formData.cantidadMaxima} piezas disponibles`);
+                setFormData({ ...formData, cantidad: formData.cantidadMaxima });
+            } else {
+                setFormData({ ...formData, cantidad: cantidadIngresada });
+            }
+            return;
+        }
 
     };
 
-
+    //Selecciona el alumno obtenido del filtro de alumnos
     const handleSelectAlumno = (alumno) => {
         setFormData({
             ...formData,
@@ -159,28 +228,7 @@ function CrearReportesInv() {
         setFilteredAlumnos([]);
     };
 
-    const handleAddArticle = () => {
-        if (!validateArticleFields()) return;
-
-        const newArticle = {
-            nombreArticulo: formData.nombreArticulo,
-            talla: formData.talla,
-            precio: parseFloat(formData.precio),
-            cantidad: parseInt(formData.cantidad),
-            subtotal: parseFloat(formData.precio) * parseInt(formData.cantidad),
-        };
-
-        setReportData([...reportData, newArticle]);
-        setFormData({
-            ...formData,
-            nombreArticulo: '',
-            talla: '',
-            precio: '',
-            cantidad: '',
-        });
-        toast.success('Artículo agregado correctamente.');
-    };
-
+    //Funcion para permitir el uso de la tecla abajo en el filtro y seleccion de alumnos
     const handleKeyDown = (e) => {
         if (!filteredAlumnos.length) return;
 
@@ -205,18 +253,19 @@ function CrearReportesInv() {
         }
     };
 
+    //Calcula el total sumando el subtotal de precio x cantidad de cada producto
     const calculateTotal = () =>
         reportData.reduce((acc, item) => acc + item.subtotal, 0).toFixed(2);
 
     return (
         <Container className="py-4">
-            <ToastContainer />
             <Card className="shadow mb-4">
                 <Card.Body>
-                    <h4 className="text-center mb-4">Generador de Reportes - Inventario</h4>
+                    <Card.Title className="text-center mb-4 text-uppercase border-bottom pb-2">
+                        <FaPlus className="me-2" /> Generador Reportes de Inventario
+                    </Card.Title>
                     <Form>
                         <Row className="mb-3">
-                            
                             <Col xs={12} md={6} className="position-relative">
                                 <Form.Label>Nombre del Alumno</Form.Label>
                                 <Form.Control
@@ -232,7 +281,7 @@ function CrearReportesInv() {
                                     placeholder="Ingresa el nombre del alumno"
                                     autoComplete="off"
                                 />
-
+                                {/* Muestra el autocompletado de los alumnos con sus estilos*/}
                                 {showAutocomplete && (
                                     <ul
                                         style={{
@@ -275,12 +324,7 @@ function CrearReportesInv() {
                                                 </li>
                                             ))
                                         ) : (
-                                            <li
-                                                style={{
-                                                    padding: '10px 15px',
-                                                    color: '#888',
-                                                }}
-                                            >
+                                            <li style={{ padding: '10px 15px', color: '#888', }}>
                                                 No se encontraron coincidencias
                                             </li>
                                         )}
@@ -288,63 +332,48 @@ function CrearReportesInv() {
 
                                 )}
                             </Col>
-
                             <Col xs={12} md={6}>
                                 <Form.Label>Semestre</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    name="Semestre"
-                                    value={formData.Semestre}
-                                    onChange={handleChange}
-                                    placeholder="Ej. 4to"
-                                />
+                                <Form.Control as="select" name="Semestre" value={formData.Semestre} onChange={handleChange}>
+                                    <option value="">Selecciona el semestre</option>
+                                    {[1, 2, 3, 4, 5, 6].map(Sem => (
+                                        <option key={Sem} value={Sem}>{Sem}</option>
+                                    ))}
+                                </Form.Control>
                             </Col>
                         </Row>
 
+                        {/* Agregar articulos a la tabla */}
                         <h5 className="my-3">Agregar Artículos</h5>
                         <Row className="mb-3">
-
                             <Col xs={12} md={6} lg={4}>
                                 <Form.Label>Nombre del Artículo</Form.Label>
-
-                                <Form.Control
-                                    as="select"
-                                    name="nombreArticulo"
-                                    value={formData.nombreArticulo}
-                                    onChange={handleChange}
-                                >
+                                {/* Obtiene y muestra las prendas disponibles en la BD */}
+                                <Form.Control as="select" name="nombreArticulo" value={formData.nombreArticulo} onChange={handleChange}>
                                     <option value="">Selecciona una Prenda</option>
-                                    {conceptos.map((concepto) => (
-                                        <option
-                                            key={concepto.id_prenda}
-                                            value={concepto.nombre_prenda}
-                                        >
-                                            {concepto.nombre_prenda}
-                                        </option>
+                                    {[...new Set(conceptos.map(c => c.nombre_prenda.trim()))].map((nombre, i) => (
+                                        <option key={i} value={nombre}>{nombre}</option>
                                     ))}
                                 </Form.Control>
+
                             </Col>
                             <Col xs={6} md={3} lg={2}>
                                 <Form.Label>Talla</Form.Label>
-                                <Form.Control
-                                    as="select"
-                                    name="talla"
-                                    value={formData.talla}
-                                    onChange={handleChange}
-                                >
+                                {/* Obtiene las tallas preestablecidas por nosotros */}
+                                <Form.Control as="select" name="talla" value={formData.talla} onChange={handleChange}>
                                     <option value="">Selecciona la talla</option>
-                                    {[14, 16, 18, 28, 30, 32, 34, 36, 38, 40, 42, 44, 'CH', 'M', 'G', 'XL', 'UT'].map(tall => (
-                                        <option key={tall} value={tall}>{tall}</option>
+                                    {tallasDisponibles.map((c, i) => (
+                                        <option key={i} value={c.talla}>
+                                            {c.talla} ({c.unidades} disponibles)
+                                        </option>
                                     ))}
                                 </Form.Control>
-                            </Col>
 
+                            </Col>
                             <Col xs={6} md={3} lg={2}>
                                 <Form.Label>Precio</Form.Label>
                                 <Form.Control
                                     type="number"
-                                    min="0"
-                                    step="1"
                                     name="precio"
                                     value={formData.precio}
                                     onChange={handleChange}
@@ -356,7 +385,8 @@ function CrearReportesInv() {
                                 <Form.Label>Cantidad</Form.Label>
                                 <Form.Control
                                     type="number"
-                                    min="0"
+                                    min="1"
+                                    max={formData.cantidadMaxima || 1}
                                     step="1"
                                     name="cantidad"
                                     value={formData.cantidad}
@@ -379,7 +409,7 @@ function CrearReportesInv() {
                     </Form>
                 </Card.Body>
             </Card>
-
+            {/* Tabla con los articulos del reporte */}
             <Card.Body>
                 <Card.Title>Artículos en el Reporte</Card.Title>
                 <Table striped bordered hover responsive>
@@ -390,16 +420,14 @@ function CrearReportesInv() {
                             <th>Precio</th>
                             <th>Cantidad</th>
                             <th>
-                                <OverlayTrigger
-                                    placement="top"
-                                    overlay={<Tooltip id="tooltip-subtotal">Precio × Cantidad</Tooltip>}
-                                >
+                                <OverlayTrigger placement="top" overlay={<Tooltip id="tooltip-subtotal">Precio × Cantidad</Tooltip>}>
                                     <span>Subtotal</span>
                                 </OverlayTrigger>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
+                    {/* Validacion y Mapeo de los articulos agregados en el reporte */}
                         {reportData.length === 0 ? (
                             <tr>
                                 <td colSpan="5" className="text-center text-muted">
@@ -426,12 +454,12 @@ function CrearReportesInv() {
                     </tbody>
                 </Table>
             </Card.Body>
-
-
             <Button variant="success" className="w-100" onClick={() => setShowConfirmModal(true)}>
                 <Save className="me-2" />
                 Guardar y Exportar Reporte
             </Button>
+
+            {/* Modal para confirmacion de guardado de reporte */}
             <Modal show={showConfirmModal} onHide={() => setShowConfirmModal(false)} centered>
                 <Modal.Header closeButton style={{ backgroundColor: '#003366', color: 'white' }}>
                     <Modal.Title>Confirmar Guardado</Modal.Title>
@@ -444,9 +472,7 @@ function CrearReportesInv() {
                     </Button>
                 </Modal.Footer>
             </Modal>
-
         </Container>
-
     );
 }
 

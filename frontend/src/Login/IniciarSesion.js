@@ -16,7 +16,7 @@ function IniciarSesion() {
         try {
 
             const response = await axios.post('https://plc-j41x.onrender.com/api/login', {
-                    Usuario: usuario,
+                Usuario: usuario.trim(),
                     Contrasenia: contrasenia,
                     Rol: parseInt(rol)
                 });

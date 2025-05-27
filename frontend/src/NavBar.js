@@ -1,104 +1,157 @@
 ﻿import React from 'react';
-import { Outlet, useNavigate } from "react-router-dom"; // Importar useNavigate
-import { Navbar, Nav, Container, Button } from 'react-bootstrap';
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Navbar, Nav, Container, Button, Dropdown, Card } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Dropdown } from 'react-bootstrap';
 
 function NavBar() {
-    // Obtener el nombre del usuario desde sessionStorage
-    const usuario = sessionStorage.getItem('usuario');  // Suponiendo que guardas el nombre del usuario con la clave 'usuario'
-
-    const navigate = useNavigate();  // Hook para navegar a otras rutas
+    const usuario = sessionStorage.getItem('usuario');
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const handleLogout = () => {
-        // Eliminar las credenciales del usuario de sessionStorage
-        sessionStorage.removeItem('usuario');  // O 'nombreUsuario' si usas esa clave
-        sessionStorage.removeItem('TUsuario');  // Eliminar cualquier otra credencial si es necesario
-        sessionStorage.removeItem('isLoggedIn');  // Eliminar cualquier otra credencial si es necesario
-
-        // Redirigir al usuario a la página principal
+        sessionStorage.removeItem('usuario');
+        sessionStorage.removeItem('TUsuario');
+        sessionStorage.removeItem('isLoggedIn');
         navigate('/');
     };
 
-    return (
-        <Container fluid className="px-0">
-            <Navbar expand="lg" className="fixed-top bg-success" bg="dark" data-bs-theme="dark">
-                <Container>
-                    <Navbar.Brand href="#home">Gral Lazaro Cárdenas</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Nav className="me-auto">
-                        <LinkContainer to="/Menu">
-                            <Nav.Link>Inicio</Nav.Link>
-                        </LinkContainer>
-                        <LinkContainer to="InvPrendas">
-                            <Nav.Link>Inventarios</Nav.Link>
-                        </LinkContainer>
-                        <Dropdown>
-                            <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                Reportes
-                            </Dropdown.Toggle>
+    const frases = [
+        "¡Bienvenido! Hoy es un gran día para mantener todo en orden.",
+        "Organiza, gestiona y lidera. ¡Tú puedes!",
+        "¿Ya revisaste los reportes del semestre? Nunca es tarde.",
+        "Cada alumno cuenta. Gracias por tu dedicación.",
+        "El orden es la base del progreso escolar. ¡Sigue así!"
+    ];
+    const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
 
-                            <Dropdown.Menu>
-                                <LinkContainer to="/menu/reportes">
-                                    <Dropdown.Item>Generar Reporte Semestral</Dropdown.Item>
-                                </LinkContainer>
-                                <LinkContainer to="/menu/reportesInv">
-                                    <Dropdown.Item>Generar Reporte Uniformes</Dropdown.Item>
-                                </LinkContainer>
-                                <LinkContainer to="/menu/editarReportes">
-                                    <Dropdown.Item>Editar Reportes Semestrales</Dropdown.Item>
-                                </LinkContainer>
-                                <LinkContainer to="/menu/editarReportesInv">
-                                    <Dropdown.Item>Editar Reportes Prendas</Dropdown.Item>
-                                </LinkContainer>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                        <Dropdown>
-                            <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                Historico
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                <LinkContainer to="/menu/historicoReportes">
-                                    <Dropdown.Item>Histórico Semestral</Dropdown.Item>
-                                </LinkContainer>
-                                <LinkContainer to="/menu/historicoReportesInv">
-                                    <Dropdown.Item>Histórico Prendas</Dropdown.Item>
-                                </LinkContainer>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                        <LinkContainer to="agregarAlumnos">
-                            <Nav.Link>Alumnos</Nav.Link>
-                        </LinkContainer>
-                        <LinkContainer to="informacionUsuarios">
-                            <Nav.Link>Usuarios</Nav.Link>
-                        </LinkContainer>
-                    </Nav>
-                    <Navbar.Collapse className="justify-content-end">
-                        <Navbar.Text>
-                            {/* Mostrar el nombre del usuario logueado */}
-                            {usuario ? (
-                                <>
-                                    <span>Sesión iniciada como: {usuario}</span>
-                                    {/* Botón de cerrar sesión */}
-                                    <Button
-                                        variant="link"
-                                        className="text-white ms-3"
-                                        onClick={handleLogout}
-                                    >
-                                        Cerrar sesión
-                                    </Button>
-                                </>
-                            ) : (
-                                'Sesión no iniciada'
-                            )}
-                        </Navbar.Text>
+    const mostrarInicio = location.pathname === "/Menu";
+
+    return (
+        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+            {/* Navbar superior */}
+            <Navbar expand="lg" fixed="top" bg="dark" data-bs-theme="dark" variant="dark" className="shadow-sm">
+                <Container>
+                    <Navbar.Brand href="/Menu">Gral Lazaro Cárdenas</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="navbar-nav" />
+                    <Navbar.Collapse id="navbar-nav">
+                        <Nav className="me-auto">
+                            <LinkContainer to="/Menu">
+                                <Nav.Link>Inicio</Nav.Link>
+                            </LinkContainer>
+                            <LinkContainer to="/Menu/InvPrendas">
+                                <Nav.Link>Inventarios</Nav.Link>
+                            </LinkContainer>
+                            <LinkContainer to="/Menu/agregarAlumnos">
+                                <Nav.Link>Alumnos</Nav.Link>
+                            </LinkContainer>
+                            <LinkContainer to="/Menu/informacionUsuarios">
+                                <Nav.Link>Usuarios</Nav.Link>
+                            </LinkContainer>
+
+                            <Dropdown as={Nav.Item}>
+                                <Dropdown.Toggle variant="success" className="text-white">
+                                    Reportes
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <LinkContainer to="/menu/reportes">
+                                        <Dropdown.Item>Generar Reporte Semestral</Dropdown.Item>
+                                    </LinkContainer>
+                                    <LinkContainer to="/menu/reportesInv">
+                                        <Dropdown.Item>Generar Reporte Artículos</Dropdown.Item>
+                                    </LinkContainer>
+                                    <LinkContainer to="/menu/editarReportes">
+                                        <Dropdown.Item>Editar Reportes Semestrales</Dropdown.Item>
+                                    </LinkContainer>
+                                    <LinkContainer to="/menu/editarReportesInv">
+                                        <Dropdown.Item>Editar Reportes Artículos</Dropdown.Item>
+                                    </LinkContainer>
+                                </Dropdown.Menu>
+                            </Dropdown>
+
+                            <Dropdown as={Nav.Item} className="ms-2">
+                                <Dropdown.Toggle className="text-white" variant="success">
+                                    Histórico
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <LinkContainer to="/menu/historicoReportes">
+                                        <Dropdown.Item>Histórico Semestral</Dropdown.Item>
+                                    </LinkContainer>
+                                    <LinkContainer to="/menu/historicoReportesInv">
+                                        <Dropdown.Item>Histórico Artículos</Dropdown.Item>
+                                    </LinkContainer>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </Nav>
+
+                        <Nav className="ms-auto">
+                            <Nav.Item className="d-flex align-items-center bg-dark bg-opacity-25 rounded px-3 py-1 text-white">
+                                {usuario ? (
+                                    <>
+                                        <i className="bi bi-person-circle me-2"></i>
+                                        <span className="me-3">
+                                            Sesión iniciada como: <strong>{usuario}</strong>
+                                        </span>
+                                        <Button
+                                            variant="danger"
+                                            size="sm"
+                                            className="rounded-pill"
+                                            onClick={handleLogout}
+                                        >
+                                            Cerrar sesión
+                                        </Button>
+                                    </>
+                                ) : (
+                                    <span>Sesión no iniciada</span>
+                                )}
+                            </Nav.Item>
+                        </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-            <Container fluid className="ContenedorPrincipalloginregistro">
-                <Outlet />
+
+            {/* Separador para evitar solapamiento del navbar */}
+            <div style={{ height: '80px' }}></div>
+
+            {/* Contenido principal */}
+            <Container
+                fluid
+                className="bg-white shadow-sm rounded p-4 flex-grow-1"
+                style={{ maxWidth: '1200px' }}
+            >
+                {mostrarInicio ? (
+                    <Card className="text-center">
+                        <Card.Body>
+                            <Card.Title>¡Bienvenido al sistema!</Card.Title>
+                            <Card.Text>{fraseAleatoria}</Card.Text>
+
+                            {/* Imagen con enlace */}
+                            <a
+                                href="https://elpaellador.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <Card.Img
+                                    variant="bottom"
+                                    src="https://elpaellador.com/en-construccion.png"
+                                    alt="El Paellador"
+                                    style={{ maxHeight: '600px', objectFit: 'contain', borderRadius: '8px', marginTop: '10px' }}
+                                />
+                            </a>
+                        </Card.Body>
+                    </Card>
+                ) : (
+                    <Outlet />
+                )}
+
             </Container>
-        </Container>
+
+            {/* Footer pegado abajo */}
+            <footer className="bg-dark text-white text-center py-3 mt-auto">
+                <Container>
+                    <small>&copy; {new Date().getFullYear()} Marlen Alcaraz Malagon. Todos los derechos reservados.</small>
+                </Container>
+            </footer>
+        </div>
     );
 }
 
