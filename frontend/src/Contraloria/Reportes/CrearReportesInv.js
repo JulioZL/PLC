@@ -78,9 +78,15 @@ function CrearReportesInv() {
     };
 
     const handleSaveReport = async () => {
-        if (!validateReportFields()) return;
+        if (!validateReportFields() || reportData.length === 0) {
+            toast.error("Debes completar todos los campos y agregar al menos un artículo.");
+            return;
+        }
 
         const payload = reportData.map(item => ({
+            IDreporte: formData.IDreporte,
+            Lugar: formData.lugar,
+            Fecha: formData.fecha,
             Nombre_Alumno: formData.nombreAlumno,
             Nombre_Articulo: item.nombreArticulo,
             Talla: item.talla,
@@ -88,6 +94,8 @@ function CrearReportesInv() {
             Cantidad: item.cantidad,
             Semestre: formData.Semestre,
         }));
+
+        console.log('Payload a enviar:', payload);
 
         try {
             const response = await axios.post('http://localhost:3001/api/reportesPrenda', payload);
@@ -98,10 +106,12 @@ function CrearReportesInv() {
                 toast.error('Error al guardar el reporte.');
             }
         } catch (error) {
-            console.error('Error al guardar el reporte:', error);
+            console.error('Error al guardar el reporte:', error.response?.data || error.message);
             toast.error('Ocurrió un error al intentar guardar el reporte.');
         }
     };
+
+
 
     const handleChange = async (e) => {
         const { name, value } = e.target;
@@ -110,7 +120,10 @@ function CrearReportesInv() {
         if (name === 'nombreAlumno' && value.trim().length >= 3) {
             try {
                 const response = await axios.get('http://localhost:3001/api/alumnos', { params: { NombreAlumno: value } });
+<<<<<<< HEAD
 
+=======
+>>>>>>> f10bb6aac0f8545f058c2946bfba8801466a64e6
                 setFilteredAlumnos(response.data);
             } catch (error) {
                 console.error('Error al buscar alumnos:', error);
@@ -280,10 +293,13 @@ function CrearReportesInv() {
                                 )}
                             </Col>
 
+<<<<<<< HEAD
                             <Col sm={6}>
                                 <Form.Label>Grupo</Form.Label>
                                 <Form.Control type="text" name="grupoAlumno" value={formData.grupoAlumno}/>
 
+=======
+>>>>>>> f10bb6aac0f8545f058c2946bfba8801466a64e6
                             <Col xs={12} md={6}>
                                 <Form.Label>Semestre</Form.Label>
                                 <Form.Control
@@ -293,12 +309,18 @@ function CrearReportesInv() {
                                     onChange={handleChange}
                                     placeholder="Ej. 4to"
                                 />
+<<<<<<< HEAD
                                 
                         </Col>
+=======
+                            </Col>
+                        </Row>
+>>>>>>> f10bb6aac0f8545f058c2946bfba8801466a64e6
 
                         <h5 className="my-3">Agregar Artículos</h5>
                         <Row className="mb-3">
 
+<<<<<<< HEAD
                             <Col sm={6}>
                                 <Form.Label>Articulo</Form.Label>
                                 <Form.Select aria-label="Default select example">
@@ -308,6 +330,8 @@ function CrearReportesInv() {
                                     <option value="3">Three</option>
                                 </Form.Select>
 
+=======
+>>>>>>> f10bb6aac0f8545f058c2946bfba8801466a64e6
                             <Col xs={12} md={6} lg={4}>
                                 <Form.Label>Nombre del Artículo</Form.Label>
 
@@ -335,25 +359,35 @@ function CrearReportesInv() {
                                     name="talla"
                                     value={formData.talla}
                                     onChange={handleChange}
+<<<<<<< HEAD
                                     placeholder="Selecciona la talla"
+=======
+>>>>>>> f10bb6aac0f8545f058c2946bfba8801466a64e6
                                 >
                                     <option value="">Selecciona la talla</option>
-                                    {[14, 16, 18, 28, 30, 32, 34, 36, 38, 40, 42, 44, 'CH','M', 'G', 'XL','UT'].map(tall => <option key={tall} value={tall}>{tall}</option>)}
+                                    {[14, 16, 18, 28, 30, 32, 34, 36, 38, 40, 42, 44, 'CH', 'M', 'G', 'XL', 'UT'].map(tall => (
+                                        <option key={tall} value={tall}>{tall}</option>
+                                    ))}
                                 </Form.Control>
+<<<<<<< HEAD
 
                                     placeholder="M, L, XL"
                                 </Col>
+=======
+>>>>>>> f10bb6aac0f8545f058c2946bfba8801466a64e6
                             </Col>
+
                             <Col xs={6} md={3} lg={2}>
                                 <Form.Label>Precio</Form.Label>
                                 <Form.Control
                                     type="number"
                                     min="0"
-                                    step="0.1"
+                                    step="1"
                                     name="precio"
                                     value={formData.precio}
                                     onChange={handleChange}
                                     placeholder="0.00"
+                                    readOnly
                                 />
                             </Col>
                             <Col xs={6} md={3} lg={2}>

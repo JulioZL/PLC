@@ -2,7 +2,7 @@ import express from 'express'
 import { createUsuario, getAllUsuarios, loginUsuario/*, getUsuario*/ } from '../controllers/LoginController.js'
 import { getAllPrendas, getPrenda,createPrenda, updatePrenda, deletePrenda  } from '../controllers/PrendasController.js'
 import { createReporte, actualizarReporte, consultarReportes, eliminarReporte, consultarAllReportes } from '../controllers/ReportesSemController.js';
-import { createReportePrenda, actualizarReportePrenda, consultarReportesPrenda, eliminarReportePrenda, consultarAllReportesPrenda } from '../controllers/ReportesPrenController.js';
+import { createReportePrenda, actualizarReportePrenda, eliminarReportePrenda, consultarAllReportesPrenda, getReportesPrenda } from '../controllers/ReportesPrenController.js';
 import { searchAlumnoByName } from '../controllers/AlumnosController.js';
 import { getAllConceptos } from '../controllers/ConceptosPSController.js';
 
@@ -29,10 +29,10 @@ router.put('/reportes/eliminar/:Id_ReporteSemestral', eliminarReporte);
 router.get('/alumnos', searchAlumnoByName);
 
 router.post('/reportesPrenda', createReportePrenda);
-router.get('/reportesPrenda', consultarReportesPrenda);
+router.get('/reportesPrenda', getReportesPrenda);
 router.get('/reportesPrenda/all', consultarAllReportesPrenda);
-router.put('/reportesPrenda/:Id_ReportePrenda', actualizarReportePrenda);
-router.put('/reportesPrenda/eliminar/:Id_ReportePrenda', eliminarReportePrenda);
+router.put('/reportesPrenda/:id_reporteprenda', actualizarReportePrenda);
+router.put('/reportesPrenda/eliminar/:id_reporteprenda', eliminarReportePrenda);
 
 router.get('/conceptos', getAllConceptos);
 router.get('/conceptosP', getAllPrendas);

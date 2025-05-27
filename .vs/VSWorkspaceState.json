@@ -3,15 +3,25 @@
     "",
     "\\backend",
     "\\backend\\controllers",
+<<<<<<< HEAD
     "\\backend\\database",
+=======
+>>>>>>> f10bb6aac0f8545f058c2946bfba8801466a64e6
     "\\backend\\models",
     "\\backend\\routes",
     "\\frontend",
     "\\frontend\\src",
     "\\frontend\\src\\Contraloria",
+<<<<<<< HEAD
     "\\frontend\\src\\Contraloria\\Usuarios",
     "\\frontend\\src\\Login"
   ],
   "SelectedNode": "\\backend\\controllers\\LoginController.js",
+=======
+    "\\frontend\\src\\Contraloria\\Alumnos",
+    "\\frontend\\src\\Contraloria\\Usuarios"
+  ],
+  "SelectedNode": "\\frontend",
+>>>>>>> f10bb6aac0f8545f058c2946bfba8801466a64e6
   "PreviewInSolutionExplorer": false
 }

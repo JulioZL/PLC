@@ -1,71 +1,52 @@
 import db from "../database/db.js";
 import { DataTypes } from "sequelize";
+import AlumnosModel from "./AlumnosModel.js";
+import DetalleReportePrendaModel from "./DetalleReportePrendaModel.js";
 
 const ReportesPrenModel = db.define('ReportePrenda', {
-    Id_ReportePrenda: {
+    id_reporteprenda: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        field: 'Id_ReportePrenda'  
     },
-    Nombre_Alumno: {
-        type: DataTypes.STRING(255),
-        allowNull: false,
-        field: 'Nombre_Alumno'  
-    },
-    Nombre_Articulo: {
-        type: DataTypes.STRING(255),
-        allowNull: false,
-        field: 'Nombre_Articulo'
-    },
-    Talla: {
-        type: DataTypes.STRING(50),
-        allowNull: false,
-        field: 'Talla'
-    },
-    Precio: {
-        type: DataTypes.DECIMAL(10, 2),
-        allowNull: false,
-        field: 'Precio'
-    },
-    Cantidad: {
+    id_alumno: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        field: 'Cantidad'
+        references: {
+            model: 'AlumnosModel',
+            key: 'id_alumno',
+        },
     },
-    Estado: {
+    estado: {
         type: DataTypes.ENUM('Activo', 'Eliminado'),
         defaultValue: 'Activo',
-        field: 'Estado'
     },
-    Fecha_Eliminacion: {
+    fecha_creacion: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+    },
+    fecha_modificacion: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+    },
+    fecha_eliminacion: {
         type: DataTypes.DATE,
         allowNull: true,
-        field: 'Fecha_Eliminacion'
     },
-    Fecha_Creacion: {
-        type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW,
+    semestre: {
+        type: DataTypes.STRING(5),
         allowNull: false,
-        field: 'Fecha_Creacion'
-    },
-    Fecha_Modificacion: {
-        type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW,
-        onUpdate: DataTypes.NOW,
-        allowNull: false,
-        field: 'Fecha_Modificacion'
-    },
-    Semestre: {
-        type: DataTypes.STRING(2),
-        allowNull: false,
-        field: 'Semestre'
+        defaultValue: '1',
     }
 }, {
-    tableName: 'ReportePrenda',  
-    timestamps: false,  
+    tableName: 'ReportePrenda',
+    timestamps: false,
 });
 
 
+ReportesPrenModel.belongsTo(AlumnosModel, {
+    foreignKey: 'id_alumno',
+    as: 'alumno'
+});
 
 export default ReportesPrenModel;

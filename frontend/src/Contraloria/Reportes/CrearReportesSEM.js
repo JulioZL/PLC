@@ -354,7 +354,28 @@ function CrearReportesSEM() {
                                 </Form.Control>
                             </Col>
 
+<<<<<<< HEAD
 
+=======
+                            <Col xs={12} md={6}>
+                                <Form.Label>Mes de Pago</Form.Label>
+                                <Form.Control
+                                    as="select"
+                                    name="Mes_de_Pago"
+                                    value={formData.Mes_de_Pago}
+                                    onChange={handleChange}
+                                    disabled={formData.Concepto !== "Colegiatura mensual"}
+                                >
+                                    <option value="">Selecciona el mes</option>
+                                    {months.map((month, index) => (
+                                        <option key={index} value={month}>
+                                            {month}
+                                        </option>
+                                    ))}
+                                </Form.Control>
+                            </Col>
+                        </Row>
+>>>>>>> f10bb6aac0f8545f058c2946bfba8801466a64e6
                 <Form.Group as={Row} className="mb-3">
                     <Form.Label column sm={2}>Grupo</Form.Label>
                     <Col sm={3}>
@@ -384,6 +405,7 @@ function CrearReportesSEM() {
                         </Form.Control>
                     </Col>
                 </Form.Group>
+<<<<<<< HEAD
 
                             <Col xs={12} md={6}>
                                 <Form.Label>Mes de Pago</Form.Label>
@@ -403,6 +425,8 @@ function CrearReportesSEM() {
                                 </Form.Control>
                             </Col>
                         </Row>
+=======
+>>>>>>> f10bb6aac0f8545f058c2946bfba8801466a64e6
 
                         <Row className="mb-3">
                             <Col xs={6} md={3}>
