@@ -3,8 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\src\\Contraloria\\Inventarios\\InvPrendas.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\src\\Contraloria\\Inventarios\\InvPrendas.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\src\\Contraloria\\Inventarios\\EditarPrenda.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\src\\Contraloria\\Inventarios\\EditarPrenda.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\src\\Contraloria\\Inventarios\\AgregarPrenda.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\src\\Contraloria\\Inventarios\\AgregarPrenda.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\src\\Login\\IniciarSesion.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\src\\Login\\IniciarSesion.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\backend\\database\\db.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:backend\\database\\db.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\src\\NavBar.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
@@ -13,18 +37,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\src\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\src\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\src\\Contraloria\\Inventarios\\InvPrendas.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\src\\Contraloria\\Inventarios\\InvPrendas.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\src\\Login\\IniciarSesion.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\src\\Login\\IniciarSesion.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\src\\Contraloria\\Inventarios\\AgregarPrenda.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:frontend\\src\\Contraloria\\Inventarios\\AgregarPrenda.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\backend\\controllers\\PrendasController.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
@@ -70,11 +82,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 188,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 5,
+              "Title": "package.json",
+              "DocumentMoniker": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\package.json",
+              "RelativeDocumentMoniker": "frontend\\package.json",
+              "ToolTip": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\package.json",
+              "RelativeToolTip": "frontend\\package.json",
+              "ViewState": "AQIAAB4AAAAAAAAAAAD4vzgAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-27T12:18:58.156Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "db.js",
+              "DocumentMoniker": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\backend\\database\\db.js",
+              "RelativeDocumentMoniker": "backend\\database\\db.js",
+              "ToolTip": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\backend\\database\\db.js",
+              "RelativeToolTip": "backend\\database\\db.js",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAACIAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-05-27T12:16:26.06Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "DetalleReportePrendaModel.js",
               "DocumentMoniker": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\backend\\models\\DetalleReportePrendaModel.js",
               "RelativeDocumentMoniker": "backend\\models\\DetalleReportePrendaModel.js",
@@ -82,12 +120,11 @@
               "RelativeToolTip": "backend\\models\\DetalleReportePrendaModel.js",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-05-27T10:23:10.351Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-27T10:23:10.351Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "ReportesPrenController.js",
               "DocumentMoniker": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\backend\\controllers\\ReportesPrenController.js",
               "RelativeDocumentMoniker": "backend\\controllers\\ReportesPrenController.js",
@@ -95,12 +132,11 @@
               "RelativeToolTip": "backend\\controllers\\ReportesPrenController.js",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-05-27T10:22:57.063Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-27T10:22:57.063Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "EditarReportesInv.js",
               "DocumentMoniker": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\src\\Contraloria\\Reportes\\EditarReportesInv.js",
               "RelativeDocumentMoniker": "frontend\\src\\Contraloria\\Reportes\\EditarReportesInv.js",
@@ -108,12 +144,11 @@
               "RelativeToolTip": "frontend\\src\\Contraloria\\Reportes\\EditarReportesInv.js",
               "ViewState": "AQIAAFsAAAAAAAAAAAAAABwBAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-05-27T09:28:38.216Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-27T09:28:38.216Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "PrendasModel.js",
               "DocumentMoniker": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\backend\\models\\PrendasModel.js",
               "RelativeDocumentMoniker": "backend\\models\\PrendasModel.js",
@@ -121,12 +156,11 @@
               "RelativeToolTip": "backend\\models\\PrendasModel.js",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-05-27T09:11:10.703Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-27T09:11:10.703Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "PrendasController.js",
               "DocumentMoniker": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\backend\\controllers\\PrendasController.js",
               "RelativeDocumentMoniker": "backend\\controllers\\PrendasController.js",
@@ -134,25 +168,24 @@
               "RelativeToolTip": "backend\\controllers\\PrendasController.js",
               "ViewState": "AQIAAEUAAAAAAAAAAAAAAHEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-05-27T09:00:13.848Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-27T09:00:13.848Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "EditarPrenda.js",
               "DocumentMoniker": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\src\\Contraloria\\Inventarios\\EditarPrenda.js",
               "RelativeDocumentMoniker": "frontend\\src\\Contraloria\\Inventarios\\EditarPrenda.js",
               "ToolTip": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\src\\Contraloria\\Inventarios\\EditarPrenda.js",
               "RelativeToolTip": "frontend\\src\\Contraloria\\Inventarios\\EditarPrenda.js",
-              "ViewState": "AQIAAEUAAAAAAAAAAAAowFQAAAAoAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFQAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2025-05-27T09:03:07.624Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "routes.js",
               "DocumentMoniker": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\backend\\routes\\routes.js",
               "RelativeDocumentMoniker": "backend\\routes\\routes.js",
@@ -160,18 +193,17 @@
               "RelativeToolTip": "backend\\routes\\routes.js",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-05-27T09:00:04.378Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-27T09:00:04.378Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "AgregarPrenda.js",
               "DocumentMoniker": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\src\\Contraloria\\Inventarios\\AgregarPrenda.js",
               "RelativeDocumentMoniker": "frontend\\src\\Contraloria\\Inventarios\\AgregarPrenda.js",
               "ToolTip": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\src\\Contraloria\\Inventarios\\AgregarPrenda.js",
               "RelativeToolTip": "frontend\\src\\Contraloria\\Inventarios\\AgregarPrenda.js",
-              "ViewState": "AQIAAEIAAAAAAAAAAAAtwE8AAABLAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAE8AAABLAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2025-05-27T08:56:39.771Z",
               "EditorCaption": ""
@@ -180,8 +212,21 @@
         },
         {
           "DockedWidth": 188,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "README.md",
+              "DocumentMoniker": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\README.md",
+              "RelativeDocumentMoniker": "frontend\\README.md",
+              "ToolTip": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\README.md",
+              "RelativeToolTip": "frontend\\README.md",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-05-27T12:21:27.523Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 4,
@@ -190,14 +235,14 @@
               "RelativeDocumentMoniker": "frontend\\src\\Login\\IniciarSesion.js",
               "ToolTip": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\src\\Login\\IniciarSesion.js",
               "RelativeToolTip": "frontend\\src\\Login\\IniciarSesion.js",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAmAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAABMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2025-05-27T10:57:19.785Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "NavBar.js",
               "DocumentMoniker": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\src\\NavBar.js",
               "RelativeDocumentMoniker": "frontend\\src\\NavBar.js",
@@ -210,7 +255,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "CrearReportesSEM.js",
               "DocumentMoniker": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\src\\Contraloria\\Reportes\\CrearReportesSEM.js",
               "RelativeDocumentMoniker": "frontend\\src\\Contraloria\\Reportes\\CrearReportesSEM.js",
@@ -218,12 +263,11 @@
               "RelativeToolTip": "frontend\\src\\Contraloria\\Reportes\\CrearReportesSEM.js",
               "ViewState": "AQIAAFAAAAAAAAAAAAAQwBAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-05-27T10:04:20.592Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-27T10:04:20.592Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "CrearReportesInv.js",
               "DocumentMoniker": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\src\\Contraloria\\Reportes\\CrearReportesInv.js",
               "RelativeDocumentMoniker": "frontend\\src\\Contraloria\\Reportes\\CrearReportesInv.js",
@@ -231,12 +275,11 @@
               "RelativeToolTip": "frontend\\src\\Contraloria\\Reportes\\CrearReportesInv.js",
               "ViewState": "AQIAAOoAAAAAAAAAAAAmwAQBAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-05-27T10:04:15.195Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-27T10:04:15.195Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "index.js",
               "DocumentMoniker": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\src\\index.js",
               "RelativeDocumentMoniker": "frontend\\src\\index.js",
@@ -244,12 +287,11 @@
               "RelativeToolTip": "frontend\\src\\index.js",
               "ViewState": "AQIAACIAAAAAAAAAAAAcwDEAAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-05-27T10:01:06.014Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-27T10:01:06.014Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "App.js",
               "DocumentMoniker": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\src\\App.js",
               "RelativeDocumentMoniker": "frontend\\src\\App.js",
@@ -257,18 +299,17 @@
               "RelativeToolTip": "frontend\\src\\App.js",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-05-27T10:00:51.581Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-27T10:00:51.581Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "InvPrendas.js",
               "DocumentMoniker": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\src\\Contraloria\\Inventarios\\InvPrendas.js",
               "RelativeDocumentMoniker": "frontend\\src\\Contraloria\\Inventarios\\InvPrendas.js",
               "ToolTip": "C:\\Users\\julio\\OneDrive\\Documents\\InvRep\\frontend\\src\\Contraloria\\Inventarios\\InvPrendas.js",
               "RelativeToolTip": "frontend\\src\\Contraloria\\Inventarios\\InvPrendas.js",
-              "ViewState": "AQIAABYAAAAAAAAAAAAmwDQAAABLAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADQAAABLAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2025-05-27T08:55:11.834Z",
               "EditorCaption": ""
