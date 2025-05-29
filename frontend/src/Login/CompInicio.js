@@ -1,73 +1,53 @@
-﻿import './CompInicio.css';
-import React, { useState } from "react";
-import { Container, Row, Col } from 'react-bootstrap';
-import Figure from 'react-bootstrap/Figure';
-import { Outlet } from "react-router-dom";
+﻿import React, { useState } from "react";
+import { Container, Row, Col, Figure } from 'react-bootstrap';
+import { Outlet, useNavigate } from "react-router-dom";
 import IniciarSesion from './IniciarSesion';
-
 import { Button } from 'primereact/button';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-import { useNavigate } from 'react-router-dom';
-
-
 import { Dialog } from 'primereact/dialog';
+import './CompInicio.css'; // Importa los estilos externos
 
 function CompInicio() {
-
-    const [visibleLogin, setVisibleLogin] = useState(false); // Cambié esto a `false` por defecto.
-    
-
+    const [visibleLogin, setVisibleLogin] = useState(false);
     const navigate = useNavigate();
 
-    const registroSesion = () => {
-        navigate('/registrarUsuario');
-    }
-    const inicioSesion = () => {
-        navigate('/iniciarSesion');
-    }
-
     return (
-        <Container fluid className="px-0">
-            <Row>
-                {/* Sección de la información de la escuela */}
-                <Col>
-                    <Container fluid className="ContenedorPrincipalInicio">
-                        <Container className="ContenedorAuxiliarInicio">
-                            <Figure className="SeccionPrincipal">
+        <Container fluid className="comp-inicio-container">
+            <Row className="comp-inicio-row">
+                <Col className="info-col">
+                    <Container fluid className="contenedor-principal-inicio">
+                        <Container className="contenedor-auxiliar-inicio">
+                            <Figure className="seccion-principal">
                                 <Figure.Image
-                                    className="LogoPrepa"
-                                    src={require('../img/PLC.png')} // Aquí solo pasas los atributos válidos para una imagen.
+                                    src={require('../img/PLC.png')}
                                     alt="Logo Escuela"
+                                    className="logo-prepa"
                                 />
-                                <Figure.Caption className="Titulo">
+                                <Figure.Caption className="titulo">
                                     Escuela Preparatoria Por Cooperación Gral Lázaro Cárdenas
                                 </Figure.Caption>
                             </Figure>
-                            <Row className="InformacionInicio">
-                                <label>Ofrecemos educación de calidad para preparar a nuestros estudiantes para un futuro brillante.</label>
-                                <label>Excelencia académica y valores humanos.</label>
-                                <label>Ubicados en una zona de fácil acceso, con modernas instalaciones.</label>
-                                <label>Únete a nuestra comunidad educativa.</label>
+                            <Row>
+                                <label className="info-label">Ofrecemos educación de calidad para preparar a nuestros estudiantes para un futuro brillante.</label>
+                                <label className="info-label">Excelencia académica y valores humanos.</label>
+                                <label className="info-label">Ubicados en una zona de fácil acceso, con modernas instalaciones.</label>
+                                <label className="info-label">Únete a nuestra comunidad educativa.</label>
                             </Row>
                         </Container>
                     </Container>
                 </Col>
 
-                {/* Sección del formulario de inicio de sesión */}
-                <Col className="d-flex align-items-center justify-content-center">
-                    <Container fluid className="ContenedorPrincipalloginregistro">
+                <Col className="login-col">
+                    <Container fluid className="contenedor-login">
                         <Outlet />
-
                         <div className="welcome-container">
                             <h1 className="welcome-text">Bienvenido</h1>
                         </div>
-                        <div className="button-container">
+                        <div>
                             <Button
                                 label="Iniciar Sesión"
-                                onClick={() => setVisibleLogin(true)} // Aquí es donde se usa `setVisibleLogin` correctamente.
+                                onClick={() => setVisibleLogin(true)}
                                 icon="pi pi-user"
-                                className="LR-button"
+                                className="lr-button"
                             />
                             <Dialog
                                 visible={visibleLogin}
@@ -77,8 +57,6 @@ function CompInicio() {
                             >
                                 <IniciarSesion />
                             </Dialog>
-
-                            
                         </div>
                     </Container>
                 </Col>

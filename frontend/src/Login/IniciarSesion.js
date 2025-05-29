@@ -1,39 +1,49 @@
 ﻿import React, { useState } from 'react';
-import { Button, Form, Container, Alert } from 'react-bootstrap';
+import { Button, Form, Container, Spinner, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 
 function IniciarSesion() {
     const [usuario, setUsuario] = useState('');
     const [contrasenia, setContrasenia] = useState('');
     const [rol, setRol] = useState('1');
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
+
     const navigate = useNavigate();
 
     const inicioSesion = async (e) => {
         e.preventDefault();
+        setLoading(true);
+        setError(null);
+        setSuccess(false);
 
         try {
             const response = await axios.post('https://plc-j41x.onrender.com/api/login', {
-                    Usuario: usuario,
+                Usuario: usuario,
+                Contrasenia: contrasenia,
+                Rol: parseInt(rol)
+            });
 
-                    Contrasenia: contrasenia,
-                    Rol: parseInt(rol)
-                });
+            if (response.data) {
+                sessionStorage.setItem('usuario', JSON.stringify(response.data.user.Usuario));
+                sessionStorage.setItem('TUsuario', JSON.stringify(response.data.user.Rol));
+                sessionStorage.setItem('isLoggedIn', 'true');
 
-                if (response.data) {
-                    console.log("Datos recibidos del servidor:", response.data.user);
-
-                    sessionStorage.setItem('usuario', JSON.stringify(response.data.user.Usuario));
-                    sessionStorage.setItem('TUsuario', JSON.stringify(response.data.user.Rol));
-                    sessionStorage.setItem('isLoggedIn', 'true');
-
-                    navigate('/Menu');
-                }
+                setSuccess(true);
+                setTimeout(() => navigate('/Menu'), 1500); // Espera 1.5s para mostrar éxito
+            }
 
         } catch (err) {
-            console.log('Error al iniciar sesión:', err);
-            setError('Error al iniciar sesión');
+            if (err.response?.status === 401 || err.response?.status === 404) {
+                setError('Credenciales incorrectas.');
+            } else {
+                setError('Error al iniciar sesión. Inténtalo de nuevo.');
+            }
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -47,6 +57,7 @@ function IniciarSesion() {
                         placeholder="Usuario"
                         value={usuario}
                         onChange={(e) => setUsuario(e.target.value)}
+                        disabled={loading}
                     />
                 </Form.Group>
                 <Form.Group className="mb-3">
@@ -56,6 +67,7 @@ function IniciarSesion() {
                         placeholder="**********"
                         value={contrasenia}
                         onChange={(e) => setContrasenia(e.target.value)}
+                        disabled={loading}
                     />
                 </Form.Group>
 
@@ -65,6 +77,7 @@ function IniciarSesion() {
                         as="select"
                         value={rol}
                         onChange={(e) => setRol(e.target.value)}
+                        disabled={loading}
                     >
                         <option value="1">Admin</option>
                         <option value="2">Encargado</option>
@@ -72,8 +85,35 @@ function IniciarSesion() {
                     </Form.Control>
                 </Form.Group>
 
-                <Button type="submit" className="btn btn-primary">Iniciar Sesión</Button>
-                {error && <p className="text-danger">{error}</p>}
+                <Button type="submit" className="btn btn-primary" disabled={loading}>
+                    {loading ? (
+                        <>
+                            <Spinner
+                                as="span"
+                                animation="border"
+                                size="sm"
+                                role="status"
+                                aria-hidden="true"
+                                className="me-2"
+                            />
+                            Iniciando...
+                        </>
+                    ) : (
+                        "Iniciar Sesión"
+                    )}
+                </Button>
+
+                {error && (
+                    <Alert variant="danger" className="mt-3 d-flex align-items-center">
+                        <FaTimesCircle className="me-2" /> {error}
+                    </Alert>
+                )}
+
+                {success && (
+                    <Alert variant="success" className="mt-3 d-flex align-items-center">
+                        <FaCheckCircle className="me-2" /> ¡Inicio de sesión exitoso!
+                    </Alert>
+                )}
             </Form>
         </Container>
     );

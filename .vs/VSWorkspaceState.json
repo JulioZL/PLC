@@ -11,6 +11,6 @@
     "\\frontend\\src\\Contraloria\\Usuarios",
     "\\frontend\\src\\Login"
   ],
-  "SelectedNode": "\\backend\\models\\LoginModel.js",
+  "SelectedNode": "\\frontend\\src\\Login\\CompInicio.css",
   "PreviewInSolutionExplorer": false
 }

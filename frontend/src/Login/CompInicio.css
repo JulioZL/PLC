@@ -1,69 +1,78 @@
-html, body {
+body, html {
     margin: 0;
     padding: 0;
     height: 100%;
     font-family: 'Roboto', sans-serif;
 }
 
-.row, .col {
+.comp-inicio-container, .comp-inicio-row {
+    height: 100vh;
+    width: 100vw;
     margin: 0;
-    width: 100%;
-    padding:0%;
+    padding: 0;
 }
 
-.Container {
-    height: 100vh;
-    width: 100vw; /* Ocupa todo el ancho de la pantalla */
+.info-col, .login-col {
+    padding: 0;
 }
 
-.ContenedorPrincipalInicio {
+.contenedor-principal-inicio {
     display: flex;
     justify-content: center;
     align-items: center;
-    
-}
-
-.ContenedorPrincipalInicio, .ContenedorPrincipalloginregistro {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    background-color: white;
+    width: 50vw;
     height: 100vh;
-    padding: 0px;
-}
-
-.ContenedorPrincipalInicio {
-    background-color:white; /* Degradado que "toca" el lado derecho */
-    color: #ffffff;
     text-align: center;
-    padding: 10px;
-    width: 50vw; /* Ocupa exactamente la mitad de la pantalla */
-    position: relative; /* Para ajustar el desbordamiento visual del degradado */
-
 }
 
-.ContenedorAuxiliarInicio {
+.contenedor-auxiliar-inicio {
     background: linear-gradient(135deg, #003366, #333333);
     padding: 2rem;
     border-radius: 10px;
     box-shadow: -2px 0 10px rgba(100, 50, 250, 1);
-    height: 100vh; /* Altura completa de la ventana para centrar verticalmente */
+    height: 100%;
     width: 100%;
     display: flex;
-    flex-direction: column; /* Para que el logo est� arriba y la informaci�n debajo */
-    align-items: center; /* Centra el contenido horizontalmente */
-    justify-content: center; /* Centra el contenido verticalmente */
-    padding: 50px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
+.seccion-principal {
+    text-align: center;
+    max-width: 80%;
+}
 
-.ContenedorPrincipalloginregistro {
+.logo-prepa {
+    width: 220px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.titulo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.info-label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    color: #d4d4d4;
+}
+
+.contenedor-login {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f5f5f5; /* Color de fondo */
+    background-color: #f5f5f5;
+    padding: 1rem;
+    text-align: center;
 }
 
 .welcome-container {
@@ -73,84 +82,73 @@ html, body {
 .welcome-text {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #007bff; /* Color llamativo */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para mayor �nfasis */
+    color: #007bff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.LR-button {
+.lr-button {
     width: 10rem;
-}
-
-.register-button {
-    background-color: #28a745; /* Color verde para el bot�n de registro */
-    border-color: #28a745;
-}
-
-    .register-button:hover {
-        background-color: #218838; /* Color verde m�s oscuro al pasar el rat�n */
-        border-color: #1e7e34;
-    }
-
-
-/* Estilo para la secci�n de la escuela */
-.SeccionPrincipal {
-    text-align: center;
-    max-width: 80%;
-}
-
-.LogoPrepa {
-    width: 220px;
-    height: auto;
-    margin-bottom: 20px;
-}
-
-.SeccionPrincipal figcaption {
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-.InformacionInicio label {
-    display: block;
-    font-size: 1.2rem;
-    margin-bottom: 12px;
-    color: #d4d4d4;
-}
-
-/* Formularios y botones */
-form {
-    width: 100%;
-}
-
-.Titulo {
-    color: white;
-}
-
-input, .LR-button {
-    width: 100%;
     padding: 12px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-    input:focus {
-        border-color: #007bff;
-        outline: none;
-        box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
-    }
-
-.LR-button {
-    background-color: #007bff;
-    color: white;
     font-size: 1.1rem;
-    cursor: pointer;
+    border-radius: 5px;
     border: none;
+    color: white;
+    background-color: #007bff;
+    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-    .LR-button:hover {
+    .lr-button:hover {
         background-color: #0056b3;
     }
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .comp-inicio-container, .comp-inicio-row {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .contenedor-principal-inicio,
+    .contenedor-login {
+        width: 100%;
+        height: auto;
+        padding: 2rem 1rem;
+    }
+
+    .contenedor-auxiliar-inicio {
+        padding: 1.5rem;
+        border-radius: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo-prepa {
+        width: 140px;
+        margin-bottom: 1rem;
+    }
+
+    .titulo {
+        font-size: 1.4rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .info-label {
+        font-size: 1rem;
+        line-height: 1.4;
+        margin-bottom: 0.8rem;
+    }
+
+    .welcome-container {
+        margin: 2rem 0 1.5rem;
+    }
+
+    .welcome-text {
+        font-size: 2rem;
+    }
+
+    .lr-button {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+}
