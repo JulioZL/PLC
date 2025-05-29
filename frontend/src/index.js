@@ -31,6 +31,8 @@ import AgregarAlumnos from './Contraloria/Alumnos/AgregarAlumnos';
 import InformacionUsuarios from './Contraloria/Usuarios/InformacionUsuarios';
 import ExportPDFReportes from './Contraloria/Reportes/ExportPDFReportes';
 
+const URI = 'https://plc-j41x.onrender.com';
+
 // Rutas
 const router = createBrowserRouter([
     {

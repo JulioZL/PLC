@@ -1,7 +1,8 @@
-﻿import React from 'react';
+﻿import { React, createContext } from 'react';
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Navbar, Nav, Container, Button, Dropdown, Card } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+
 
 function NavBar() {
     const usuario = sessionStorage.getItem('usuario');
@@ -48,11 +49,11 @@ function NavBar() {
                                 <Nav.Link>Usuarios</Nav.Link>
                             </LinkContainer>
 
-                            <Dropdown as={Nav.Item}>
-                                <Dropdown.Toggle variant="success" className="text-white">
+                            <Dropdown as={Nav.Item} className="w-100 w-md-auto mb-2 mb-md-0">
+                                <Dropdown.Toggle variant="success" className="text-white w-100 w-md-auto">
                                     Reportes
                                 </Dropdown.Toggle>
-                                <Dropdown.Menu>
+                                <Dropdown.Menu className="w-100 w-md-auto">
                                     <LinkContainer to="/menu/reportes">
                                         <Dropdown.Item>Generar Reporte Semestral</Dropdown.Item>
                                     </LinkContainer>
@@ -68,11 +69,11 @@ function NavBar() {
                                 </Dropdown.Menu>
                             </Dropdown>
 
-                            <Dropdown as={Nav.Item} className="ms-2">
-                                <Dropdown.Toggle className="text-white" variant="success">
+                            <Dropdown as={Nav.Item} className="w-100 w-md-auto ms-md-2 mb-2 mb-md-0">
+                                <Dropdown.Toggle variant="success" className="text-white w-100 w-md-auto">
                                     Histórico
                                 </Dropdown.Toggle>
-                                <Dropdown.Menu>
+                                <Dropdown.Menu className="w-100 w-md-auto">
                                     <LinkContainer to="/menu/historicoReportes">
                                         <Dropdown.Item>Histórico Semestral</Dropdown.Item>
                                     </LinkContainer>
@@ -107,7 +108,7 @@ function NavBar() {
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
-            </Navbar>
+                </Navbar>
 
             {/* Separador para evitar solapamiento del navbar */}
             <div style={{ height: '80px' }}></div>

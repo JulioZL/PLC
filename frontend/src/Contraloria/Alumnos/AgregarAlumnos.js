@@ -3,8 +3,8 @@ import { Container, Row, Col, Form, Button, Table, Card } from 'react-bootstrap'
 import { FaEdit, FaTrashAlt, FaSave, FaPlus } from 'react-icons/fa';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import config from '../../config';
 
-const URI = 'http://localhost:3001/api/alumnos/';
 
 //function RegistroNombres() {
 //    const [form, setForm] = useState({ nombre: '', apellidoP: '', apellidoM: '' });
@@ -48,6 +48,8 @@ const RegistroNombres = () => {
     const [modoEdicion, setModoEdicion] = useState(null);
 
     const navigate = useNavigate();
+
+    const URI = config.URI;
 
     // Cargar registros desde backend al montar componente
     useEffect(() => {

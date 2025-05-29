@@ -16,6 +16,8 @@ import {
 import axios from 'axios';
 import { FaChevronDown, FaChevronUp, FaEdit, FaPaperclip } from 'react-icons/fa';
 
+import config from '../../config';
+
 function HistoricoReportesInv() {
     const [reportData, setReportData] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
@@ -25,10 +27,12 @@ function HistoricoReportesInv() {
     const [error, setError] = useState(null);
     const [expandedRow, setExpandedRow] = useState(null);
 
+    const URI = config.URI + 'api/reportesPrenda/all';
+
     useEffect(() => {
         const fetchReportesPrenda = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/api/reportesPrenda/all');
+                const response = await axios.get(URI);
                 setReportData(response.data.data);
                 setLoading(false);
             } catch (err) {

@@ -6,10 +6,11 @@ import axios from 'axios';
 import { OverlayTrigger, Tooltip, Modal } from 'react-bootstrap';
 import { PlusCircle, Save } from 'react-bootstrap-icons';
 import { FaPlus } from 'react-icons/fa';
+import config from '../../config';
 
 
 function CrearReportesInv() {
-
+    const URI = config.URI + 'api/';
     const [reportData, setReportData] = useState([]);
     const [formData, setFormData] = useState({
         IDreporte: Date.now().toString(),
@@ -54,7 +55,7 @@ function CrearReportesInv() {
         //Obetener y guardar prendas de ropa disponibles
         const fetchConceptos = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/api/conceptosP');
+                const response = await axios.get(URI+'conceptosP');
                 setConceptos(response.data);
                 console.log(response.data);
             } catch (error) {
@@ -145,7 +146,7 @@ function CrearReportesInv() {
 
         //Conexion con API
         try {
-            const response = await axios.post('http://localhost:3001/api/reportesPrenda', payload);
+            const response = await axios.post(URI+'reportesPrenda', payload);
             if (response.status === 200) {
                 toast.success('Reporte guardado correctamente.');
                 setTimeout(() => {
@@ -168,7 +169,7 @@ function CrearReportesInv() {
 
         if (name === 'nombreAlumno' && value.trim().length >= 3) {
             try {
-                const response = await axios.get('http://localhost:3001/api/alumnos', { params: { NombreAlumno: value } });
+                const response = await axios.get(URI+'alumnos', { params: { NombreAlumno: value } });
                 setFilteredAlumnos(response.data);
             } catch (error) {
                 console.error('Error al buscar alumnos:', error);

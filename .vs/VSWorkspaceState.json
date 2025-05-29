@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\backend",
-    "\\backend\\database",
+    "\\backend\\models",
+    "\\backend\\routes",
     "\\frontend",
     "\\frontend\\src",
     "\\frontend\\src\\Contraloria",
-    "\\frontend\\src\\Contraloria\\Historico",
-    "\\frontend\\src\\Contraloria\\Inventarios",
-    "\\frontend\\src\\Contraloria\\Reportes",
+    "\\frontend\\src\\Contraloria\\Alumnos",
+    "\\frontend\\src\\Contraloria\\Usuarios",
     "\\frontend\\src\\Login"
   ],
-  "SelectedNode": "\\frontend\\src\\Contraloria\\Inventarios\\InvPrendas.js",
+  "SelectedNode": "\\backend\\models\\LoginModel.js",
   "PreviewInSolutionExplorer": false
 }

@@ -2,8 +2,8 @@
 import { useEffect, useState } from "react";
 import { Form, Button } from 'react-bootstrap';
 import { toast } from "react-toastify";
+import config from '../../config';
 
-const URI = 'http://localhost:3001/api/prendas/';
 
 const CompEditarPrenda = ({ id, onSuccess }) => {
     const [formData, setFormData] = useState({
@@ -12,6 +12,8 @@ const CompEditarPrenda = ({ id, onSuccess }) => {
         unidades: '',
         precio: '',
     });
+
+    const URI = config.URI + 'api/prendas/';
 
     const tallasDisponibles = [
         14, 16, 18, 28, 30, 32, 34, 36, 38, 40, 42, 44, 'CH', 'MD', 'GD', 'XL', 'UT', 'NA',
@@ -37,7 +39,7 @@ const CompEditarPrenda = ({ id, onSuccess }) => {
                 });
 
                 // Verifica si está en uso
-                const resUso = await axios.get(`http://localhost:3001/api/prendas/${id}/en-uso`);
+                const resUso = await axios.get(URI+id+'/en-uso');
                 setTallaEditable(!resUso.data.enUso);
                 setEnUso(resUso.data.enUso);
             }

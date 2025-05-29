@@ -5,8 +5,8 @@ import { toast, ToastContainer } from 'react-toastify';
 import { FaEdit, FaTrashAlt, FaPlus } from 'react-icons/fa';
 import EditarPrenda from './EditarPrenda';
 import AgregarPrenda from './AgregarPrenda'; // <-- Importar componente
+import config from '../../config';
 
-const URI = 'http://localhost:3001/api/prendas/';
 
 const CompMostrarPrendas = () => {
     const [prendas, setPrendas] = useState([]);
@@ -16,6 +16,8 @@ const CompMostrarPrendas = () => {
     const [showAddModal, setShowAddModal] = useState(false);
 
     const rol = sessionStorage.getItem('TUsuario');
+
+    const URI = config.URI + 'api/prendas/';
 
     useEffect(() => {
         getPrendas();
@@ -28,7 +30,7 @@ const CompMostrarPrendas = () => {
 
     const deletePrenda = async (id) => {
         try {
-            await axios.delete(URI + id);
+            await axios.delete(URI+ id);
             toast.success('Artículo eliminado correctamente.');
             getPrendas();
         } catch (error) {

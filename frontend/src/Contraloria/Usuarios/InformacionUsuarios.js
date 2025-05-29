@@ -6,9 +6,11 @@ import axios from 'axios';
 import { FaUserPlus } from 'react-icons/fa';
 import RegistrarUsuario from '../../Login/RegistrarUsuario';
 
-const URI = 'http://localhost:3001/api/usuarios';
+import config from '../../config';
 
 function InfoUsuarios() {
+    const URI = config.URI+'api/usuarios'
+
     const [usuarios, setUsuarios] = useState([]);
     const [showRegisterModal, setShowRegisterModal] = useState(false);
 

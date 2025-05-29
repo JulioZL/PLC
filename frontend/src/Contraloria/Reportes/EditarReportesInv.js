@@ -3,11 +3,12 @@ import axios from 'axios';
 import { FaEdit, FaTrashAlt, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { Container, Button, Table, Form, Row, Col, Modal, Card, Spinner, Pagination, InputGroup } from 'react-bootstrap';
 import { toast, ToastContainer } from 'react-toastify';
+import config from '../../config';
 
 //URI Local
-const URI = 'http://localhost:3001/api/reportesPrenda';
 
 function EditarReportesInv() {
+    const URI = config.URI;
     //Expandir Columnas
     const [expandedRows, setExpandedRows] = useState([]);
     //Alternar Columnas
@@ -45,7 +46,7 @@ function EditarReportesInv() {
     useEffect(() => {
         const fetchReportes = async () => {
             try {
-                const response = await axios.get(URI);
+                const response = await axios.get(URI + 'api/reportesPrenda');
                 console.log('Respuesta del servidor:', response.data);
 
                 // Aseguramos que reportData sea un array, si no, ponemos un array vacío
@@ -65,7 +66,7 @@ function EditarReportesInv() {
 
         const fetchConceptos = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/api/conceptosP');
+                const response = await axios.get(URI+'api/conceptosP');
                 setConceptos(response.data);
                 console.log(response.data);
             } catch (error) {

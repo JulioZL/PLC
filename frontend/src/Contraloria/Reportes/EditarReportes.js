@@ -3,7 +3,9 @@ import { Container, Row, Col, Form, Button, Modal, Table } from 'react-bootstrap
 import { Dialog } from 'primereact/dialog';
 import axios from 'axios';
 import './EditarReportes.css';
-const URI = 'http://localhost:3001/api/reportes/';
+import config from '../../config';
+
+
 function EditarReportes() {
     const [reportData, setReportData] = useState([]);
     const [selectedReport, setSelectedReport] = useState(null);
@@ -29,7 +31,7 @@ function EditarReportes() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-
+    const URI = config.URI + 'api/reportes/';
 
     useEffect(() => {
         const fetchReportes = async () => {
@@ -62,7 +64,7 @@ function EditarReportes() {
         if (!validateForm()) return;
 
         try {
-            await axios.put(`http://localhost:3001/api/reportes/${formData.Id_ReporteSemestral}`, formData);
+            await axios.put(URI+formData.Id_ReporteSemestral, formData);
             setReportData((prev) =>
                 prev.map((report) =>
                     report.Id_ReporteSemestral === selectedReport ? { ...formData } : report
@@ -87,7 +89,7 @@ function EditarReportes() {
 
     const handleDelete = async () => {
         try {
-            await axios.put(`http://localhost:3001/api/reportes/eliminar/${deleteReportId}`);
+            await axios.put(URI+'/eliminar/'+deleteReportId);
             setReportData((prev) =>
                 prev.filter((report) => report.Id_ReporteSemestral !== deleteReportId)
             );

@@ -10,8 +10,8 @@ import {
 } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
+import config from '../../config';
 
-const URI = 'http://localhost:3001/api/prendas/';
 
 const tallasDisponibles = [
     14, 16, 18, 28, 30, 32, 34, 36, 38, 40, 42, 44, 'CH', 'MD', 'GD', 'XL', 'UT', 'NA',
@@ -25,6 +25,7 @@ const CompAgregarPrenda = ({ onSuccess }) => {
         precio: '',
     });
 
+    const URI = config.URI + 'api/prendas';
 
     const navigate = useNavigate();
 

@@ -5,10 +5,12 @@ import { Dialog } from 'primereact/dialog';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+import config from '../config';
+
 function RegistrarUsuario({ onUsuarioRegistrado }) {
 
     const navigate = useNavigate();
-
+    const URI = config.URI + 'api/register';
 
     const [nombre, setNombre] = useState('');
     const [usuario, setUsuario] = useState('');
@@ -29,7 +31,7 @@ function RegistrarUsuario({ onUsuarioRegistrado }) {
         }
 
         try {
-            const response = await axios.post('http://localhost:3001/api/register', {
+            const response = await axios.post(URI, {
                 Nombre: nombre,
                 Usuario: usuario,
                 Contrasenia: contrasenia,

@@ -17,9 +17,9 @@ export const createUsuario = async (req, res) => {
 
     try {
         await db.query(
-            CALL (InsertarUsuario( Nombre,  Usuario,  Contrasenia,  Departamento,  rol,  domicilio,  no_telefono)),
+            'CALL InsertarUsuario(?,  ?,  ?,  ?,  ?,  ?,  ?)',
             {
-                replacements: { Nombre, Usuario, Contrasenia, Departamento, rol, domicilio, no_telefono },
+                replacements: [Nombre, Usuario, Contrasenia, Departamento, rol, domicilio, no_telefono ],
                 type: QueryTypes.RAW
          }
         );
